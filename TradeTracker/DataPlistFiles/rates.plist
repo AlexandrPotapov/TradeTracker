@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>from</key>
+		<string>USD</string>
+		<key>rate</key>
+		<string>0.77</string>
+		<key>to</key>
+		<string>GBP</string>
+	</dict>
+	<dict>
+		<key>from</key>
+		<string>GBP</string>
+		<key>rate</key>
+		<string>1.3</string>
+		<key>to</key>
+		<string>USD</string>
+	</dict>
+	<dict>
+		<key>from</key>
+		<string>USD</string>
+		<key>rate</key>
+		<string>1.09</string>
+		<key>to</key>
+		<string>CAD</string>
+	</dict>
+	<dict>
+		<key>from</key>
+		<string>CAD</string>
+		<key>rate</key>
+		<string>0.92</string>
+		<key>to</key>
+		<string>USD</string>
+	</dict>
+	<dict>
+		<key>from</key>
+		<string>GBP</string>
+		<key>rate</key>
+		<string>0.83</string>
+		<key>to</key>
+		<string>AUD</string>
+	</dict>
+	<dict>
+		<key>from</key>
+		<string>AUD</string>
+		<key>rate</key>
+		<string>1.2</string>
+		<key>to</key>
+		<string>GBP</string>
+	</dict>
+</array>
+</plist>

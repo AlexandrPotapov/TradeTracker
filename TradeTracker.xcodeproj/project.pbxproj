@@ -30,7 +30,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		11A3B92F2CCBCC050076C525 /* Exceptions for "TradeTracker" folder in "TradeTracker" target */ = {
+		110385D92CCE5D6900810CCA /* Exceptions for "TradeTracker" folder in "TradeTracker" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -40,10 +40,10 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		11A3B9092CCBCC030076C525 /* TradeTracker */ = {
+		110385C62CCE5D6900810CCA /* TradeTracker */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				11A3B92F2CCBCC050076C525 /* Exceptions for "TradeTracker" folder in "TradeTracker" target */,
+				110385D92CCE5D6900810CCA /* Exceptions for "TradeTracker" folder in "TradeTracker" target */,
 			);
 			path = TradeTracker;
 			sourceTree = "<group>";
@@ -88,7 +88,7 @@
 		11A3B8FE2CCBCC030076C525 = {
 			isa = PBXGroup;
 			children = (
-				11A3B9092CCBCC030076C525 /* TradeTracker */,
+				110385C62CCE5D6900810CCA /* TradeTracker */,
 				11A3B9202CCBCC050076C525 /* TradeTrackerTests */,
 				11A3B92A2CCBCC050076C525 /* TradeTrackerUITests */,
 				11A3B9082CCBCC030076C525 /* Products */,
@@ -121,7 +121,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				11A3B9092CCBCC030076C525 /* TradeTracker */,
+				110385C62CCE5D6900810CCA /* TradeTracker */,
 			);
 			name = TradeTracker;
 			packageProductDependencies = (
@@ -293,9 +293,9 @@
 				INFOPLIST_FILE = TradeTracker/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -320,7 +320,6 @@
 				INFOPLIST_FILE = TradeTracker/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
