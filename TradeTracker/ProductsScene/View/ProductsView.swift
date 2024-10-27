@@ -7,15 +7,9 @@
 
 import UIKit
 
-class ProductsView: UIView {
+final class ProductsView: UIView {
     
-    typealias Item = ProductsTableViewCell.ViewModel
-    
-    struct ViewModel {
-        let items: [Item]
-    }
-    
-    private var viewModel: ViewModel?
+    private var viewModels: [Product]?
     
     private lazy var tableView: UITableView = {
         let view = UITableView()
@@ -41,45 +35,45 @@ class ProductsView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func update(viewModel: ViewModel) {
-        self.viewModel = viewModel
-        tableView.reloadData()
+    func failure(errorMessage: String) {
+        
     }
-
-    func showError() {
-        // Показываем View ошибки
+    
+    func success(viewModels: [Product]) {
+        self.viewModels = viewModels
     }
     
     func showEmpty() {
-        // Показываем какой-то View для Empty state
+        
     }
     
     func startLoader() {
-        // Показываем скелетон или лоадер
+        
     }
     
     func stopLoader() {
-        // Скрываем все
+        
     }
+
 }
 
 // MARK: - UITableViewDataSource
 extension ProductsView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel?.items.count ?? 0
+        viewModels?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let viewModel = viewModel, let cell = tableView.dequeueReusableCell(withIdentifier: ProductsTableViewCell.id) as? ProductsTableViewCell else {
+        guard let viewModels = viewModels, let cell = tableView.dequeueReusableCell(withIdentifier: ProductsTableViewCell.id) as? ProductsTableViewCell else {
             return UITableViewCell()
         }
         
-        let item = viewModel.items[indexPath.row]
+        let item = viewModels[indexPath.row]
         
-        let cellModel = ProductsTableViewCell.ViewModel(
+        let cellModel = Product(
             sku: item.sku,
-            transations: item.transations)
+            transactionCount: item.transactionCount)
         cell.update(with: cellModel)
         return cell
     }
@@ -90,8 +84,6 @@ extension ProductsView: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-
-        // tapRow()
     }
 }
 

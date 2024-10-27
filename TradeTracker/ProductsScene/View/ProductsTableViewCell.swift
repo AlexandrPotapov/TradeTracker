@@ -7,16 +7,9 @@
 
 import UIKit
 
-
-
 final class ProductsTableViewCell: UITableViewCell {
     
     static let id = "ProductsTableViewCell" // ID для регистрации
-    
-    struct ViewModel {
-        let sku: String
-        let transations: String
-    }
     
     private lazy var skuLabel: UILabel = {
         let label = UILabel()
@@ -26,19 +19,42 @@ final class ProductsTableViewCell: UITableViewCell {
         return label
     }()
 
-    private lazy var transationsLabel: UILabel = {
+    private lazy var transationCountLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.textColor = .secondaryLabel
-        label.font = UIFont.preferredFont(forTextStyle: .caption2)
+        label.font = UIFont.preferredFont(forTextStyle: .body)
         return label
     }()
   
+    private lazy var transationsTextLabel: UILabel = {
+        let label = UILabel()
+        label.text = "transations"
+        label.textColor = .secondaryLabel
+        label.font = UIFont.preferredFont(forTextStyle: .body)
+        return label
+    }()
+    
+    private lazy var chevronImageView: UIImageView = {
+        let imageView = UIImageView(image: UIImage(systemName: "chevron.right"))
+        imageView.tintColor = .gray
+        imageView.contentMode = .scaleAspectFit
+        imageView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        
+        return imageView
+    }()
+    
+    private lazy var transationsStack: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [transationCountLabel, transationsTextLabel, chevronImageView])
+        stack.axis = .horizontal
+        stack.spacing = 4
+        return stack
+    }()
+  
     private lazy var stack: UIStackView = {
-        let view = UIStackView()
+        let view = UIStackView(arrangedSubviews: [skuLabel, transationsStack])
         view.axis = .horizontal
-        view.distribution = .fill
-        view.spacing = 2.0
+        view.distribution = .equalSpacing
         return view
     }()
     
@@ -64,17 +80,15 @@ final class ProductsTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func update(with viewModel: ViewModel) {
+    func update(with viewModel: Product) {
         skuLabel.text = viewModel.sku
-        transationsLabel.text = viewModel.transations
+        transationCountLabel.text = viewModel.transactionCount
     }
 }
 
 private extension ProductsTableViewCell {
     
     func setupSubviews() {
-        stack.addArrangedSubview(skuLabel)
-        stack.addArrangedSubview(transationsLabel)
         contentView.addSubview(stack)
         contentView.addSubview(line)
         setupConstraints()
@@ -93,6 +107,8 @@ private extension ProductsTableViewCell {
             line.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             line.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             line.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            stack.heightAnchor.constraint(equalToConstant: 40),
+
             line.heightAnchor.constraint(equalToConstant: 1.0 / UIScreen.main.scale)
         ])
     }
