@@ -9,6 +9,6 @@ import Foundation
 
 struct Transaction: Codable {
     let sku: String      // SKU продукта
-    let amount: Double   // Сумма транзакции
+    let amount: String   // Сумма транзакции
     let currency: String // Валюта транзакции
 }

@@ -11,7 +11,7 @@ protocol DataLoader {
     func load<T: Decodable>(from fileURL: URL, as type: T.Type) -> T?
 }
 
-class PlistDataLoader: DataLoader {
+final class PlistDataLoader: DataLoader {
     func load<T: Decodable>(from fileURL: URL, as type: T.Type) -> T? {
         do {
             let data = try Data(contentsOf: fileURL)

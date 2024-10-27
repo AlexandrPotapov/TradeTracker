@@ -10,6 +10,6 @@ import Foundation
 struct Rate: Codable {
     let from: String     // Исходная валюта
     let to: String       // Целевая валюта
-    let rate: Double     // Курс обмена
+    let rate: String     // Курс обмена
 }
 
