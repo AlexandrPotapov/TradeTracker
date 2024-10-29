@@ -30,8 +30,7 @@ class TransactionsInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         customView.presenter = presenter
-//        customView.updateHeader() // Устанавливаем заголовок таблицы
-        navigationItem.title = presenter.getTransactionsTitle()
+        navigationItem.title = presenter.title
         presenter.viewDidLoad()
     }
     
@@ -49,14 +48,7 @@ class TransactionsInfoViewController: UIViewController {
 
 // MARK: - ProductsViewProtocol
 extension TransactionsInfoViewController: TransactionsInfoViewProtocol {
-    func updateHeader() {
-        customView.updateHeader()
-    }
     func success() {
         customView.success()
-    }
-    
-    func updateTitle() {
-//        navigationItem.title = presenter.getTransactionsTitle()
     }
 }

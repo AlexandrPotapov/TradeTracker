@@ -15,7 +15,6 @@ protocol RouterMainProtocol {
 protocol RouterProtocol: RouterMainProtocol {
     func initionalViewController()
     func showTransactionsInfo(product: Product?)
-    func popToRoot()
     func showAlert(title: String, message: String)
 }
 
@@ -48,12 +47,6 @@ class Router: RouterProtocol {
         if let navigationController = navigationController {
             guard let alertController = assemblyBuilder?.createAlert(title: title, message: message) else { return }
             navigationController.topViewController?.present(alertController, animated: true, completion: nil)
-        }
-    }
-    
-    func popToRoot() {
-        if let navigationController = navigationController {
-            navigationController.popToRootViewController(animated: true)
         }
     }
     

@@ -29,7 +29,6 @@ final class ProductsViewController: UIViewController {
 
     override func viewDidLoad() {
         navigationController?.navigationBar.prefersLargeTitles = true
-
         navigationItem.title = "Products"
         customView.presenter = presenter
         presenter.viewDidLoad()
@@ -42,24 +41,7 @@ final class ProductsViewController: UIViewController {
 }
 
 extension ProductsViewController: ProductsViewProtocol {
-    func failure(errorMessage: String) {
-        
-    }
-    
     func success() {
         customView.success()
     }
-    
-    func showEmpty() {
-        
-    }
-    
-    func startLoader() {
-        
-    }
-    
-    func stopLoader() {
-        
-    }
-    
 }

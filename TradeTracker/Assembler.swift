@@ -8,6 +8,7 @@
 import UIKit
 
 protocol AssemblyBuilderProtocol {
+    init(dataManager: DataManagerProtocol)
     func createProductScene(router: RouterProtocol) -> UIViewController
     func createTransactionsInfo(product: Product?, router: RouterProtocol) -> UIViewController
     func createAlert(title: String, message: String) -> UIViewController
@@ -16,10 +17,15 @@ protocol AssemblyBuilderProtocol {
 
 class AssemblyModuleBuilder: AssemblyBuilderProtocol {
     
+    private let dataManager: DataManagerProtocol
+
+    required init(dataManager: DataManagerProtocol) {
+        self.dataManager = dataManager
+    }
+    
+    
     func createProductScene(router: RouterProtocol) -> UIViewController {
         let view = ProductsViewController()
-        let dataLoader  = PlistDataLoader()
-        let dataManager = DataManager(dataLoader: dataLoader)
         let presenter = ProductsPresenter(view: view, dataManager: dataManager, router: router)
         view.presenter = presenter
         return view
@@ -27,8 +33,6 @@ class AssemblyModuleBuilder: AssemblyBuilderProtocol {
 
     func createTransactionsInfo(product: Product?, router: RouterProtocol) -> UIViewController {
         let view = TransactionsInfoViewController()
-        let dataLoader  = PlistDataLoader()
-        let dataManager = DataManager(dataLoader: dataLoader)
         let presenter = TransactionsInfoPresenter(view: view, dataManager: dataManager, router: router, product: product)
         view.presenter = presenter
         return view

@@ -15,33 +15,29 @@ struct TransactionsInfoViewModel {
 
 protocol TransactionsInfoViewProtocol: AnyObject {
     func success()
-    func updateTitle()
-    func updateHeader()
 }
 
 protocol TransactionsInfoPresenterProtocol: AnyObject {
     var viewModels: [TransactionsInfoViewModel]? { get set }
+    var header: String? { get set }
+    var title: String? { get }
     init(view: TransactionsInfoViewProtocol, dataManager: DataManagerProtocol, router: RouterProtocol, product: Product?)
     func viewDidLoad()
-    func totalAmount() -> String
-    func getTransactionsTitle() -> String
-
 }
 
 final class TransactionsInfoPresenter: TransactionsInfoPresenterProtocol {
     
     weak var view: TransactionsInfoViewProtocol?
     var viewModels: [TransactionsInfoViewModel]?
+    var header: String?
+    
+    var title: String? {
+        getTransactionsTitle()
+    }
 
     private let dataManager: DataManagerProtocol!
     private let router: RouterProtocol!
     private let product: Product?
-    // Используем didSet для обновления заголовка при изменении total
-    private var total: String? {
-        didSet {
-            view?.updateHeader()
-        }
-    }
     
     init(view: TransactionsInfoViewProtocol, dataManager: DataManagerProtocol, router: RouterProtocol, product: Product?) {
         self.view = view
@@ -60,7 +56,7 @@ final class TransactionsInfoPresenter: TransactionsInfoPresenterProtocol {
         }
 
         let transactions = transactionsInfo.transactions
-        total = String(transactionsInfo.totalInGBP)
+        header = totalAmount(total: String(transactionsInfo.totalInGBP))
 
         viewModels = transactions.map {
              TransactionsInfoViewModel(
@@ -71,7 +67,7 @@ final class TransactionsInfoPresenter: TransactionsInfoPresenterProtocol {
 
          view?.success()
      }
-    func getTransactionsTitle() -> String {
+    private func getTransactionsTitle() -> String {
         guard let product = product else {
             showAlertError(message: "Failed to retrieve total amount.")
             return "Transactions for Error"
@@ -79,7 +75,7 @@ final class TransactionsInfoPresenter: TransactionsInfoPresenterProtocol {
         return "Transactions for \(product.sku)"
     }
 
-    func totalAmount() -> String {
+    private func totalAmount(total: String?) -> String {
         guard let total = total, let totalValue = Double(total) else {
             showAlertError(message: "Failed to retrieve total amount.")
             return "Total: -"
@@ -110,7 +106,7 @@ final class TransactionsInfoPresenter: TransactionsInfoPresenterProtocol {
 
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
-        formatter.locale = Locale.current // Устанавливаем en_US для точной настройки разделителей
+        formatter.locale = Locale.current
         formatter.minimumFractionDigits = 2 // Минимум 2 знака после запятой
         formatter.maximumFractionDigits = 2 // Максимум 2 знака после запятой
         

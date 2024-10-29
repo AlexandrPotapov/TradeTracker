@@ -11,18 +11,19 @@ protocol DataManagerProtocol {
     init (dataLoader: DataLoader)
     func getProductsInfo() -> [Product]?
     func getTransactionsInfo(for sku: String) -> (transactions: [TransactionInfo], totalInGBP: Double)?
+    func clearCache()
 }
 
-final class DataManager: DataManagerProtocol {
+final class DataManager {
     
     private let dataLoader: DataLoader
-    private var cachedTransactions: [Transaction]?
+    private var cachedTransactions: [Transaction]? // чтобы не делать лишний запрос
 
     init(dataLoader: DataLoader) {
         self.dataLoader = dataLoader
     }
     
-    // Приватные методы для загрузки данных
+    // Методы для загрузки данных
     private func loadRates() -> [Rate]? {
         guard let rateURL = Bundle.main.url(forResource: "rates", withExtension: "plist") else { return nil }
         return dataLoader.load(from: rateURL, as: [Rate].self)
@@ -37,7 +38,6 @@ final class DataManager: DataManagerProtocol {
     }
     
     // Метод для конвертации валюты в GBP
-    
     private func convertToGBP(amount: Double, from currency: String, to targetCurrency: String, using rates: [Rate]) -> Double {
         guard currency != targetCurrency else { return amount }
         
@@ -77,7 +77,10 @@ final class DataManager: DataManagerProtocol {
         // Если путь не найден, возвращаем исходное значение
         return amount
     }
-    
+}
+
+// MARK: - DataManagerProtocol methods
+extension DataManager: DataManagerProtocol {
     // Метод для экрана Products: получает список SKU и количество транзакций для каждого SKU
     func getProductsInfo() -> [Product]? {
         guard let transactions = loadTransactions() else { return nil }

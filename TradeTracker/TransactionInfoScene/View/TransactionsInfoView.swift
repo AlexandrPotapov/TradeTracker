@@ -37,11 +37,6 @@ class TransactionsInfoView: UIView {
         view.backgroundColor = .label
         return view
     }()
-
-    func updateHeader() {
-        tableView.reloadData() // Перезагружаем данные, чтобы заголовок отображался
-        headerView.text = presenter.totalAmount() // Обновляем текст заголовка
-    }
     
     init() {
         super.init(frame: .zero)
@@ -54,6 +49,7 @@ class TransactionsInfoView: UIView {
     }
 
     func success() {
+        headerView.text = presenter.header
         tableView.reloadData()
     }
     
