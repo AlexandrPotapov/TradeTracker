@@ -7,7 +7,12 @@
 
 import Foundation
 
+protocol ProductsViewProtocol: AnyObject {
+    func success()
+}
+
 protocol ProductsPresenterProtocol: AnyObject {
+    var products: [Product]? { get set }
     init(view: ProductsViewProtocol, dataManager: DataManagerProtocol, router: RouterProtocol)
     func viewDidLoad()
     func tapOnTheProduct(product: Product?)
@@ -15,27 +20,33 @@ protocol ProductsPresenterProtocol: AnyObject {
 
 final class ProductsPresenter: ProductsPresenterProtocol {
     weak var view: ProductsViewProtocol?
+    var products: [Product]?
+
     private let dataManager: DataManagerProtocol!
-//    private var products: [Product] = []
+    private let router: RouterProtocol!
     
     init(view: ProductsViewProtocol, dataManager: DataManagerProtocol, router: RouterProtocol) {
         self.view = view
         self.dataManager = dataManager
+        self.router = router
     }
     
     func viewDidLoad() {
         if let products = dataManager.getProductsInfo() {
             let productsViewModels = products.map { Product(sku: $0.sku, transactionCount: String($0.transactionCount)) }
-            view?.success(viewModels: productsViewModels)
-            print(productsViewModels)
+            self.products = productsViewModels
+            view?.success()
         } else {
-            view?.failure(errorMessage: "Error loading products")
+            showAlertError()
         }
     }
     
     func tapOnTheProduct(product: Product?) {
-        
+        router?.showTransactionsInfo(product: product)
     }
     
+    private func showAlertError() {
+        router?.showAlert(title: "Error", message: "Erorr loading products")
+    }
     
 }

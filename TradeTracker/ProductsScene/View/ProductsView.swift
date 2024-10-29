@@ -9,7 +9,7 @@ import UIKit
 
 final class ProductsView: UIView {
     
-    private var viewModels: [Product]?
+    var presenter: ProductsPresenterProtocol!
     
     private lazy var tableView: UITableView = {
         let view = UITableView()
@@ -34,46 +34,27 @@ final class ProductsView: UIView {
     required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func failure(errorMessage: String) {
-        
+}
+// MARK: - ProductsViewProtocol
+extension ProductsView: ProductsViewProtocol {
+    func success() {
+        tableView.reloadData()
     }
-    
-    func success(viewModels: [Product]) {
-        self.viewModels = viewModels
-    }
-    
-    func showEmpty() {
-        
-    }
-    
-    func startLoader() {
-        
-    }
-    
-    func stopLoader() {
-        
-    }
-
 }
 
 // MARK: - UITableViewDataSource
 extension ProductsView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModels?.count ?? 0
+        presenter.products?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let viewModels = viewModels, let cell = tableView.dequeueReusableCell(withIdentifier: ProductsTableViewCell.id) as? ProductsTableViewCell else {
+        guard let products = presenter.products, let cell = tableView.dequeueReusableCell(withIdentifier: ProductsTableViewCell.id) as? ProductsTableViewCell else {
             return UITableViewCell()
         }
         
-        let item = viewModels[indexPath.row]
-        
-        let cellModel = Product(
-            sku: item.sku,
-            transactionCount: item.transactionCount)
+        let cellModel = products[indexPath.row]
         cell.update(with: cellModel)
         return cell
     }
@@ -83,7 +64,8 @@ extension ProductsView: UITableViewDataSource {
 extension ProductsView: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        let product = presenter.products?[indexPath.row]
+        presenter.tapOnTheProduct(product: product)
     }
 }
 

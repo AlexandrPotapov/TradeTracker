@@ -7,22 +7,14 @@
 
 import UIKit
 
-protocol ProductsViewProtocol: AnyObject {
-    func failure(errorMessage: String)
-    func success(viewModels: [Product])
-    func showEmpty()
-    func startLoader()
-    func stopLoader()
-}
-
 final class ProductsViewController: UIViewController {
     
-    private lazy var customView = ProductsView()
     var presenter: ProductsPresenterProtocol!
+    
+    private lazy var customView = ProductsView()
 
     
     init() {
-        presenter = nil
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -37,8 +29,15 @@ final class ProductsViewController: UIViewController {
 
     override func viewDidLoad() {
         navigationController?.navigationBar.prefersLargeTitles = true
+
         navigationItem.title = "Products"
+        customView.presenter = presenter
         presenter.viewDidLoad()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationItem.backButtonTitle = self.title
     }
 }
 
@@ -47,8 +46,8 @@ extension ProductsViewController: ProductsViewProtocol {
         
     }
     
-    func success(viewModels: [Product]) {
-        customView.success(viewModels: viewModels)
+    func success() {
+        customView.success()
     }
     
     func showEmpty() {
