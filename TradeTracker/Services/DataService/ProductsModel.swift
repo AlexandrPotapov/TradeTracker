@@ -1,5 +1,5 @@
 //
-//  Transaction.swift
+//  ProductsModel.swift
 //  TradeTracker
 //
 //  Created by Alexander on 01.11.2024.
