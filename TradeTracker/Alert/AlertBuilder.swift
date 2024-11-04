@@ -11,7 +11,6 @@ protocol AlertBuilderProtocol {
     func buildAlert(title: String, message: String) -> UIViewController
 }
 
-
 final class AlertBuilder: AlertBuilderProtocol {
     func buildAlert(title: String, message: String) -> UIViewController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)

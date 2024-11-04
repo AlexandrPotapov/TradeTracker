@@ -9,7 +9,7 @@ import Foundation
 
 struct TransactionInfo {
     let fromCurrency: String    // Исходная валюта
-    let fromAmount: String      // Сумма в исходной валюте
+    let fromAmount: Double      // Сумма в исходной валюте
     let toCurrency: String      // Целевая валюта (GBP)
-    let toAmount: String        // Сумма после конвертации в целевую валюту (GBP)
+    let toAmount: Double        // Сумма после конвертации в целевую валюту (GBP)
 }

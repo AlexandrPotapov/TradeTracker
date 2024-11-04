@@ -1,5 +1,5 @@
 //
-//  Transaction.swift
+//  TransactionData.swift
 //  TradeTracker
 //
 //  Created by Alexander on 25.10.2024.

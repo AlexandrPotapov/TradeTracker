@@ -7,9 +7,9 @@
 
 import UIKit
 
-class TransactionsInfoTableViewCell: UITableViewCell {
-
-static let id = "TransactionInfoTableViewCell"
+final class TransactionsInfoTableViewCell: UITableViewCell {
+    
+    static let id = "TransactionInfoTableViewCell"
     
     private lazy var fromCurrencyLabel: UILabel = {
         let label = UILabel()
@@ -55,7 +55,7 @@ static let id = "TransactionInfoTableViewCell"
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     func update(with viewModel: TransactionsInfoViewModel) {
         fromCurrencyLabel.text = viewModel.fromCurrencyLabel
         toCurrencyLabel.text = viewModel.toCurrencyLabel
@@ -79,13 +79,13 @@ private extension TransactionsInfoTableViewCell {
             stack.topAnchor.constraint(equalTo: contentView.topAnchor),
             stack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             stack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-
+            
             line.topAnchor.constraint(equalTo: stack.bottomAnchor, constant: 2.0),
             line.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             line.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             line.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             stack.heightAnchor.constraint(equalToConstant: 40),
-
+            
             line.heightAnchor.constraint(equalToConstant: 1.0 / UIScreen.main.scale)
         ])
     }

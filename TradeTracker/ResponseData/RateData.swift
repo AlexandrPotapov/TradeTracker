@@ -1,5 +1,5 @@
 //
-//  Rate.swift
+//  RateData.swift
 //  TradeTracker
 //
 //  Created by Alexander on 25.10.2024.

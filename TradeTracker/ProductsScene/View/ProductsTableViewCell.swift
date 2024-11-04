@@ -18,7 +18,7 @@ final class ProductsTableViewCell: UITableViewCell {
         label.font = UIFont.preferredFont(forTextStyle: .headline)
         return label
     }()
-
+    
     private lazy var transationCountLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
@@ -26,7 +26,7 @@ final class ProductsTableViewCell: UITableViewCell {
         label.font = UIFont.preferredFont(forTextStyle: .body)
         return label
     }()
-  
+    
     private lazy var transationsTextLabel: UILabel = {
         let label = UILabel()
         label.text = "transations"
@@ -50,7 +50,7 @@ final class ProductsTableViewCell: UITableViewCell {
         stack.spacing = 4
         return stack
     }()
-  
+    
     private lazy var stack: UIStackView = {
         let view = UIStackView(arrangedSubviews: [skuLabel, transationsStack])
         view.axis = .horizontal
@@ -79,8 +79,8 @@ final class ProductsTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    func update(with viewModel: Product) {
+    
+    func update(with viewModel: ProductViewModel) {
         skuLabel.text = viewModel.sku
         transationCountLabel.text = viewModel.transactionCount
     }
@@ -97,18 +97,18 @@ private extension ProductsTableViewCell {
     func setupConstraints() {
         stack.translatesAutoresizingMaskIntoConstraints = false
         line.translatesAutoresizingMaskIntoConstraints = false
-
+        
         NSLayoutConstraint.activate([
             stack.topAnchor.constraint(equalTo: contentView.topAnchor),
             stack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             stack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-
+            
             line.topAnchor.constraint(equalTo: stack.bottomAnchor, constant: 2.0),
             line.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             line.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             line.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             stack.heightAnchor.constraint(equalToConstant: 40),
-
+            
             line.heightAnchor.constraint(equalToConstant: 1.0 / UIScreen.main.scale)
         ])
     }

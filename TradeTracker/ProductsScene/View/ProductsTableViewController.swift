@@ -9,15 +9,15 @@ import UIKit
 
 final class ProductsViewController: UIViewController {
     
-    var presenter: ProductsPresenterProtocol!
+    var presenter: ProductsPresenterProtocol?
     
     private lazy var customView = ProductsView()
-
+    
     
     init() {
         super.init(nibName: nil, bundle: nil)
     }
-
+    
     @available(*, unavailable)
     required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -26,12 +26,12 @@ final class ProductsViewController: UIViewController {
     override func loadView() {
         view = customView
     }
-
+    
     override func viewDidLoad() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Products"
         customView.presenter = presenter
-        presenter.viewDidLoad()
+        presenter?.viewDidLoad()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -41,7 +41,7 @@ final class ProductsViewController: UIViewController {
 }
 
 extension ProductsViewController: ProductsViewProtocol {
-    func success() {
-        customView.success()
+    func success(viewModels: [ProductViewModel]) {
+        customView.success(viewModels: viewModels)
     }
 }

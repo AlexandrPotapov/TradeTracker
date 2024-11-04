@@ -1,5 +1,5 @@
 //
-//  RouterTransactionInfoScene.swift
+//  RouterTransactionInfo.swift
 //  TradeTracker
 //
 //  Created by Alexander on 02.11.2024.
@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol RouterTransactionInfoSceneProtocol{
+protocol RouterTransactionInfoProtocol{
     func setRootViewController(root: UIViewController)
     func showAlert(title: String, message: String)
 }
 
 
-final class RouterTransactionInfo: RouterTransactionInfoSceneProtocol {
+final class RouterTransactionInfo: RouterTransactionInfoProtocol {
     
     var alertBuilder: AlertBuilderProtocol
     private weak var root: UIViewController?
@@ -25,7 +25,7 @@ final class RouterTransactionInfo: RouterTransactionInfoSceneProtocol {
     func setRootViewController(root: UIViewController) {
         self.root = root
     }
-
+    
     func showAlert(title: String, message: String) {
         let alertController = alertBuilder.buildAlert(title: title, message: message)
         root?.navigationController?.topViewController?.present(alertController, animated: true, completion: nil)

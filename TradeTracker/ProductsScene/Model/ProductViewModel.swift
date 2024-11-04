@@ -7,7 +7,6 @@
 
 import Foundation
 
-// viewModel
 struct ProductViewModel {
     let sku: String      // Идентификатор продукта
     let transactionCount: String  // Количество транзакций для продукта

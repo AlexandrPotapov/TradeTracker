@@ -9,7 +9,8 @@ import UIKit
 
 final class ProductsView: UIView {
     
-    var presenter: ProductsPresenterProtocol!
+    var presenter: ProductsPresenterProtocol?
+    var viewModels = [ProductViewModel]()
     
     private lazy var tableView: UITableView = {
         let view = UITableView()
@@ -24,12 +25,12 @@ final class ProductsView: UIView {
         return view
     }()
     
-
+    
     init() {
         super.init(frame: .zero)
         commonInit()
     }
-
+    
     @available(*, unavailable)
     required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -37,7 +38,8 @@ final class ProductsView: UIView {
 }
 // MARK: - ProductsViewProtocol
 extension ProductsView: ProductsViewProtocol {
-    func success() {
+    func success(viewModels: [ProductViewModel]) {
+        self.viewModels = viewModels
         tableView.reloadData()
     }
 }
@@ -46,15 +48,15 @@ extension ProductsView: ProductsViewProtocol {
 extension ProductsView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        presenter.products?.count ?? 0
+        viewModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let products = presenter.products, let cell = tableView.dequeueReusableCell(withIdentifier: ProductsTableViewCell.id) as? ProductsTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ProductsTableViewCell.id) as? ProductsTableViewCell else {
             return UITableViewCell()
         }
         
-        let cellModel = products[indexPath.row]
+        let cellModel = viewModels[indexPath.row]
         cell.update(with: cellModel)
         return cell
     }
@@ -64,8 +66,8 @@ extension ProductsView: UITableViewDataSource {
 extension ProductsView: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let product = presenter.products?[indexPath.row]
-        presenter.tapOnTheProduct(product: product)
+        let product = viewModels[indexPath.row]
+        presenter?.tapOnTheProduct(product: product)
     }
 }
 
@@ -80,7 +82,7 @@ private extension ProductsView {
     func setupSubviews() {
         addSubview(tableView)
     }
-
+    
     func setupConstraints() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -89,7 +91,7 @@ private extension ProductsView {
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20.0),
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20.0),
             tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
-            ]
+        ]
         )
     }
 }

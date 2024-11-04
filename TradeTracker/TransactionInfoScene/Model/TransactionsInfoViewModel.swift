@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct TransactionsInfoViewModel {
+    let fromCurrencyLabel: String
+    let toCurrencyLabel: String
+}

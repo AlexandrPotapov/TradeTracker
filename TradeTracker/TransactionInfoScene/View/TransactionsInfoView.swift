@@ -7,9 +7,11 @@
 
 import UIKit
 
-class TransactionsInfoView: UIView {
+final class TransactionsInfoView: UIView {
     
-    var presenter: TransactionsInfoPresenter!
+    var presenter: TransactionsInfoPresenter?
+    var viewModels = [TransactionsInfoViewModel]()
+
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -19,7 +21,7 @@ class TransactionsInfoView: UIView {
         tableView.backgroundColor = .systemBackground
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
-
+        
         return tableView
     }()
     
@@ -47,9 +49,10 @@ class TransactionsInfoView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    func success() {
-        headerView.text = presenter.header
+    
+    func success(viewModels: [TransactionsInfoViewModel]) {
+        self.viewModels = viewModels
+        headerView.text = presenter?.getHeader()
         tableView.reloadData()
     }
     
@@ -59,12 +62,11 @@ class TransactionsInfoView: UIView {
 // MARK: - UITableViewDataSource
 extension TransactionsInfoView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        presenter.viewModels?.count ?? 0
+        viewModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let viewModels = presenter.viewModels,
-              let cell = tableView.dequeueReusableCell(withIdentifier: TransactionsInfoTableViewCell.id) as? TransactionsInfoTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: TransactionsInfoTableViewCell.id) as? TransactionsInfoTableViewCell else {
             return UITableViewCell()
         }
         
@@ -93,7 +95,7 @@ private extension TransactionsInfoView {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         headerView.translatesAutoresizingMaskIntoConstraints = false
         line.translatesAutoresizingMaskIntoConstraints = false
-                
+        
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             headerView.heightAnchor.constraint(equalToConstant: 20),

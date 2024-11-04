@@ -8,18 +8,17 @@
 import Foundation
 
 protocol DataLoader {
-    func load<T: Decodable>(from fileURL: URL, as type: T.Type) -> T?
+    func load<T: Decodable>(from fileURL: URL, as type: T.Type) -> Result<T, DataServiceError>
 }
 
 final class PlistDataLoader: DataLoader {
-    func load<T: Decodable>(from fileURL: URL, as type: T.Type) -> T? {
+    func load<T: Decodable>(from fileURL: URL, as type: T.Type) -> Result<T, DataServiceError> {
         do {
             let data = try Data(contentsOf: fileURL)
             let decodedData = try PropertyListDecoder().decode(type, from: data)
-            return decodedData
+            return .success(decodedData)
         } catch {
-            print("Ошибка при загрузке данных из plist: \(error)")
-            return nil
+            return .failure(.dataLoadingFailed(underlyingError: error))
         }
     }
 }

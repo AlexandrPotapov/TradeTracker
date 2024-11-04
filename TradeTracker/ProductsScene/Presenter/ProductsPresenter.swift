@@ -8,45 +8,43 @@
 import Foundation
 
 protocol ProductsViewProtocol: AnyObject {
-    func success()
+    func success(viewModels: [ProductViewModel])
 }
 
 protocol ProductsPresenterProtocol: AnyObject {
-    var products: [Product]? { get set }
-    init(view: ProductsViewProtocol, dataManager: DataManagerProtocol, router: RouterProtocol)
     func viewDidLoad()
-    func tapOnTheProduct(product: Product?)
+    func tapOnTheProduct(product: ProductViewModel)
 }
 
 final class ProductsPresenter: ProductsPresenterProtocol {
     weak var view: ProductsViewProtocol?
-    var products: [Product]?
-
-    private let dataManager: DataManagerProtocol!
-    private let router: RouterProtocol!
     
-    init(view: ProductsViewProtocol, dataManager: DataManagerProtocol, router: RouterProtocol) {
+    private let model: ProductsModelProtocol
+    private let router: RouterProductsProtocol
+    
+    init(view: ProductsViewProtocol, model: ProductsModelProtocol, router: RouterProductsProtocol) {
         self.view = view
-        self.dataManager = dataManager
+        self.model = model
         self.router = router
     }
     
     func viewDidLoad() {
-        if let products = dataManager.getProductsInfo() {
-            let productsViewModels = products.map { Product(sku: $0.sku, transactionCount: String($0.transactionCount)) }
-            self.products = productsViewModels
-            view?.success()
-        } else {
-            showAlertError()
+        let result = model.getProductsInfo()
+        
+        switch result {
+            case .success(let products):
+            let productsViewModels = products.map { ProductViewModel(sku: $0.sku, transactionCount: String($0.transactionCount)) }
+            view?.success(viewModels: productsViewModels)
+        case .failure(let error):
+            showAlertError(message: error.localizedDescription)
         }
     }
     
-    func tapOnTheProduct(product: Product?) {
-        router?.showTransactionsInfo(product: product)
+    func tapOnTheProduct(product: ProductViewModel) {
+        router.showTransactionsInfo(product: product)
     }
     
-    private func showAlertError() {
-        router?.showAlert(title: "Error", message: "Erorr loading products")
+    private func showAlertError(message: String) {
+        router.showAlert(title: "Error", message: message)
     }
-    
 }

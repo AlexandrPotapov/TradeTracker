@@ -7,83 +7,73 @@
 
 import Foundation
 
-
-struct TransactionsInfoViewModel {
-    let fromCurrencyLabel: String
-    let toCurrencyLabel: String
-}
-
 protocol TransactionsInfoViewProtocol: AnyObject {
-    func success()
+    func success(viewModels: [TransactionsInfoViewModel])
 }
 
 protocol TransactionsInfoPresenterProtocol: AnyObject {
-    var viewModels: [TransactionsInfoViewModel]? { get set }
-    var header: String? { get set }
-    var title: String? { get }
-    init(view: TransactionsInfoViewProtocol, dataManager: DataManagerProtocol, router: RouterProtocol, product: Product?)
     func viewDidLoad()
+    func getTransactionsTitle() -> String
+    func getHeader() -> String
 }
 
 final class TransactionsInfoPresenter: TransactionsInfoPresenterProtocol {
     
     weak var view: TransactionsInfoViewProtocol?
-    var viewModels: [TransactionsInfoViewModel]?
-    var header: String?
     
-    var title: String? {
-        getTransactionsTitle()
-    }
-
-    private let dataManager: DataManagerProtocol!
-    private let router: RouterProtocol!
-    private let product: Product?
+    private var header: String = ""
     
-    init(view: TransactionsInfoViewProtocol, dataManager: DataManagerProtocol, router: RouterProtocol, product: Product?) {
+    private let model: TransactionsInfoModelProtocol
+    private let router: RouterTransactionInfoProtocol
+    private let product: ProductViewModel
+    
+    
+    init(view: TransactionsInfoViewProtocol, model: TransactionsInfoModelProtocol, router: RouterTransactionInfoProtocol, product: ProductViewModel) {
         self.view = view
-        self.dataManager = dataManager
+        self.model = model
         self.router = router
         self.product = product
     }
     
     func viewDidLoad() {
-        guard
-            let product = product,
-            let transactionsInfo = dataManager.getTransactionsInfo(for: product.sku)
-        else {
+        
+        let result = model.getTransactionsInfo(for: product.sku)
+        switch result {
+        case .success(let transactionsInfo):
+            
+            let transactions = transactionsInfo.transactions
+            header = totalAmount(total: transactionsInfo.totalInGBP)
+            
+            let viewModels = transactions.map {
+                TransactionsInfoViewModel(
+                    fromCurrencyLabel: "\(currencySymbol(for: $0.fromCurrency)) \(formattedString(for: Double($0.fromAmount)))",
+                    toCurrencyLabel: "\(formattedString(for: Double($0.toAmount))) \(currencySymbol(for: $0.toCurrency))"
+                )
+            }
+            
+            view?.success(viewModels: viewModels)
+        case .failure:
             showAlertError(message: "Erorr loading transactions")
-            return
         }
-
-        let transactions = transactionsInfo.transactions
-        header = totalAmount(total: String(transactionsInfo.totalInGBP))
-
-        viewModels = transactions.map {
-             TransactionsInfoViewModel(
-                fromCurrencyLabel: "\(currencySymbol(for: $0.fromCurrency)) \(formattedString(for: Double($0.fromAmount)))",
-                toCurrencyLabel: "\(formattedString(for: Double($0.toAmount))) \(currencySymbol(for: $0.toCurrency))"
-             )
-         }
-
-         view?.success()
-     }
-    private func getTransactionsTitle() -> String {
-        guard let product = product else {
-            showAlertError(message: "Failed to retrieve total amount.")
-            return "Transactions for Error"
-        }
+    }
+    
+    func getTransactionsTitle() -> String {
         return "Transactions for \(product.sku)"
     }
-
-    private func totalAmount(total: String?) -> String {
-        guard let total = total, let totalValue = Double(total) else {
-            showAlertError(message: "Failed to retrieve total amount.")
-            return "Total: -"
-        }
-        return "Total: \(currencySymbol(for: "GBP")) \(formattedString(for: totalValue))"
+    
+    func getHeader() -> String {
+        return header
     }
+}
 
-    private func currencySymbol(for currencyCode: String) -> String {
+// MARK: - Private Methods
+private extension TransactionsInfoPresenter {
+    
+    func totalAmount(total: Double) -> String {
+        return "Total: \(currencySymbol(for: "GBP")) \(formattedString(for: total))"
+    }
+    
+    func currencySymbol(for currencyCode: String) -> String {
         if currencyCode == "USD" {
             return "$"
         }
@@ -98,12 +88,8 @@ final class TransactionsInfoPresenter: TransactionsInfoPresenterProtocol {
         return symbol
     }
     
-    private func formattedString(for number: Double?) -> String {
-        guard let number else {
-            showAlertError(message: "Invalid number format.")
-            return ""
-        }
-
+    func formattedString(for number: Double) -> String {
+        
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         formatter.locale = Locale.current
@@ -118,8 +104,7 @@ final class TransactionsInfoPresenter: TransactionsInfoPresenterProtocol {
         return formattedNumber
     }
     
-    private func showAlertError(message: String) {
-        router?.showAlert(title: "Error", message: message)
+    func showAlertError(message: String) {
+        router.showAlert(title: "Error", message: message)
     }
-    
 }

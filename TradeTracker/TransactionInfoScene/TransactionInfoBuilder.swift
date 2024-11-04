@@ -1,5 +1,5 @@
 //
-//  TransactionInfoSceneBuilder.swift
+//  TransactionInfoBuilder.swift
 //  TradeTracker
 //
 //  Created by Alexander on 01.11.2024.
@@ -7,23 +7,23 @@
 
 import UIKit
 
-protocol TransactionInfoSceneBuilderProtocol {
-    func buildTransactionsInfo(product: Product?) -> UIViewController
+protocol TransactionInfoBuilderProtocol {
+    func buildTransactionsInfo(product: ProductViewModel) -> UIViewController
 }
-final class TransactionInfoSceneBuilder: TransactionInfoSceneBuilderProtocol {
+final class TransactionInfoBuilder: TransactionInfoBuilderProtocol {
     
     private let dataManager: DataManagerProtocol
-
+    
     init(dataManager: DataManagerProtocol) {
         self.dataManager = dataManager
     }
     
-    func buildTransactionsInfo(product: Product?) -> UIViewController {
+    func buildTransactionsInfo(product: ProductViewModel) -> UIViewController {
         let converter = Converter()
         let transactionsInfoModel = TransactionsInfoModel(converter: converter, dataManager: dataManager)
         
         let view = TransactionsInfoViewController()
-        let router = RouterTransactionInfoScene(alertBuilder: AlertBuilder())
+        let router = RouterTransactionInfo(alertBuilder: AlertBuilder())
         let presenter = TransactionsInfoPresenter(view: view, model: transactionsInfoModel, router: router, product: product)
         view.presenter = presenter
         router.setRootViewController(root: view)

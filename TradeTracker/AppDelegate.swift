@@ -11,21 +11,14 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var dataManager: DataManager!
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        // Создаем общий экземпляр DataManager с dataLoader
-        let dataLoader = PlistDataLoader()
-        dataManager = DataManager(dataLoader: dataLoader)
-        
-        let navigationController = UINavigationController()
-        let assemblyBuilder = AssemblyModuleBuilder(dataManager: dataManager)
-        let router = Router(navigationController: navigationController, assemblyBuilder: assemblyBuilder)
-        router.initionalViewController()
+        let productsScene = ProductsBuilder().buildProduct()
+        let navigationController = UINavigationController(rootViewController: productsScene)
         
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()

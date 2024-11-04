@@ -7,12 +7,12 @@
 
 import UIKit
 
-class TransactionsInfoViewController: UIViewController {
+final class TransactionsInfoViewController: UIViewController {
     
-    var presenter: TransactionsInfoPresenter!
+    var presenter: TransactionsInfoPresenter?
     
     private lazy var customView = TransactionsInfoView()
-        
+    
     init() {
         super.init(nibName: nil, bundle: nil)
     }
@@ -25,20 +25,20 @@ class TransactionsInfoViewController: UIViewController {
     override func loadView() {
         view = customView
     }
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         customView.presenter = presenter
-        navigationItem.title = presenter.title
-        presenter.viewDidLoad()
+        navigationItem.title = presenter?.getTransactionsTitle()
+        presenter?.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.largeTitleDisplayMode = .never
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationItem.largeTitleDisplayMode = .always
@@ -48,7 +48,7 @@ class TransactionsInfoViewController: UIViewController {
 
 // MARK: - ProductsViewProtocol
 extension TransactionsInfoViewController: TransactionsInfoViewProtocol {
-    func success() {
-        customView.success()
+    func success(viewModels: [TransactionsInfoViewModel]) {
+        customView.success(viewModels: viewModels)
     }
 }
