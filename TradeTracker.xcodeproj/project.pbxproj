@@ -14,8 +14,8 @@
 		1113BDF82CD4B6D7009C928E /* ProductsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1113BDD92CD4B6D7009C928E /* ProductsTableViewCell.swift */; };
 		1113BDF92CD4B6D7009C928E /* ProductsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1113BDDA2CD4B6D7009C928E /* ProductsTableViewController.swift */; };
 		1113BDFA2CD4B6D7009C928E /* ProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1113BDDB2CD4B6D7009C928E /* ProductsView.swift */; };
-		1113BDFB2CD4B6D7009C928E /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1113BDDE2CD4B6D7009C928E /* DataLoader.swift */; };
-		1113BDFC2CD4B6D7009C928E /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1113BDDF2CD4B6D7009C928E /* DataManager.swift */; };
+		1113BDFB2CD4B6D7009C928E /* DataLoaderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1113BDDE2CD4B6D7009C928E /* DataLoaderProtocol.swift */; };
+		1113BDFC2CD4B6D7009C928E /* TransactionDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1113BDDF2CD4B6D7009C928E /* TransactionDataManager.swift */; };
 		1113BDFD2CD4B6D7009C928E /* TransactionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1113BDE62CD4B6D7009C928E /* TransactionInfo.swift */; };
 		1113BDFE2CD4B6D7009C928E /* TransactionsInfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1113BDE82CD4B6D7009C928E /* TransactionsInfoPresenter.swift */; };
 		1113BDFF2CD4B6D7009C928E /* TransactionsInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1113BDEA2CD4B6D7009C928E /* TransactionsInfoTableViewCell.swift */; };
@@ -38,6 +38,9 @@
 		11894ED42CD6141F004E5110 /* RouterProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11894ED32CD6141F004E5110 /* RouterProducts.swift */; };
 		11894ED62CD61443004E5110 /* RouterTransactionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11894ED52CD61443004E5110 /* RouterTransactionInfo.swift */; };
 		11AE6BE12CD7B0B3003C8BD9 /* DataServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AE6BE02CD7B0B3003C8BD9 /* DataServiceError.swift */; };
+		11B916DF2CDE3E3000B9D456 /* ConversionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B916DE2CDE3E3000B9D456 /* ConversionRequest.swift */; };
+		11B916E22CDE617300B9D456 /* DataManagerWithRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B916E12CDE617300B9D456 /* DataManagerWithRate.swift */; };
+		11B916E42CDE641400B9D456 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B916E32CDE641400B9D456 /* Product.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,8 +70,8 @@
 		1113BDD92CD4B6D7009C928E /* ProductsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsTableViewCell.swift; sourceTree = "<group>"; };
 		1113BDDA2CD4B6D7009C928E /* ProductsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsTableViewController.swift; sourceTree = "<group>"; };
 		1113BDDB2CD4B6D7009C928E /* ProductsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsView.swift; sourceTree = "<group>"; };
-		1113BDDE2CD4B6D7009C928E /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
-		1113BDDF2CD4B6D7009C928E /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		1113BDDE2CD4B6D7009C928E /* DataLoaderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoaderProtocol.swift; sourceTree = "<group>"; };
+		1113BDDF2CD4B6D7009C928E /* TransactionDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDataManager.swift; sourceTree = "<group>"; };
 		1113BDE22CD4B6D7009C928E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1113BDE32CD4B6D7009C928E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1113BDE62CD4B6D7009C928E /* TransactionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionInfo.swift; sourceTree = "<group>"; };
@@ -93,6 +96,9 @@
 		11A3B91D2CCBCC050076C525 /* TradeTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TradeTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		11A3B9272CCBCC050076C525 /* TradeTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TradeTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		11AE6BE02CD7B0B3003C8BD9 /* DataServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataServiceError.swift; sourceTree = "<group>"; };
+		11B916DE2CDE3E3000B9D456 /* ConversionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionRequest.swift; sourceTree = "<group>"; };
+		11B916E12CDE617300B9D456 /* DataManagerWithRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerWithRate.swift; sourceTree = "<group>"; };
+		11B916E32CDE641400B9D456 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -155,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				1113BDD72CD4B6D7009C928E /* ProductsPresenter.swift */,
+				1113BDD52CD4B6D7009C928E /* ProductViewModel.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -184,8 +191,9 @@
 		1113BDE02CD4B6D7009C928E /* DataService */ = {
 			isa = PBXGroup;
 			children = (
-				1113BDDE2CD4B6D7009C928E /* DataLoader.swift */,
-				1113BDDF2CD4B6D7009C928E /* DataManager.swift */,
+				1113BDDE2CD4B6D7009C928E /* DataLoaderProtocol.swift */,
+				1113BDDF2CD4B6D7009C928E /* TransactionDataManager.swift */,
+				11B916E12CDE617300B9D456 /* DataManagerWithRate.swift */,
 				11AE6BE02CD7B0B3003C8BD9 /* DataServiceError.swift */,
 			);
 			path = DataService;
@@ -247,7 +255,7 @@
 				1113BDEE2CD4B6D7009C928E /* TransactionInfoScene */,
 				1113BDEF2CD4B6D7009C928E /* AppDelegate.swift */,
 				1113BDD42CD4B6D7009C928E /* ResponseData */,
-				1113BE0E2CD4B830009C928E /* Model */,
+				1113BE0E2CD4B830009C928E /* Data */,
 				1113BDD12CD4B6D7009C928E /* DataPlistFiles */,
 				1113BDE12CD4B6D7009C928E /* Services */,
 				1113BDE52CD4B6D7009C928E /* SupportingFiles */,
@@ -256,13 +264,13 @@
 			path = TradeTracker;
 			sourceTree = "<group>";
 		};
-		1113BE0E2CD4B830009C928E /* Model */ = {
+		1113BE0E2CD4B830009C928E /* Data */ = {
 			isa = PBXGroup;
 			children = (
 				1113BE0A2CD4B800009C928E /* Rate.swift */,
 				1113BE0C2CD4B81A009C928E /* Transaction.swift */,
 			);
-			path = Model;
+			path = Data;
 			sourceTree = "<group>";
 		};
 		1113BE152CD4DCCE009C928E /* Model */ = {
@@ -271,6 +279,7 @@
 				1113BE112CD4CCBC009C928E /* TransactionsInfoModel.swift */,
 				1113BDE62CD4B6D7009C928E /* TransactionInfo.swift */,
 				1113BE162CD4DEC2009C928E /* TransactionsInfoViewModel.swift */,
+				11B916DE2CDE3E3000B9D456 /* ConversionRequest.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -279,7 +288,7 @@
 			isa = PBXGroup;
 			children = (
 				1113BE0F2CD4CC99009C928E /* ProductsModel.swift */,
-				1113BDD52CD4B6D7009C928E /* ProductViewModel.swift */,
+				11B916E32CDE641400B9D456 /* Product.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -468,11 +477,13 @@
 				1113BE122CD4CCBC009C928E /* TransactionsInfoModel.swift in Sources */,
 				11AE6BE12CD7B0B3003C8BD9 /* DataServiceError.swift in Sources */,
 				1113BDFA2CD4B6D7009C928E /* ProductsView.swift in Sources */,
-				1113BDFB2CD4B6D7009C928E /* DataLoader.swift in Sources */,
-				1113BDFC2CD4B6D7009C928E /* DataManager.swift in Sources */,
+				1113BDFB2CD4B6D7009C928E /* DataLoaderProtocol.swift in Sources */,
+				1113BDFC2CD4B6D7009C928E /* TransactionDataManager.swift in Sources */,
+				11B916DF2CDE3E3000B9D456 /* ConversionRequest.swift in Sources */,
 				1113BDFD2CD4B6D7009C928E /* TransactionInfo.swift in Sources */,
 				1113BDFE2CD4B6D7009C928E /* TransactionsInfoPresenter.swift in Sources */,
 				11894ED62CD61443004E5110 /* RouterTransactionInfo.swift in Sources */,
+				11B916E42CDE641400B9D456 /* Product.swift in Sources */,
 				1113BE172CD4DEC2009C928E /* TransactionsInfoViewModel.swift in Sources */,
 				1113BE142CD4D5A0009C928E /* Converter.swift in Sources */,
 				1113BE102CD4CC99009C928E /* ProductsModel.swift in Sources */,
@@ -481,6 +492,7 @@
 				1113BE002CD4B6D7009C928E /* TransactionsInfoView.swift in Sources */,
 				1113BE012CD4B6D7009C928E /* TransactionsInfoViewController.swift in Sources */,
 				1113BE022CD4B6D7009C928E /* AppDelegate.swift in Sources */,
+				11B916E22CDE617300B9D456 /* DataManagerWithRate.swift in Sources */,
 				1113BE0B2CD4B800009C928E /* Rate.swift in Sources */,
 				1113BE1A2CD51219009C928E /* ProductsBuilder.swift in Sources */,
 				1113BE032CD4B6D7009C928E /* AlertBuilder.swift in Sources */,
@@ -634,7 +646,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -691,7 +703,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -708,7 +720,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = none.TradeTrackerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -726,7 +738,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = none.TradeTrackerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

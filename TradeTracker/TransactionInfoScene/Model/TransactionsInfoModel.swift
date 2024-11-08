@@ -12,8 +12,13 @@ protocol TransactionsInfoModelProtocol {
 }
 
 struct TransactionsInfoModel: TransactionsInfoModelProtocol {
-    let converter: ConverterProtocol
-    let dataManager: DataManagerProtocol
+    private let converter: ConverterProtocol
+    private let dataManager: DataManagerWithRateProtocol
+    
+    init(converter: ConverterProtocol, dataManager: DataManagerWithRateProtocol) {
+        self.converter = converter
+        self.dataManager = dataManager
+    }
     
     func getTransactionsInfo(for sku: String) -> Result<(transactions: [TransactionInfo], totalInGBP: Double), DataServiceError> {
         switch getTransactions() {
@@ -35,10 +40,8 @@ struct TransactionsInfoModel: TransactionsInfoModelProtocol {
                     let toCurrency = "GBP"
                     
                     // Конвертация суммы в GBP
-                    let toAmount = converter.convertToGBP(amount: fromAmount,
-                                                          from: fromCurrency,
-                                                          to: toCurrency,
-                                                          using: rates)
+                    let request = ConversionRequest(amount: fromAmount, fromCurrency: fromCurrency, toCurrency: toCurrency, rates: rates)
+                    let toAmount = converter.convertToGBP(request: request)
                     
                     // Увеличиваем итоговую сумму в GBP
                     totalInGBP += toAmount
@@ -65,7 +68,7 @@ private extension TransactionsInfoModel {
     func getRates() -> Result<[Rate], DataServiceError> {
         let result = dataManager.loadRates()
         switch result {
-            case .success(let rates):
+        case .success(let rates):
             return .success(rates.compactMap {
                 Rate(from: $0.from, to: $0.to, rate: $0.rate)
             })
@@ -77,7 +80,7 @@ private extension TransactionsInfoModel {
     func getTransactions() -> Result<[Transaction], DataServiceError> {
         let result =  dataManager.loadTransactions()
         switch result {
-            case .success(let transactions):
+        case .success(let transactions):
             return .success(transactions.compactMap {
                 Transaction(sku:  $0.sku, currency:  $0.currency, amount:  $0.amount)
             })

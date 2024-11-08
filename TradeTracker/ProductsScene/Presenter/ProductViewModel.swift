@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ProductViewModel {
+struct ProductViewModel: Equatable {
     let sku: String      // Идентификатор продукта
     let transactionCount: String  // Количество транзакций для продукта
 }

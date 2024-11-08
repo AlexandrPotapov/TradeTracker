@@ -8,39 +8,39 @@
 import Foundation
 
 protocol ConverterProtocol {
-    func convertToGBP(amount: Double, from currency: String, to targetCurrency: String, using rates: [Rate]) -> Double
+    func convertToGBP(request: ConversionRequest) -> Double
 }
 
 struct Converter: ConverterProtocol {
     // Метод для конвертации валюты в GBP
-     func convertToGBP(amount: Double, from currency: String, to targetCurrency: String, using rates: [Rate]) -> Double {
-        guard currency != targetCurrency else { return amount }
+    func convertToGBP(request: ConversionRequest) -> Double {
+        guard request.fromCurrency != request.toCurrency else { return request.amount }
         
         // Попробуем найти прямой курс для конверсии
-        if let directRate = rates.first(where: { $0.from == currency && $0.to == targetCurrency }) {
-            return amount * directRate.rate
+        if let directRate = request.rates.first(where: { $0.from == request.fromCurrency && $0.to == request.toCurrency }) {
+            return request.amount * directRate.rate
         }
         
         // Рекурсивный поиск косвенного пути
         var visitedCurrencies = Set<String>() // Для отслеживания пройденных валют и предотвращения циклов
-        return convert(amount: amount, from: currency, to: targetCurrency, using: rates, visitedCurrencies: &visitedCurrencies)
+        return convert(request: request, visitedCurrencies: &visitedCurrencies)
     }
 
-     private func convert(amount: Double, from currency: String, to targetCurrency: String, using rates: [Rate], visitedCurrencies: inout Set<String>) -> Double {
+    private func convert(request: ConversionRequest, visitedCurrencies: inout Set<String>) -> Double {
         // Помечаем текущую валюту как пройденную
-        visitedCurrencies.insert(currency)
+        visitedCurrencies.insert(request.fromCurrency)
         
         // Находим все доступные курсы из исходной валюты
-        let availableRates = rates.filter { $0.from == currency && !visitedCurrencies.contains($0.to) }
+        let availableRates = request.rates.filter { $0.from == request.fromCurrency && !visitedCurrencies.contains($0.to) }
         
         for rate in availableRates {
-            if rate.to == targetCurrency {
+            if rate.to == request.toCurrency {
                 // Прямой курс найден на одном из шагов
-                return amount * rate.rate
+                return request.amount * rate.rate
             } else {
                 // Пытаемся найти курс до целевой валюты через промежуточные валюты
-                let convertedAmount = amount * rate.rate
-                let result = convert(amount: convertedAmount, from: rate.to, to: targetCurrency, using: rates, visitedCurrencies: &visitedCurrencies)
+                let convertedAmount = request.amount * rate.rate
+                let result = convert(request: ConversionRequest(amount: convertedAmount, fromCurrency: rate.to, toCurrency: request.toCurrency, rates: request.rates), visitedCurrencies: &visitedCurrencies)
                 
                 // Если результат не равен исходной сумме, то конвертация удалась
                 if result != convertedAmount {
@@ -50,6 +50,6 @@ struct Converter: ConverterProtocol {
         }
         
         // Если путь не найден, возвращаем исходное значение
-        return amount
+        return request.amount
     }
 }

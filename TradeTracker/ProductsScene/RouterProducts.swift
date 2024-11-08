@@ -8,8 +8,7 @@
 import UIKit
 
 protocol RouterProductsProtocol{
-    func showTransactionsInfo(product: ProductViewModel)
-    func setRootViewController(root: UIViewController)
+    func showTransactionsInfo(with sku: String)
     func showAlert(title: String, message: String)
 }
 
@@ -25,17 +24,17 @@ final class RouterProducts: RouterProductsProtocol {
         self.alertBuilder = alertBuilder
     }
     
-    func showTransactionsInfo(product: ProductViewModel) {
-        let viewController = transactionsInfoBuilder.buildTransactionsInfo(product: product)
+    func showTransactionsInfo(with sku: String) {
+        let viewController = transactionsInfoBuilder.buildTransactionsInfo(with: sku)
         root?.navigationController?.pushViewController(viewController, animated: true)
-    }
-    
-    func setRootViewController(root: UIViewController) {
-        self.root = root
     }
     
     func showAlert(title: String, message: String) {
         let alertController = alertBuilder.buildAlert(title: title, message: message)
         root?.navigationController?.topViewController?.present(alertController, animated: true, completion: nil)
+    }
+    
+    func setRootViewController(root: UIViewController) {
+        self.root = root
     }
 }

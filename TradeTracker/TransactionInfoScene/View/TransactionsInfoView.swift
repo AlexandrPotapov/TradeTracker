@@ -10,9 +10,9 @@ import UIKit
 final class TransactionsInfoView: UIView {
     
     var presenter: TransactionsInfoPresenter?
-    var viewModels = [TransactionsInfoViewModel]()
-
     
+    private var viewModels = [TransactionsInfoViewModel]()
+
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.register(TransactionsInfoTableViewCell.self, forCellReuseIdentifier: TransactionsInfoTableViewCell.id)

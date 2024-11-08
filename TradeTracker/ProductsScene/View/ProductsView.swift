@@ -67,7 +67,7 @@ extension ProductsView: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let product = viewModels[indexPath.row]
-        presenter?.tapOnTheProduct(product: product)
+        presenter?.tapOnTheProduct(with: product.sku)
     }
 }
 
@@ -94,4 +94,12 @@ private extension ProductsView {
         ]
         )
     }
+}
+
+extension ProductsView {
+#if DEBUG
+var testTableView: UITableView {
+    return tableView
+}
+#endif
 }

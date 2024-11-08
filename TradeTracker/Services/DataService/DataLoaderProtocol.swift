@@ -7,11 +7,11 @@
 
 import Foundation
 
-protocol DataLoader {
+protocol DataLoaderProtocol {
     func load<T: Decodable>(from fileURL: URL, as type: T.Type) -> Result<T, DataServiceError>
 }
 
-final class PlistDataLoader: DataLoader {
+final class DataLoader: DataLoaderProtocol {
     func load<T: Decodable>(from fileURL: URL, as type: T.Type) -> Result<T, DataServiceError> {
         do {
             let data = try Data(contentsOf: fileURL)

@@ -13,13 +13,10 @@ struct Rate {
     let rate: Double     // Курс обмена
     
     init?(from: String, to: String, rate: String) {
+        
+        guard let rate = Double(rate) else { return nil }
         self.from = from
         self.to = to
-        
-        if let rate = Double(rate) {
-            self.rate = rate
-        } else {
-            return nil
-        }
+        self.rate = rate
     }
 }

@@ -8,22 +8,17 @@
 import UIKit
 
 protocol RouterTransactionInfoProtocol{
-    func setRootViewController(root: UIViewController)
     func showAlert(title: String, message: String)
 }
 
 
 final class RouterTransactionInfo: RouterTransactionInfoProtocol {
     
-    var alertBuilder: AlertBuilderProtocol
+    private var alertBuilder: AlertBuilderProtocol
     private weak var root: UIViewController?
     
     init(alertBuilder: AlertBuilderProtocol) {
         self.alertBuilder = alertBuilder
-    }
-    
-    func setRootViewController(root: UIViewController) {
-        self.root = root
     }
     
     func showAlert(title: String, message: String) {
@@ -31,4 +26,7 @@ final class RouterTransactionInfo: RouterTransactionInfoProtocol {
         root?.navigationController?.topViewController?.present(alertController, animated: true, completion: nil)
     }
     
+    func setRootViewController(root: UIViewController) {
+        self.root = root
+    }
 }

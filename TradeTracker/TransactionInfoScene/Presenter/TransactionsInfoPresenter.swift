@@ -25,19 +25,19 @@ final class TransactionsInfoPresenter: TransactionsInfoPresenterProtocol {
     
     private let model: TransactionsInfoModelProtocol
     private let router: RouterTransactionInfoProtocol
-    private let product: ProductViewModel
+    private let sku: String
     
     
-    init(view: TransactionsInfoViewProtocol, model: TransactionsInfoModelProtocol, router: RouterTransactionInfoProtocol, product: ProductViewModel) {
+    init(view: TransactionsInfoViewProtocol, model: TransactionsInfoModelProtocol, router: RouterTransactionInfoProtocol, sku: String) {
         self.view = view
         self.model = model
         self.router = router
-        self.product = product
+        self.sku = sku
     }
     
     func viewDidLoad() {
         
-        let result = model.getTransactionsInfo(for: product.sku)
+        let result = model.getTransactionsInfo(for: sku)
         switch result {
         case .success(let transactionsInfo):
             
@@ -58,7 +58,7 @@ final class TransactionsInfoPresenter: TransactionsInfoPresenterProtocol {
     }
     
     func getTransactionsTitle() -> String {
-        return "Transactions for \(product.sku)"
+        return "Transactions for \(sku)"
     }
     
     func getHeader() -> String {

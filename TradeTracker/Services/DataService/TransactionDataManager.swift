@@ -7,25 +7,18 @@
 
 import Foundation
 
-protocol DataManagerProtocol {
-    func loadRates() -> Result<[RateData], DataServiceError>
+protocol TransactionDataManagerProtocol {
     func loadTransactions() -> Result<[TransactionData], DataServiceError>
     func clearCache()
 }
 
-final class DataManager: DataManagerProtocol {
+final class TransactionDataManager: TransactionDataManagerProtocol {
     
-    private let dataLoader: DataLoader
-    private var cachedTransactions = [TransactionData]() // чтобы не делать лишний запрос
+    private let dataLoader: DataLoaderProtocol
+    private var cachedTransactions = [TransactionData]()
     
-    init(dataLoader: DataLoader) {
+    init(dataLoader: DataLoaderProtocol) {
         self.dataLoader = dataLoader
-    }
-    
-    func loadRates() -> Result<[RateData], DataServiceError> {
-        guard let rateURL = Bundle.main.url(forResource: "rates", withExtension: "plist") else { return .failure(.resourceNotFound(name: "rates.plist")) }
-        
-        return dataLoader.load(from: rateURL, as: [RateData].self)
     }
     
     func loadTransactions() -> Result<[TransactionData], DataServiceError> {

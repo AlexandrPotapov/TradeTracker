@@ -7,16 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "90ECA907-5EE1-4FD8-AB44-32AD77200B5F"
+            uuid = "BBD95307-B308-4BEA-A80D-1F4FF8244250"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TradeTracker/TransactionInfoScene/View/TransactionsInfoViewController.swift"
+            filePath = "TradeTracker/ProductsScene/Presenter/ProductsPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "loadView()"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "ProductsPresenter"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B2864B0D-B0C0-434D-B34F-0A64F7E1200F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TradeTracker/Business model/Rate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "init?(from:to:rate:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

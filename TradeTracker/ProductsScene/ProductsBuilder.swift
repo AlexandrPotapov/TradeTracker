@@ -15,12 +15,13 @@ final class ProductsBuilder: ProductsBuilderProtocol {
     
     func buildProduct() -> UIViewController {
         
-        let dataLoader = PlistDataLoader()
-        let dataManager = DataManager(dataLoader: dataLoader)
-        let productsModel = ProductsModel(dataManager: dataManager)
+        let dataLoader = DataLoader()
+        let transactionDataManager = TransactionDataManager(dataLoader: dataLoader)
+        let dataManagerWithRate = DataManagerWithRate(dataLoader: dataLoader, transactionDataManager: transactionDataManager)
+        let productsModel = ProductsModel(dataManager: transactionDataManager)
         
         let router = RouterProducts(
-            transactionsInfoBuilder: TransactionInfoBuilder(dataManager: dataManager),
+            transactionsInfoBuilder: TransactionInfoBuilder(dataManager: dataManagerWithRate),
             alertBuilder: AlertBuilder()
         )
         

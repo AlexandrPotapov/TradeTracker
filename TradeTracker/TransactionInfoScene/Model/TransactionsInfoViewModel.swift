@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TransactionsInfoViewModel {
+struct TransactionsInfoViewModel: Equatable {
     let fromCurrencyLabel: String
     let toCurrencyLabel: String
 }

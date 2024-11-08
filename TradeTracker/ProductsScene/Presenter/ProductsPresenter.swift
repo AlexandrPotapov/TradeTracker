@@ -13,14 +13,15 @@ protocol ProductsViewProtocol: AnyObject {
 
 protocol ProductsPresenterProtocol: AnyObject {
     func viewDidLoad()
-    func tapOnTheProduct(product: ProductViewModel)
+    func tapOnTheProduct(with sku: String)
+
 }
 
 final class ProductsPresenter: ProductsPresenterProtocol {
     weak var view: ProductsViewProtocol?
     
-    private let model: ProductsModelProtocol
     private let router: RouterProductsProtocol
+    private var model: ProductsModelProtocol
     
     init(view: ProductsViewProtocol, model: ProductsModelProtocol, router: RouterProductsProtocol) {
         self.view = view
@@ -40,9 +41,12 @@ final class ProductsPresenter: ProductsPresenterProtocol {
         }
     }
     
-    func tapOnTheProduct(product: ProductViewModel) {
-        router.showTransactionsInfo(product: product)
+
+    
+    func tapOnTheProduct(with sku: String) {
+        router.showTransactionsInfo(with: sku)
     }
+
     
     private func showAlertError(message: String) {
         router.showAlert(title: "Error", message: message)
