@@ -1,5 +1,5 @@
 //
-//  ProductsSceneTests.swift
+//  PresenterProductsTests.swift
 //  TradeTrackerTests
 //
 //  Created by Alexander on 04.11.2024.
@@ -8,7 +8,7 @@
 import XCTest
 @testable import TradeTracker
 
-final class ProductsPresenterTests: XCTestCase {
+final class PresenterProductsTests: XCTestCase {
     
     var mockView: MockProductsView!
     var mockModel: MockProductsModel!

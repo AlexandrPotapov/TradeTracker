@@ -254,12 +254,12 @@
 				1113BE1D2CD512CA009C928E /* Alert */,
 				1113BDDD2CD4B6D7009C928E /* ProductsScene */,
 				1113BDEE2CD4B6D7009C928E /* TransactionsInfoScene */,
-				1113BDEF2CD4B6D7009C928E /* AppDelegate.swift */,
 				1113BDD42CD4B6D7009C928E /* ResponseData */,
 				1113BE0E2CD4B830009C928E /* Data */,
 				1113BDD12CD4B6D7009C928E /* DataPlistFiles */,
 				1113BDE12CD4B6D7009C928E /* Services */,
 				1113BDE52CD4B6D7009C928E /* SupportingFiles */,
+				1113BDEF2CD4B6D7009C928E /* AppDelegate.swift */,
 				1113BDF12CD4B6D7009C928E /* Info.plist */,
 			);
 			path = TradeTracker;

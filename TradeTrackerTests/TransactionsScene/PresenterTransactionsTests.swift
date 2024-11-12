@@ -1,5 +1,5 @@
 //
-//  TransactionsPresenterTests.swift
+//  PresenterTransactionsTests.swift
 //  TradeTrackerTests
 //
 //  Created by Alexander on 08.11.2024.
@@ -8,7 +8,7 @@
 import XCTest
 @testable import TradeTracker
 
-final class TransactionsPresenterTests: XCTestCase {
+final class PresenterTransactionsTests: XCTestCase {
     
     var mockView: MockTransactionsInfoView!
     var mockModel: MockTransactionsInfoModel!
@@ -63,37 +63,6 @@ final class TransactionsPresenterTests: XCTestCase {
         XCTAssertEqual(mockView.viewModels[2].fromCurrencyLabel, "$ 300,00")
         XCTAssertEqual(mockView.viewModels[2].toCurrencyLabel, "300,00 £")
     }
-    
-//    func testViewDidLoad_WithSingleTransaction() throws {
-//        
-//        // Arrange
-//        let singleTransaction = [TransactionInfo(fromCurrency: "USD", fromAmount: 100.0, toCurrency: "GBP", toAmount: 100.0)]
-//        mockModel.result = .success((transactions: singleTransaction, totalInGBP: 100.0))
-//        
-//        // Act
-//        sut.viewDidLoad()
-//        
-//        // Assert
-//        XCTAssertTrue(mockView.successCalled)
-//        XCTAssertEqual(mockView.viewModels.count, 1)
-//        XCTAssertEqual(mockView.viewModels.first?.fromCurrencyLabel, "$ 100,00")
-//        XCTAssertEqual(mockView.viewModels.first?.toCurrencyLabel, "100,00 £")
-//        XCTAssertEqual(sut.getHeader(), "Total: £ 100,00")
-//    }
-//    
-//    func testViewDidLoadWithNoTransactions() throws {
-//        
-//        // Arrange
-//        mockModel.result = .success((transactions: [], totalInGBP: 0.0))
-//        
-//        // Act
-//        sut.viewDidLoad()
-//        
-//        // Assert
-//        XCTAssertTrue(mockView.successCalled)
-//        XCTAssertTrue(mockView.viewModels.isEmpty)
-//        XCTAssertEqual(sut.getHeader(), "Total: £ 0,00")
-//    }
     
     func testViewDidLoadFailure() throws {
         

@@ -1,5 +1,5 @@
 //
-//  TransactionInfoBuilderTests.swift
+//  BuilderTransactionInfoTests.swift
 //  TradeTrackerTests
 //
 //  Created by Alexander on 12.11.2024.
@@ -8,7 +8,7 @@
 import XCTest
 @testable import TradeTracker
 
-final class TransactionInfoBuilderTests: XCTestCase {
+final class BuilderTransactionInfoTests: XCTestCase {
     
     func testBuildProduct_CreatesCorrectViewController() throws {
         // Arrange

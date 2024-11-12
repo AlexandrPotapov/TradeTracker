@@ -104,20 +104,7 @@ final class TransactionsInfoViewTests: XCTestCase {
         XCTAssertEqual(numberOfRows, 0)
     }
     
-    //дописать презентар для работы с неверным форматом
-//    func testCellForRowWithIncorrectData() {
-//        // Arrange: Некорректные данные
-//        mockPresenter.viewModels = [TransactionsInfoViewModel(fromCurrencyLabel: "$ 100,00", toCurrencyLabel: "неверный формат")]
-//        mockPresenter.viewDidLoad()
-//
-//        // Act & Assert
-//        let indexPath = IndexPath(row: 0, section: 0)
-//        let cell = getCell(for: indexPath) as? TransactionsInfoTableViewCell
-//        
-//        // Проверяем, что ячейка корректно обработала некорректный формат
-//        XCTAssertEqual(cell?.testableToCurrencyLabel.text, "неверный формат")
-//        XCTAssertEqual(cell?.testableFromCurrencyLabel.text, "$ 100,00")
-//    }
+// TODO: - можно дописать в презентере обработку неверного формата валюты
     
     // MARK: - Helpers
     

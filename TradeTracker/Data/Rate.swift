@@ -19,4 +19,11 @@ struct Rate {
         self.to = to
         self.rate = rate
     }
+    
+    init(from: String, to: String, rate: Double) {
+        
+        self.from = from
+        self.to = to
+        self.rate = rate
+    }
 }

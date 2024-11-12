@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+    <!-- Некорректные типы данных -->
+    <dict>
+        <key>name</key>
+        <integer>12345</integer> <!-- Ошибка: должно быть строкой -->
+        <key>value</key>
+        <string>Invalid String Instead of Integer</string> <!-- Ошибка: должно быть целым числом -->
+    </dict>
+    
+    <!-- Отсутствующий ключ -->
+    <dict>
+        <key>name</key>
+        <string>Test Name Without Value</string>
+        <!-- Ошибка: отсутствует ключ 'value' -->
+    </dict>
+    
+    <!-- Пустой объект -->
+    <dict>
+        <!-- Ошибка: отсутствуют оба ключа -->
+    </dict>
+</array>
+</plist>

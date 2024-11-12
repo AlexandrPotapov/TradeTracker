@@ -1,5 +1,5 @@
 //
-//  ProductsModelTests.swift
+//  ModelProductsTests.swift
 //  TradeTrackerTests
 //
 //  Created by Alexander on 06.11.2024.
@@ -8,7 +8,7 @@
 import XCTest
 @testable import TradeTracker
 
-final class ProductsModelTests: XCTestCase {
+final class ModelProductsTests: XCTestCase {
     
     var mockDataManager: MockTransactionDataManager!
     var sut: ProductsModel!

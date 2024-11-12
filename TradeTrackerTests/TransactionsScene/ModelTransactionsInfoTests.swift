@@ -1,5 +1,5 @@
 //
-//  TransactionsInfoModelTests.swift
+//  ModelTransactionsInfoTests.swift
 //  TradeTrackerTests
 //
 //  Created by Alexander on 12.11.2024.
@@ -8,7 +8,7 @@
 import XCTest
 @testable import TradeTracker
 
-final class TransactionsInfoModelTests: XCTestCase {
+final class ModelTransactionsInfoTests: XCTestCase {
     
     var mockDataManager: MockDataManagerWithRates!
     var mockConverter: MockConverter!
@@ -24,6 +24,7 @@ final class TransactionsInfoModelTests: XCTestCase {
     
     override func tearDownWithError() throws {
         mockDataManager = nil
+        mockConverter = nil
         sut = nil
         try super.tearDownWithError()
     }
@@ -177,7 +178,6 @@ final class MockDataManagerWithRates: DataManagerWithRateProtocol {
     }
     
     func clearCache() {
-        transactionsResult = nil
     }
     
     

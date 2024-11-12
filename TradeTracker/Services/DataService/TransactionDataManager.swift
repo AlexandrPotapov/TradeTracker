@@ -39,3 +39,11 @@ final class TransactionDataManager: TransactionDataManagerProtocol {
         cachedTransactions.removeAll()
     }
 }
+
+extension TransactionDataManager {
+#if DEBUG
+    var testCachedTransactions: [TransactionData] {
+        cachedTransactions
+    }
+#endif
+}
