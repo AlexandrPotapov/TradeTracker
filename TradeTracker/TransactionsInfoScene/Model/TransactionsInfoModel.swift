@@ -41,22 +41,34 @@ struct TransactionsInfoModel: TransactionsInfoModelProtocol {
                     
                     // Конвертация суммы в GBP
                     let request = ConversionRequest(amount: fromAmount, fromCurrency: fromCurrency, toCurrency: toCurrency, rates: rates)
-                    let toAmount = converter.convertToGBP(request: request)
+                    let conversionResult = converter.convertToGBP(request: request)
                     
-                    // Увеличиваем итоговую сумму в GBP
-                    totalInGBP += toAmount
-                    
-                    // Создаем модель TransactionInfo
-                    let transactionInfo = TransactionInfo(
-                        fromCurrency: fromCurrency,
-                        fromAmount: fromAmount,
-                        toCurrency: toCurrency,
-                        toAmount: toAmount
-                    )
-                    
-                    transactionInfoList.append(transactionInfo)
+                    switch conversionResult {
+                    case .success(let toAmount):
+                        // Увеличиваем итоговую сумму в GBP
+                        totalInGBP += toAmount
+                        
+                        // Создаем модель TransactionInfo
+                        let transactionInfo = TransactionInfo(
+                            fromCurrency: fromCurrency,
+                            fromAmount: fromAmount,
+                            toCurrency: toCurrency,
+                            toAmount: toAmount
+                        )
+                        
+                        transactionInfoList.append(transactionInfo)
+                    case .failure(let error):
+                        // Создаем модель TransactionInfo
+                        let transactionInfo = TransactionInfo(
+                            fromCurrency: fromCurrency,
+                            fromAmount: fromAmount,
+                            toCurrency: toCurrency,
+                            toAmount: 0.0
+                        )
+                        
+                        transactionInfoList.append(transactionInfo)
+                    }
                 }
-                
                 return .success((transactionInfoList, totalInGBP))
             }
         }
@@ -69,6 +81,8 @@ private extension TransactionsInfoModel {
         let result = dataManager.loadRates()
         switch result {
         case .success(let rates):
+            guard !rates.isEmpty else { return .failure(.emptyRates) }
+
             return .success(rates.compactMap {
                 Rate(from: $0.from, to: $0.to, rate: $0.rate)
             })

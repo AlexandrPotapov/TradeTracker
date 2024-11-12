@@ -7,9 +7,9 @@
 
 import UIKit
 
-final class TransactionsInfoView: UIView {
+final class TransactionsInfoView: UIView, TransactionsInfoViewProtocol {
     
-    var presenter: TransactionsInfoPresenter?
+    var presenter: TransactionsInfoPresenterProtocol?
     
     private var viewModels = [TransactionsInfoViewModel]()
 
@@ -55,7 +55,6 @@ final class TransactionsInfoView: UIView {
         headerView.text = presenter?.getHeader()
         tableView.reloadData()
     }
-    
 }
 
 
@@ -77,6 +76,11 @@ extension TransactionsInfoView: UITableViewDataSource {
     
     
 }
+
+// MARK: - ProductsViewProtocol
+//extension TransactionsInfoViewController: TransactionsInfoViewProtocol {
+//}
+
 // MARK: - Private extension
 private extension TransactionsInfoView {
     func commonInit() {
@@ -113,4 +117,16 @@ private extension TransactionsInfoView {
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)
         ])
     }
+}
+
+extension TransactionsInfoView {
+#if DEBUG
+    var testableHeaderView: UILabel {
+        return headerView
+    }
+    
+    var testableTableView: UITableView {
+        return tableView
+    }
+#endif
 }

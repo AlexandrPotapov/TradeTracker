@@ -9,7 +9,7 @@ import UIKit
 
 final class TransactionsInfoViewController: UIViewController {
     
-    var presenter: TransactionsInfoPresenter?
+    var presenter: TransactionsInfoPresenterProtocol?
     
     private lazy var customView = TransactionsInfoView()
     
@@ -30,8 +30,8 @@ final class TransactionsInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         customView.presenter = presenter
-        navigationItem.title = presenter?.getTransactionsTitle()
         presenter?.viewDidLoad()
+        navigationItem.title = presenter?.getTransactionsTitle()
     }
     
     override func viewWillAppear(_ animated: Bool) {

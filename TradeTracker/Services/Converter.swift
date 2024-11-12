@@ -8,22 +8,27 @@
 import Foundation
 
 protocol ConverterProtocol {
-    func convertToGBP(request: ConversionRequest) -> Double
+    func convertToGBP(request: ConversionRequest) -> Result<Double, DataServiceError>
 }
 
 struct Converter: ConverterProtocol {
     // Метод для конвертации валюты в GBP
-    func convertToGBP(request: ConversionRequest) -> Double {
-        guard request.fromCurrency != request.toCurrency else { return request.amount }
+    func convertToGBP(request: ConversionRequest) -> Result<Double, DataServiceError> {
+        guard request.fromCurrency != request.toCurrency else {
+            return .success(request.amount)
+        }
         
         // Попробуем найти прямой курс для конверсии
         if let directRate = request.rates.first(where: { $0.from == request.fromCurrency && $0.to == request.toCurrency }) {
-            return request.amount * directRate.rate
+            return .success(request.amount * directRate.rate)
         }
         
         // Рекурсивный поиск косвенного пути
         var visitedCurrencies = Set<String>() // Для отслеживания пройденных валют и предотвращения циклов
-        return convert(request: request, visitedCurrencies: &visitedCurrencies)
+        let result = convert(request: request, visitedCurrencies: &visitedCurrencies)
+        
+        // Проверяем, была ли конвертация успешной
+        return result > 0 ? .success(result) : .failure(.conversionFailed)
     }
 
     private func convert(request: ConversionRequest, visitedCurrencies: inout Set<String>) -> Double {
@@ -49,7 +54,7 @@ struct Converter: ConverterProtocol {
             }
         }
         
-        // Если путь не найден, возвращаем исходное значение
-        return request.amount
+        // Если путь не найден, возвращаем 0 (обозначая неудачную конвертацию)
+        return 0
     }
 }

@@ -22,6 +22,7 @@ final class TransactionsInfoPresenter: TransactionsInfoPresenterProtocol {
     weak var view: TransactionsInfoViewProtocol?
     
     private var header: String = ""
+    private var problemWithConversion = false // для обработки не удачных конвертаций
     
     private let model: TransactionsInfoModelProtocol
     private let router: RouterTransactionInfoProtocol
@@ -36,24 +37,35 @@ final class TransactionsInfoPresenter: TransactionsInfoPresenterProtocol {
     }
     
     func viewDidLoad() {
+        problemWithConversion = false // сбрасываем флаг
         
         let result = model.getTransactionsInfo(for: sku)
         switch result {
-        case .success(let transactionsInfo):
+        case .success((let transactionsInfo, let totalInGBP)):
             
-            let transactions = transactionsInfo.transactions
-            header = totalAmount(total: transactionsInfo.totalInGBP)
+            header = totalAmount(total: totalInGBP)
             
-            let viewModels = transactions.map {
-                TransactionsInfoViewModel(
-                    fromCurrencyLabel: "\(currencySymbol(for: $0.fromCurrency)) \(formattedString(for: Double($0.fromAmount)))",
-                    toCurrencyLabel: "\(formattedString(for: Double($0.toAmount))) \(currencySymbol(for: $0.toCurrency))"
-                )
+            let viewModels = transactionsInfo.map {
+                if  $0.toAmount == 0.0 {
+                    problemWithConversion = true // покажим "-" для не удачных конвертаций
+                    return TransactionsInfoViewModel(
+                        fromCurrencyLabel: "\(currencySymbol(for: $0.fromCurrency)) \(formattedString(for: Double($0.fromAmount)))",
+                        toCurrencyLabel: "-"
+                    )
+                } else {
+                    return TransactionsInfoViewModel(
+                        fromCurrencyLabel: "\(currencySymbol(for: $0.fromCurrency)) \(formattedString(for: Double($0.fromAmount)))",
+                        toCurrencyLabel: "\(formattedString(for: Double($0.toAmount))) \(currencySymbol(for: $0.toCurrency))"
+                    )
+                }
             }
             
+            if problemWithConversion {
+                showAlertError(message: "Failed to concatenate some transactions. They will not be counted towards the total amount.")
+            }
             view?.success(viewModels: viewModels)
-        case .failure:
-            showAlertError(message: "Erorr loading transactions")
+        case .failure(let error):
+            showAlertError(message: error.localizedDescription)
         }
     }
     

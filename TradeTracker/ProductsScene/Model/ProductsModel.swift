@@ -24,6 +24,7 @@ struct ProductsModel: ProductsModelProtocol {
         
         switch result {
         case .success(let transactions):
+            guard !transactions.isEmpty else { return .failure(.emptyTransactions) }
             
             let products = Dictionary(grouping: transactions, by: { $0.sku })
                 .map { Product(sku: $0.key, transactionCount: $0.value.count) }

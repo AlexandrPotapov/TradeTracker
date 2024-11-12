@@ -90,3 +90,16 @@ private extension TransactionsInfoTableViewCell {
         ])
     }
 }
+
+
+extension TransactionsInfoTableViewCell {
+#if DEBUG
+    var testableFromCurrencyLabel: UILabel {
+        fromCurrencyLabel
+    }
+    
+    var testableToCurrencyLabel: UILabel {
+        toCurrencyLabel
+    }
+#endif
+}
