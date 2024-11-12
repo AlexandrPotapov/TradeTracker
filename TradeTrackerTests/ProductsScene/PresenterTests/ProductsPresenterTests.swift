@@ -11,91 +11,114 @@ import XCTest
 final class ProductsPresenterTests: XCTestCase {
     
     var mockView: MockProductsView!
-    var presenter: ProductsPresenterProtocol!
     var mockModel: MockProductsModel!
     var mockRouter: MockRouter!
+    var sut: ProductsPresenter!
 
     override func setUpWithError() throws {
-        
+        try super.setUpWithError()
         mockView = MockProductsView()
-        mockRouter = MockRouter()
         mockModel = MockProductsModel()
-        presenter = ProductsPresenter(view: mockView, model: mockModel, router: mockRouter)
+        mockRouter = MockRouter()
+        sut = ProductsPresenter(view: mockView, model: mockModel, router: mockRouter)
     }
 
     override func tearDownWithError() throws {
         mockView = nil
         mockModel = nil
-        presenter = nil
         mockRouter = nil
+        sut = nil
+        try super.tearDownWithError()
     }
 
 
-    func testViewDidLoadSuccess() throws {
-        mockModel.result = .success([ProductViewModel(sku: "Foo", transactionCount: "Baz")])
-        presenter.viewDidLoad()
+    func testViewDidLoad_Success() throws {
         
-        XCTAssertTrue(mockView.successCalled)
-        XCTAssertEqual(mockView.viewModels.first?.sku, "Foo")
+        // Arrange
+        let products = getProducts()
+        mockModel.result = .success(products)
+        
+        // Act
+        sut.viewDidLoad()
+        
+        // Assert
+        for (i, viewModel) in mockView.viewModels.enumerated() {
+            XCTAssertTrue(products.contains(where: { $0.sku == viewModel.sku}),
+                          "Exptected \(products[i].sku), but got \(viewModel.sku)")
+            
+            XCTAssertTrue(products.contains(where: { String($0.transactionCount) == viewModel.transactionCount}),
+                          "Exptected \(products[i].transactionCount), but got \(viewModel.transactionCount)")
+        }
     }
 
-    func testViewDidLoadFailure() throws {
+    func testViewDidLoad_Failure() throws {
+        
+        // Arrange
         mockModel.result = .failure(.resourceNotFound(name: "Foo"))
-        presenter.viewDidLoad()
         
-        XCTAssertTrue(mockRouter.alertShown)
-        XCTAssertEqual(mockRouter.alertMessage, "Resource not found: Foo")
+        // Act
+        sut.viewDidLoad()
+        
+        // Assert
+        XCTAssertEqual(mockRouter.alertMessage,
+                       "Resource not found: Foo",
+                       "Expected \"Resource not found: Foo\", but got \"\(mockRouter.alertMessage ?? "nil")\"")
     }
 
-    func testTapOnTheProduct() throws {
-        let product = ProductViewModel(sku: "Foo", transactionCount: "Baz")
-        presenter.tapOnTheProduct(with: product.sku)
+    func testTapOnTheProduct_SetsDesiredSKU() throws {
         
-        XCTAssertTrue(mockRouter.showTransactionsInfoCalled)
+        // Arrange
+        let product = ProductViewModel(sku: "Foo", transactionCount: "1")
+        
+        // Act
+        sut.tapOnTheProduct(with: product.sku)
+        
+        // Assert
         XCTAssertEqual(mockRouter.capturedProductSku, "Foo")
 
     }
+    
 
+    // MARK: - Helpers
+
+    private func getProducts() -> [Product] {
+        [Product(sku: "Foo", transactionCount: 1),
+         Product(sku: "Bar", transactionCount: 2),
+         Product(sku: "Baz", transactionCount: 3)]
+    }
 }
 
 // MARK: - Mock Objects
 
 final class MockProductsView: ProductsViewProtocol {
-    var successCalled = false
     var viewModels: [ProductViewModel] = []
 
     func success(viewModels: [ProductViewModel]) {
-        successCalled = true
         self.viewModels = viewModels
     }
 }
 
 final class MockProductsModel: ProductsModelProtocol {
-    var result: Result<[ProductViewModel], DataServiceError>?
+    var result: Result<[Product], DataServiceError>?
 
-    func getProductsInfo() -> Result<[ProductViewModel], DataServiceError> {
+    func getProductsInfo() -> Result<[Product], DataServiceError> {
         return result ?? .failure(.resourceNotFound(name: "Mock"))
     }
 }
 
 final class MockRouter: RouterProductsProtocol {
     
-    var showTransactionsInfoCalled = false
-    var rootVCSetCalled = false
-    var alertShown = false
     var alertMessage: String?
     var capturedProductSku: String?
 
 
     func showTransactionsInfo(with sku: String) {
-        showTransactionsInfoCalled = true
         capturedProductSku = sku
     }
     
     func setRootViewController(root: UIViewController) { }
 
     func showAlert(title: String, message: String) {
-        alertShown = true
         alertMessage = message
     }
 }

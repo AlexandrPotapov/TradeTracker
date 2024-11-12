@@ -221,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				1113BDE82CD4B6D7009C928E /* TransactionsInfoPresenter.swift */,
+				1113BE162CD4DEC2009C928E /* TransactionsInfoViewModel.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -235,7 +236,7 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		1113BDEE2CD4B6D7009C928E /* TransactionInfoScene */ = {
+		1113BDEE2CD4B6D7009C928E /* TransactionsInfoScene */ = {
 			isa = PBXGroup;
 			children = (
 				1113BE152CD4DCCE009C928E /* Model */,
@@ -244,7 +245,7 @@
 				1113BE1B2CD5126A009C928E /* TransactionInfoBuilder.swift */,
 				11894ED52CD61443004E5110 /* RouterTransactionInfo.swift */,
 			);
-			path = TransactionInfoScene;
+			path = TransactionsInfoScene;
 			sourceTree = "<group>";
 		};
 		1113BDF32CD4B6D7009C928E /* TradeTracker */ = {
@@ -252,7 +253,7 @@
 			children = (
 				1113BE1D2CD512CA009C928E /* Alert */,
 				1113BDDD2CD4B6D7009C928E /* ProductsScene */,
-				1113BDEE2CD4B6D7009C928E /* TransactionInfoScene */,
+				1113BDEE2CD4B6D7009C928E /* TransactionsInfoScene */,
 				1113BDEF2CD4B6D7009C928E /* AppDelegate.swift */,
 				1113BDD42CD4B6D7009C928E /* ResponseData */,
 				1113BE0E2CD4B830009C928E /* Data */,
@@ -278,7 +279,6 @@
 			children = (
 				1113BE112CD4CCBC009C928E /* TransactionsInfoModel.swift */,
 				1113BDE62CD4B6D7009C928E /* TransactionInfo.swift */,
-				1113BE162CD4DEC2009C928E /* TransactionsInfoViewModel.swift */,
 				11B916DE2CDE3E3000B9D456 /* ConversionRequest.swift */,
 			);
 			path = Model;

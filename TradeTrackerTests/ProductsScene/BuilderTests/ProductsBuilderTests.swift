@@ -10,25 +10,25 @@ import XCTest
 
 final class ProductsBuilderTests: XCTestCase {
     
-    func testBuildProductCreatesCorrectViewController() throws {
+    func testBuildProduct_CreatesCorrectViewController() throws {
         // Arrange
-        let builder = ProductsBuilder()
+        let sut = ProductsBuilder()
         
         // Act
-        let viewController = builder.buildProduct()
+        let viewController = sut.buildProduct()
         
         // Assert
-        XCTAssertTrue(viewController is ProductsViewController, "Expected ProductsViewController, but got \(type(of: viewController))")
+        XCTAssertTrue(viewController is ProductsViewController,
+            "Expected ProductsViewController, but got \(type(of: viewController))")
         
-        guard let productsVC = viewController as? ProductsViewController else {
-            XCTFail("Failed to cast to ProductsViewController")
-            return
+        if let productsVC = viewController as? ProductsViewController {
+            XCTAssertNotNil(productsVC.presenter, "ProductsViewController should have a presenter")
+            
+            XCTAssertTrue(productsVC.presenter is ProductsPresenter,
+                "Expected ProductsPresenter, but got \(type(of: productsVC.presenter!))")
+            
+            let presenter = productsVC.presenter as? ProductsPresenter
+            XCTAssertNotNil(presenter?.view, "Presenter should have a view")
         }
-        
-        XCTAssertNotNil(productsVC.presenter, "Expected ProductsViewController to have a presenter")
-        XCTAssertTrue(productsVC.presenter is ProductsPresenter, "Expected ProductsPresenter, but got \(type(of: productsVC.presenter))")
-        
-        let presenter = productsVC.presenter as? ProductsPresenter
-        XCTAssertNotNil(presenter?.view, "Expected presenter to have a view")
     }
 }

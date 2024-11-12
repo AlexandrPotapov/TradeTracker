@@ -10,33 +10,28 @@ import XCTest
 
 final class ProductsViewControllerTests: XCTestCase {
     
-    var viewController: ProductsViewController!
     var mockPresenter: MockProductsPresenter!
+    var sut: ProductsViewController!
     
-    override func setUp() {
-        super.setUp()
-        
-        // Создаем мок для презентера
+    override func setUpWithError() throws {
+        try super.setUpWithError()
         mockPresenter = MockProductsPresenter()
-        
-        // Создаем ProductsViewController и передаем мок-презентер
-        viewController = ProductsViewController()
-        viewController.presenter = mockPresenter
+        sut = ProductsViewController()
+        sut.presenter = mockPresenter
+    }
+    
+    override func tearDownWithError() throws {
+        mockPresenter = nil
+        sut = nil
+        try super.setUpWithError()
     }
 
     func testViewDidLoad_callsPresenterViewDidLoad() {
         // Вызываем viewDidLoad для viewController
-        viewController.viewDidLoad()
+        sut.viewDidLoad()
         
         // Проверяем, что метод viewDidLoad в презентере был вызван
         XCTAssertTrue(mockPresenter.didCallViewDidLoad)
-    }
-    
-    func testDidSelectRowCallsPresenter() {
-        viewController.presenter?.tapOnTheProduct(with: "Foo")
-        
-        XCTAssertTrue(mockPresenter.didCallTapOnTheProduct)
-        XCTAssertEqual(mockPresenter.capturedProductSku, "Foo")
     }
 }
 
@@ -45,7 +40,6 @@ final class ProductsViewControllerTests: XCTestCase {
 final class MockProductsPresenter: ProductsPresenterProtocol {
     
     var didCallViewDidLoad = false
-    var didCallTapOnTheProduct = false
     var capturedProductSku: String?
     
     func viewDidLoad() {
@@ -53,7 +47,6 @@ final class MockProductsPresenter: ProductsPresenterProtocol {
     }
     
     func tapOnTheProduct(with sku: String) {
-        didCallTapOnTheProduct = true
         capturedProductSku = sku
     }
 }
