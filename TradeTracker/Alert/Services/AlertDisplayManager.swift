@@ -13,8 +13,8 @@ protocol AlertDisplayManagerProtocol {
 
 final class AlertDisplayManager: AlertDisplayManagerProtocol, AlertWindowDelegate {
     
-    private var alertWindow: AlertPresenterProtocol?
-     var alertQueueManager: AlertQueueManagerProtocol?
+    private var alertWindow: AlertWindowProtocol?
+    var alertQueueManager: AlertQueueManagerProtocol?
     
     private let alertPresenterFactory: AlertPresenterFactoryProtocol
     
@@ -30,18 +30,27 @@ final class AlertDisplayManager: AlertDisplayManagerProtocol, AlertWindowDelegat
         }
         
         // Создаем новое окно для отображения алерта
-        var newAlertWindow = alertPresenterFactory.makeAlertPresenter()
-        newAlertWindow.delegate = self
+        let newAlertWindow = alertPresenterFactory.makeAlertPresenter(delegate: self)
         newAlertWindow.presentAlert(alertController)
         
         self.alertWindow = newAlertWindow
     }
     
     // MARK: - AlertWindowDelegate
-
-    func alertWindow(_ alertWindow: any AlertPresenterProtocol, didDismissAlert alertController: UIViewController) {
+    
+    func alertWindow(_ alertWindow: any AlertWindowProtocol, didDismissAlert alertController: UIViewController) {
         // убираем окно и показываем следующий алерт
         self.alertWindow = nil
         showNextAlertIfPresent()
     }
 }
+
+
+#if DEBUG
+extension AlertDisplayManager {
+    var testAlertWindow: AlertWindowProtocol? {
+        get { alertWindow }
+        set { alertWindow = newValue }
+    }
+}
+#endif

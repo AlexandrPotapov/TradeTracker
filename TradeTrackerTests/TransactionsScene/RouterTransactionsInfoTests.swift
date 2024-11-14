@@ -11,24 +11,25 @@ import XCTest
 
 final class RouterTransactionsInfoTests: XCTestCase {
     var mockAlertBuilder: MockAlertBuilder!
-    var mockRootViewController: MockViewController!
-    var mockNnavigationController: MockNavigationController!
-    var router: RouterTransactionInfo!
+    var mockAlertDisplayManager: MockAlertDisplayManager!
+    var mockAlertQueueManager: MockAlertQueueManager!
+
+    var sut: RouterTransactionInfo!
     
     override func setUpWithError() throws {
         try super.setUpWithError()
         mockAlertBuilder = MockAlertBuilder()
-        mockRootViewController = MockViewController()
-        mockNnavigationController = MockNavigationController(rootViewController: mockRootViewController)
+        mockAlertDisplayManager = MockAlertDisplayManager()
+        mockAlertQueueManager = MockAlertQueueManager()
         
-        router = RouterTransactionInfo(alertBuilder: mockAlertBuilder)
-        router.setRootViewController(root: mockRootViewController)
+        sut = RouterTransactionInfo(alertQueueManager: mockAlertQueueManager, alertDisplayManager: mockAlertDisplayManager, alertBuilder: mockAlertBuilder)
     }
 
     override func tearDownWithError() throws {
         mockAlertBuilder = nil
-        mockNnavigationController = nil
-        router = nil
+        mockAlertDisplayManager = nil
+        mockAlertQueueManager = nil
+        sut = nil
         try super.tearDownWithError()
     }
 
@@ -39,7 +40,7 @@ final class RouterTransactionsInfoTests: XCTestCase {
         let message = "Bar"
         
         // Act
-        router.showAlert(title: title, message: message)
+        sut.showAlert(title: title, message: message)
 
         // Assert
         XCTAssertEqual(mockAlertBuilder.capturedTitle, title,
@@ -49,17 +50,46 @@ final class RouterTransactionsInfoTests: XCTestCase {
                        "Should pass the correct message to buildAlert")
     }
 
-    func testShowAlert_PresentsAlertController() {
+    func testShowAlert_Calls_ShowNextAlertIfPresent() {
         
         // Arrange
         let title = "Foo"
         let message = "Bar"
         
         // Act
-        router.showAlert(title: title, message: message)
+        sut.showAlert(title: title, message: message)
         
         // Assert
-        XCTAssertNotNil(mockRootViewController.presentedVC,
-                        "Should present a view controller")
+        XCTAssertTrue(mockAlertDisplayManager.showNextAlertIsTrue,
+                      "Should call showNextAlertIfPresent")
+    }
+    
+    func testShowAlert_AddedAlertInQueue() {
+        
+        // Arrange
+        let title = "Foo"
+        let message = "Bar"
+        
+        // Act
+        sut.showAlert(title: title, message: message)
+        
+        sut.showAlert(title: title, message: message)
+
+        
+        // Assert
+        XCTAssertEqual(mockAlertQueueManager.alertQueueCount, 2,
+                      "Expected 2 alert in queue, but got \(mockAlertQueueManager.alertQueueCount)")
+    }
+}
+
+
+
+// MARK: - Mock Objects
+final class MockAlertDisplayManager: AlertDisplayManagerProtocol {
+    
+    var showNextAlertIsTrue = false
+    
+    func showNextAlertIfPresent() {
+        showNextAlertIsTrue = true
     }
 }

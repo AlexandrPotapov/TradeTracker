@@ -8,11 +8,11 @@
 import Foundation
 
 protocol AlertPresenterFactoryProtocol {
-    func makeAlertPresenter() -> AlertPresenterProtocol
+    func makeAlertPresenter(delegate: AlertWindowDelegate) -> AlertWindowProtocol
 }
 
 class AlertPresenterFactory: AlertPresenterFactoryProtocol {
-    func makeAlertPresenter() -> AlertPresenterProtocol {
-        return AlertWindow()
+    func makeAlertPresenter(delegate: AlertWindowDelegate) -> AlertWindowProtocol {
+        return AlertWindow(delegate: delegate)
     }
 }

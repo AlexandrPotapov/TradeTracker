@@ -9,21 +9,21 @@ import Foundation
 import UIKit
 
 protocol AlertWindowDelegate: AnyObject {
-    func alertWindow(_ alertWindow: AlertPresenterProtocol, didDismissAlert alertController: UIViewController)
+    func alertWindow(_ alertWindow: AlertWindowProtocol, didDismissAlert alertController: UIViewController)
 }
 
-protocol AlertPresenterProtocol {
-    var delegate: AlertWindowDelegate? { get set }
+protocol AlertWindowProtocol {
     func presentAlert(_ alert: UIViewController)
 }
 
 
-class AlertWindow: UIWindow, HoldingDelegate, AlertPresenterProtocol {
-    weak var delegate: AlertWindowDelegate?
+class AlertWindow: UIWindow, HoldingDelegate, AlertWindowProtocol {
+    private weak var delegate: AlertWindowDelegate?
     
     // MARK: - Init
     
-    init() {
+    init(delegate: AlertWindowDelegate) {
+        self.delegate = delegate
         super.init(frame: UIScreen.main.bounds)
         windowLevel = .alert
     }
