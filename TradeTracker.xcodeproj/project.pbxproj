@@ -35,6 +35,10 @@
 		1113BE172CD4DEC2009C928E /* TransactionsInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1113BE162CD4DEC2009C928E /* TransactionsInfoViewModel.swift */; };
 		1113BE1A2CD51219009C928E /* ProductsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1113BE192CD51219009C928E /* ProductsBuilder.swift */; };
 		1113BE1C2CD5126A009C928E /* TransactionInfoBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1113BE1B2CD5126A009C928E /* TransactionInfoBuilder.swift */; };
+		11270AE52CE6153000214594 /* AlertPresenterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11270AE42CE6153000214594 /* AlertPresenterFactory.swift */; };
+		1147BDAB2CE50C4F00551C7B /* AlertWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1147BDAA2CE50C4F00551C7B /* AlertWindow.swift */; };
+		1147BDAD2CE50C6900551C7B /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1147BDAC2CE50C6900551C7B /* Queue.swift */; };
+		1147BDAF2CE51AEF00551C7B /* HoldingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1147BDAE2CE51AEF00551C7B /* HoldingViewController.swift */; };
 		11894ED42CD6141F004E5110 /* RouterProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11894ED32CD6141F004E5110 /* RouterProducts.swift */; };
 		11894ED62CD61443004E5110 /* RouterTransactionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11894ED52CD61443004E5110 /* RouterTransactionInfo.swift */; };
 		11AE6BE12CD7B0B3003C8BD9 /* DataServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AE6BE02CD7B0B3003C8BD9 /* DataServiceError.swift */; };
@@ -90,6 +94,10 @@
 		1113BE162CD4DEC2009C928E /* TransactionsInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsInfoViewModel.swift; sourceTree = "<group>"; };
 		1113BE192CD51219009C928E /* ProductsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsBuilder.swift; sourceTree = "<group>"; };
 		1113BE1B2CD5126A009C928E /* TransactionInfoBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionInfoBuilder.swift; sourceTree = "<group>"; };
+		11270AE42CE6153000214594 /* AlertPresenterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresenterFactory.swift; sourceTree = "<group>"; };
+		1147BDAA2CE50C4F00551C7B /* AlertWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertWindow.swift; sourceTree = "<group>"; };
+		1147BDAC2CE50C6900551C7B /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
+		1147BDAE2CE51AEF00551C7B /* HoldingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoldingViewController.swift; sourceTree = "<group>"; };
 		11894ED32CD6141F004E5110 /* RouterProducts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterProducts.swift; sourceTree = "<group>"; };
 		11894ED52CD61443004E5110 /* RouterTransactionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterTransactionInfo.swift; sourceTree = "<group>"; };
 		11A3B9072CCBCC030076C525 /* TradeTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TradeTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -296,9 +304,21 @@
 		1113BE1D2CD512CA009C928E /* Alert */ = {
 			isa = PBXGroup;
 			children = (
+				11270AE42CE6153000214594 /* AlertPresenterFactory.swift */,
 				1113BDF02CD4B6D7009C928E /* AlertBuilder.swift */,
+				1147BDB02CE5215300551C7B /* View */,
+				1147BDAC2CE50C6900551C7B /* Queue.swift */,
 			);
 			path = Alert;
+			sourceTree = "<group>";
+		};
+		1147BDB02CE5215300551C7B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1147BDAA2CE50C4F00551C7B /* AlertWindow.swift */,
+				1147BDAE2CE51AEF00551C7B /* HoldingViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		11A3B8FE2CCBCC030076C525 = {
@@ -472,10 +492,12 @@
 				1113BDF62CD4B6D7009C928E /* ProductViewModel.swift in Sources */,
 				1113BDF72CD4B6D7009C928E /* ProductsPresenter.swift in Sources */,
 				1113BDF82CD4B6D7009C928E /* ProductsTableViewCell.swift in Sources */,
+				1147BDAF2CE51AEF00551C7B /* HoldingViewController.swift in Sources */,
 				1113BE1C2CD5126A009C928E /* TransactionInfoBuilder.swift in Sources */,
 				1113BDF92CD4B6D7009C928E /* ProductsTableViewController.swift in Sources */,
 				1113BE122CD4CCBC009C928E /* TransactionsInfoModel.swift in Sources */,
 				11AE6BE12CD7B0B3003C8BD9 /* DataServiceError.swift in Sources */,
+				11270AE52CE6153000214594 /* AlertPresenterFactory.swift in Sources */,
 				1113BDFA2CD4B6D7009C928E /* ProductsView.swift in Sources */,
 				1113BDFB2CD4B6D7009C928E /* DataLoaderProtocol.swift in Sources */,
 				1113BDFC2CD4B6D7009C928E /* TransactionDataManager.swift in Sources */,
@@ -490,9 +512,11 @@
 				1113BE0D2CD4B81A009C928E /* Transaction.swift in Sources */,
 				1113BDFF2CD4B6D7009C928E /* TransactionsInfoTableViewCell.swift in Sources */,
 				1113BE002CD4B6D7009C928E /* TransactionsInfoView.swift in Sources */,
+				1147BDAD2CE50C6900551C7B /* Queue.swift in Sources */,
 				1113BE012CD4B6D7009C928E /* TransactionsInfoViewController.swift in Sources */,
 				1113BE022CD4B6D7009C928E /* AppDelegate.swift in Sources */,
 				11B916E22CDE617300B9D456 /* DataManagerWithRate.swift in Sources */,
+				1147BDAB2CE50C4F00551C7B /* AlertWindow.swift in Sources */,
 				1113BE0B2CD4B800009C928E /* Rate.swift in Sources */,
 				1113BE1A2CD51219009C928E /* ProductsBuilder.swift in Sources */,
 				1113BE032CD4B6D7009C928E /* AlertBuilder.swift in Sources */,

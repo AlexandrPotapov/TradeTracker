@@ -11,22 +11,50 @@ protocol RouterTransactionInfoProtocol{
     func showAlert(title: String, message: String)
 }
 
+final class RouterTransactionInfo: RouterTransactionInfoProtocol, AlertWindowDelegate {
 
-final class RouterTransactionInfo: RouterTransactionInfoProtocol {
     
-    private var alertBuilder: AlertBuilderProtocol
-    private weak var root: UIViewController?
+    private var alertQueue = Queue<UIViewController>()
+    private var alertWindow: AlertPresenterProtocol?
+    private let alertPresenterFactory: AlertPresenterFactoryProtocol
+    private let alertBuilder: AlertBuilderProtocol
     
-    init(alertBuilder: AlertBuilderProtocol) {
+    init(alertBuilder: AlertBuilderProtocol, alertPresenterFactory: AlertPresenterFactoryProtocol) {
         self.alertBuilder = alertBuilder
+        self.alertPresenterFactory = alertPresenterFactory
     }
     
     func showAlert(title: String, message: String) {
         let alertController = alertBuilder.buildAlert(title: title, message: message)
-        root?.navigationController?.topViewController?.present(alertController, animated: true, completion: nil)
+        enqueueAlertForPresentation(alertController)
+    }
+        
+    // MARK: - Present
+    
+    private func enqueueAlertForPresentation(_ alertController: UIViewController) {
+        alertQueue.enqueue(alertController)
+        
+        showNextAlertIfPresent()
     }
     
-    func setRootViewController(root: UIViewController) {
-        self.root = root
+    private func showNextAlertIfPresent() {
+        guard alertWindow == nil,
+              let alertController = alertQueue.dequeue() else {
+                return
+        }
+
+        // Используем фабрику для создания нового alertWindow
+        var newAlertWindow = alertPresenterFactory.makeAlertPresenter()
+        newAlertWindow.delegate = self
+        newAlertWindow.presentAlert(alertController)
+        
+        self.alertWindow = newAlertWindow
+    }
+    
+    // MARK: - AlertWindowDelegate
+    
+    func alertWindow(_ alertWindow: AlertPresenterProtocol, didDismissAlert alertController: UIViewController) {
+        self.alertWindow = nil
+        showNextAlertIfPresent()
     }
 }

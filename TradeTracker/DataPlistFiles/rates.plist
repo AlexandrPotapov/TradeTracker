@@ -4,7 +4,7 @@
 <array>
 	<dict>
 		<key>from</key>
-		<string>USD</string>
+		<string>USDDD</string>
 		<key>rate</key>
 		<string>0.77</string>
 		<key>to</key>
@@ -16,7 +16,7 @@
 		<key>rate</key>
 		<string>1.3</string>
 		<key>to</key>
-		<string>USD</string>
+		<string>USDDD</string>
 	</dict>
 	<dict>
 		<key>from</key>
@@ -24,7 +24,7 @@
 		<key>rate</key>
 		<string>1.09</string>
 		<key>to</key>
-		<string>CAD</string>
+		<string>CADCC</string>
 	</dict>
 	<dict>
 		<key>from</key>
@@ -32,7 +32,7 @@
 		<key>rate</key>
 		<string>0.92</string>
 		<key>to</key>
-		<string>USD</string>
+		<string>USDDD</string>
 	</dict>
 	<dict>
 		<key>from</key>
