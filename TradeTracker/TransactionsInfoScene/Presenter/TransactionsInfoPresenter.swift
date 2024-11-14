@@ -22,7 +22,10 @@ final class TransactionsInfoPresenter: TransactionsInfoPresenterProtocol {
     weak var view: TransactionsInfoViewProtocol?
     
     private var header: String = ""
-    private var problemWithConversion = false // для обработки не удачных конвертаций
+    private var problemWithConversion = false // для обработки неудачных конвертаций
+    private var problemWithСurrencySymbol = false // для обработки неудачных отображений символов
+    private var badCurrencyCodes: [String] = []
+
     
     private let model: TransactionsInfoModelProtocol
     private let router: RouterTransactionInfoProtocol
@@ -38,6 +41,7 @@ final class TransactionsInfoPresenter: TransactionsInfoPresenterProtocol {
     
     func viewDidLoad() {
         problemWithConversion = false // сбрасываем флаг
+        problemWithСurrencySymbol = false
         
         let result = model.getTransactionsInfo(for: sku)
         switch result {
@@ -63,7 +67,13 @@ final class TransactionsInfoPresenter: TransactionsInfoPresenterProtocol {
             if problemWithConversion {
                 showAlertError(message: "Failed to concatenate some transactions. They will not be counted towards the total amount.")
             }
+            
+            if problemWithСurrencySymbol {
+                showAlertError(message: "Currency symbols not found for \(badCurrencyCodes). Display: \"¤\"")
+            }
+            
             view?.success(viewModels: viewModels)
+            
         case .failure(let error):
             showAlertError(message: error.localizedDescription)
         }
@@ -93,9 +103,10 @@ private extension TransactionsInfoPresenter {
         let localeIdentifier = Locale.identifier(fromComponents: [NSLocale.Key.currencyCode.rawValue: currencyCode])
         let locale = Locale(identifier: localeIdentifier)
         
-        guard let symbol = locale.currencySymbol else {
-            showAlertError(message: "Currency symbol not found for \(currencyCode).")
-            return currencyCode
+        guard let symbol = locale.currencySymbol, symbol != "¤" else {
+            badCurrencyCodes.append(currencyCode)
+            problemWithСurrencySymbol = true
+            return "¤"
         }
         return symbol
     }
