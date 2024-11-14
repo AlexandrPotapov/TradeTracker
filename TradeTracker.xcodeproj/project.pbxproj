@@ -36,6 +36,8 @@
 		1113BE1A2CD51219009C928E /* ProductsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1113BE192CD51219009C928E /* ProductsBuilder.swift */; };
 		1113BE1C2CD5126A009C928E /* TransactionInfoBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1113BE1B2CD5126A009C928E /* TransactionInfoBuilder.swift */; };
 		11270AE52CE6153000214594 /* AlertPresenterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11270AE42CE6153000214594 /* AlertPresenterFactory.swift */; };
+		11270AE72CE6241400214594 /* AlertDisplayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11270AE62CE6241400214594 /* AlertDisplayManager.swift */; };
+		11270AE92CE6246600214594 /* AlertQueueManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11270AE82CE6246600214594 /* AlertQueueManager.swift */; };
 		1147BDAB2CE50C4F00551C7B /* AlertWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1147BDAA2CE50C4F00551C7B /* AlertWindow.swift */; };
 		1147BDAD2CE50C6900551C7B /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1147BDAC2CE50C6900551C7B /* Queue.swift */; };
 		1147BDAF2CE51AEF00551C7B /* HoldingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1147BDAE2CE51AEF00551C7B /* HoldingViewController.swift */; };
@@ -95,6 +97,8 @@
 		1113BE192CD51219009C928E /* ProductsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsBuilder.swift; sourceTree = "<group>"; };
 		1113BE1B2CD5126A009C928E /* TransactionInfoBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionInfoBuilder.swift; sourceTree = "<group>"; };
 		11270AE42CE6153000214594 /* AlertPresenterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresenterFactory.swift; sourceTree = "<group>"; };
+		11270AE62CE6241400214594 /* AlertDisplayManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDisplayManager.swift; sourceTree = "<group>"; };
+		11270AE82CE6246600214594 /* AlertQueueManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertQueueManager.swift; sourceTree = "<group>"; };
 		1147BDAA2CE50C4F00551C7B /* AlertWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertWindow.swift; sourceTree = "<group>"; };
 		1147BDAC2CE50C6900551C7B /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		1147BDAE2CE51AEF00551C7B /* HoldingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoldingViewController.swift; sourceTree = "<group>"; };
@@ -306,10 +310,20 @@
 			children = (
 				11270AE42CE6153000214594 /* AlertPresenterFactory.swift */,
 				1113BDF02CD4B6D7009C928E /* AlertBuilder.swift */,
-				1147BDB02CE5215300551C7B /* View */,
 				1147BDAC2CE50C6900551C7B /* Queue.swift */,
+				1147BDB02CE5215300551C7B /* View */,
+				11270AEA2CE6259A00214594 /* Services */,
 			);
 			path = Alert;
+			sourceTree = "<group>";
+		};
+		11270AEA2CE6259A00214594 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				11270AE62CE6241400214594 /* AlertDisplayManager.swift */,
+				11270AE82CE6246600214594 /* AlertQueueManager.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		1147BDB02CE5215300551C7B /* View */ = {
@@ -493,12 +507,14 @@
 				1113BDF72CD4B6D7009C928E /* ProductsPresenter.swift in Sources */,
 				1113BDF82CD4B6D7009C928E /* ProductsTableViewCell.swift in Sources */,
 				1147BDAF2CE51AEF00551C7B /* HoldingViewController.swift in Sources */,
+				11270AE72CE6241400214594 /* AlertDisplayManager.swift in Sources */,
 				1113BE1C2CD5126A009C928E /* TransactionInfoBuilder.swift in Sources */,
 				1113BDF92CD4B6D7009C928E /* ProductsTableViewController.swift in Sources */,
 				1113BE122CD4CCBC009C928E /* TransactionsInfoModel.swift in Sources */,
 				11AE6BE12CD7B0B3003C8BD9 /* DataServiceError.swift in Sources */,
 				11270AE52CE6153000214594 /* AlertPresenterFactory.swift in Sources */,
 				1113BDFA2CD4B6D7009C928E /* ProductsView.swift in Sources */,
+				11270AE92CE6246600214594 /* AlertQueueManager.swift in Sources */,
 				1113BDFB2CD4B6D7009C928E /* DataLoaderProtocol.swift in Sources */,
 				1113BDFC2CD4B6D7009C928E /* TransactionDataManager.swift in Sources */,
 				11B916DF2CDE3E3000B9D456 /* ConversionRequest.swift in Sources */,

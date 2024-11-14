@@ -23,7 +23,15 @@ final class TransactionInfoBuilder: TransactionInfoBuilderProtocol {
         let transactionsInfoModel = TransactionsInfoModel(converter: converter, dataManager: dataManager)
         
         let view = TransactionsInfoViewController()
-        let router = RouterTransactionInfo(alertBuilder: AlertBuilder(), alertPresenterFactory: AlertPresenterFactory())
+        
+        let queue = AlertQueueManager()
+        let alertDisplayManager =  AlertDisplayManager(alertPresenterFactory: AlertPresenterFactory())
+        alertDisplayManager.alertQueueManager = queue
+        
+        let router = RouterTransactionInfo(alertQueueManager: queue,
+                                           alertDisplayManager: alertDisplayManager,
+                                           alertBuilder: AlertBuilder())
+        
         let presenter = TransactionsInfoPresenter(view: view, model: transactionsInfoModel, router: router, sku: sku)
         view.presenter = presenter
         return view

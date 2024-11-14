@@ -11,50 +11,20 @@ protocol RouterTransactionInfoProtocol{
     func showAlert(title: String, message: String)
 }
 
-final class RouterTransactionInfo: RouterTransactionInfoProtocol, AlertWindowDelegate {
-
-    
-    private var alertQueue = Queue<UIViewController>()
-    private var alertWindow: AlertPresenterProtocol?
-    private let alertPresenterFactory: AlertPresenterFactoryProtocol
+final class RouterTransactionInfo: RouterTransactionInfoProtocol {
+    private let alertQueueManager: AlertQueueManagerProtocol
+    private let alertDisplayManager: AlertDisplayManagerProtocol
     private let alertBuilder: AlertBuilderProtocol
     
-    init(alertBuilder: AlertBuilderProtocol, alertPresenterFactory: AlertPresenterFactoryProtocol) {
+    init(alertQueueManager: AlertQueueManagerProtocol, alertDisplayManager: AlertDisplayManagerProtocol, alertBuilder: AlertBuilderProtocol) {
+        self.alertQueueManager = alertQueueManager
+        self.alertDisplayManager = alertDisplayManager
         self.alertBuilder = alertBuilder
-        self.alertPresenterFactory = alertPresenterFactory
     }
-    
+
     func showAlert(title: String, message: String) {
         let alertController = alertBuilder.buildAlert(title: title, message: message)
-        enqueueAlertForPresentation(alertController)
-    }
-        
-    // MARK: - Present
-    
-    private func enqueueAlertForPresentation(_ alertController: UIViewController) {
-        alertQueue.enqueue(alertController)
-        
-        showNextAlertIfPresent()
-    }
-    
-    private func showNextAlertIfPresent() {
-        guard alertWindow == nil,
-              let alertController = alertQueue.dequeue() else {
-                return
-        }
-
-        // Используем фабрику для создания нового alertWindow
-        var newAlertWindow = alertPresenterFactory.makeAlertPresenter()
-        newAlertWindow.delegate = self
-        newAlertWindow.presentAlert(alertController)
-        
-        self.alertWindow = newAlertWindow
-    }
-    
-    // MARK: - AlertWindowDelegate
-    
-    func alertWindow(_ alertWindow: AlertPresenterProtocol, didDismissAlert alertController: UIViewController) {
-        self.alertWindow = nil
-        showNextAlertIfPresent()
+        alertQueueManager.enqueueAlert(alertController)
+        alertDisplayManager.showNextAlertIfPresent()
     }
 }
