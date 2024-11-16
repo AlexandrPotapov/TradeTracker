@@ -36,6 +36,7 @@ class AlertWindow: UIWindow, HoldingDelegate, AlertWindowProtocol {
     // MARK: - AlertPresenterProtocol
 
     func presentAlert(_ alert: UIViewController) {
+        // Надо подумать: нормально или нет иметь жескую связь с HoldingViewController?
         let holdingViewController = HoldingViewController(withAlertController: alert)
         holdingViewController.delegate = self
         rootViewController = holdingViewController

@@ -57,3 +57,12 @@ class HoldingViewController: UIViewController, AlertHoldingViewProtocol {
         }
     }
 }
+
+
+//#if DEBUG
+//extension HoldingViewController {
+//    var testAlertController: UIViewController {
+//        alertController
+//    }
+//}
+//#endif
