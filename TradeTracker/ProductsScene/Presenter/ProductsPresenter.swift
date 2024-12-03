@@ -30,6 +30,8 @@ final class ProductsPresenter: ProductsPresenterProtocol {
     }
     
     func viewDidLoad() {
+        
+        
         let result = model.getProductsInfo()
         
         switch result {

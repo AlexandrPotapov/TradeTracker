@@ -10,15 +10,15 @@ import XCTest
 
 final class PresenterProductsTests: XCTestCase {
     
-    var mockView: MockProductsView!
-    var mockModel: MockProductsModel!
+    var mockView: ProductsViewSpy!
+    var mockModel: ProductsModelStub!
     var mockRouter: MockRouter!
     var sut: ProductsPresenter!
 
     override func setUpWithError() throws {
         try super.setUpWithError()
-        mockView = MockProductsView()
-        mockModel = MockProductsModel()
+        mockView = ProductsViewSpy()
+        mockModel = ProductsModelStub()
         mockRouter = MockRouter()
         sut = ProductsPresenter(view: mockView, model: mockModel, router: mockRouter)
     }
@@ -81,6 +81,7 @@ final class PresenterProductsTests: XCTestCase {
 
     // MARK: - Helpers
 
+    //stub
     private func getProducts() -> [Product] {
         [Product(sku: "Foo", transactionCount: 1),
          Product(sku: "Bar", transactionCount: 2),
@@ -90,7 +91,9 @@ final class PresenterProductsTests: XCTestCase {
 
 // MARK: - Mock Objects
 
-final class MockProductsView: ProductsViewProtocol {
+// Этот объект фиксирует вызовы метода success и сохраняет переданные данные в viewModels.
+//Вы используете его, чтобы проверить, что ProductsPresenter передал корректные данные для отображения.
+final class ProductsViewSpy: ProductsViewProtocol {
     var viewModels: [ProductViewModel] = []
 
     func success(viewModels: [ProductViewModel]) {
@@ -98,7 +101,10 @@ final class MockProductsView: ProductsViewProtocol {
     }
 }
 
-final class MockProductsModel: ProductsModelProtocol {
+
+//Этот объект предоставляет заранее заданные результаты через result.
+//В тестах вы устанавливаете либо .success с продуктами, либо .failure с ошибкой, чтобы протестировать поведение ProductsPresenter в различных сценариях.
+final class ProductsModelStub: ProductsModelProtocol {
     var result: Result<[Product], DataServiceError>?
 
     func getProductsInfo() -> Result<[Product], DataServiceError> {
@@ -106,6 +112,12 @@ final class MockProductsModel: ProductsModelProtocol {
     }
 }
 
+
+//Классификация: Mock Object (мок-объект)
+//Этот объект фиксирует вызовы (например, showAlert или showTransactionsInfo) и сохраняет данные для проверки в тестах.
+//Например:
+//В тесте testViewDidLoad_Failure вы проверяете, что alertMessage содержит корректное сообщение об ошибке.
+//В тесте testTapOnTheProduct_SetsDesiredSKU вы проверяете, что capturedProductSku правильно установлено.
 final class MockRouter: RouterProductsProtocol {
     
     var alertMessage: String?

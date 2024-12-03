@@ -61,7 +61,14 @@ class AlertWindowTests: XCTestCase {
     
     func testResignKeyAndHide_HidesAlertWindow() {
         // Arrange
+//        Классификация: Test Spy (тестовый шпион)
+        //Хотя объект UIViewController сам по себе не фиксирует вызовы, вы используете его в тестах как объект, поведение которого наблюдаете.
+//        Пример использования: В тесте testPresentAlert_PresentsAlertController, вы проверяете, что spyAlertController действительно был представлен через sut.
         sut.presentAlert(spyAlertController)
+        
+        //Почему это test spy?
+//        Spy — это объект, который помогает отслеживать вызовы его методов или свойства, а также фиксировать, какие данные были переданы или какие методы были вызваны.
+//        В вашем случае, spyAlertController — это просто экземпляр UIViewController, который вы используете для проверки того, был ли он представлен через метод presentAlert:
         
         // Act
         let holdingViewController = sut.rootViewController as? HoldingViewController
@@ -94,6 +101,11 @@ class AlertWindowTests: XCTestCase {
 
 // MARK: - MockAlertWindowDelegate
 
+
+//Классификация: Mock Object (мок-объект)
+//Этот объект имитирует поведение делегата AlertWindowDelegate.
+//Вы используете замыкание didDismissAlertHandler для проверки вызова метода делегата alertWindow(_:didDismissAlert:) с правильными параметрами.
+//Пример использования: В тесте testDelegateCalled_WhenAlertDismissed, вы проверяете, что делегат вызывается корректно, используя это замыкание.
 class MockAlertWindowDelegate: AlertWindowDelegate {
 
     var didDismissAlertHandler: ((AlertWindowProtocol, UIViewController) -> Void)?
