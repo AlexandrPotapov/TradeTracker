@@ -35,6 +35,10 @@
 		1113BE172CD4DEC2009C928E /* TransactionsInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1113BE162CD4DEC2009C928E /* TransactionsInfoViewModel.swift */; };
 		1113BE1A2CD51219009C928E /* ProductsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1113BE192CD51219009C928E /* ProductsBuilder.swift */; };
 		1113BE1C2CD5126A009C928E /* TransactionInfoBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1113BE1B2CD5126A009C928E /* TransactionInfoBuilder.swift */; };
+		111B64B62CFF620E00EA6921 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 111B64B52CFF620E00EA6921 /* Swinject */; };
+		111B64B82CFF631D00EA6921 /* ProductsSceneProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B64B72CFF631D00EA6921 /* ProductsSceneProtocols.swift */; };
+		111B64BA2CFF642000EA6921 /* ProductsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B64B92CFF642000EA6921 /* ProductsAssembly.swift */; };
+		111B64BC2CFF64EE00EA6921 /* TransactionsInfoAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111B64BB2CFF64EE00EA6921 /* TransactionsInfoAssembly.swift */; };
 		11270AE52CE6153000214594 /* AlertPresenterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11270AE42CE6153000214594 /* AlertPresenterFactory.swift */; };
 		11270AE72CE6241400214594 /* AlertDisplayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11270AE62CE6241400214594 /* AlertDisplayManager.swift */; };
 		11270AE92CE6246600214594 /* AlertQueueManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11270AE82CE6246600214594 /* AlertQueueManager.swift */; };
@@ -43,6 +47,8 @@
 		1147BDAF2CE51AEF00551C7B /* HoldingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1147BDAE2CE51AEF00551C7B /* HoldingViewController.swift */; };
 		11894ED42CD6141F004E5110 /* RouterProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11894ED32CD6141F004E5110 /* RouterProducts.swift */; };
 		11894ED62CD61443004E5110 /* RouterTransactionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11894ED52CD61443004E5110 /* RouterTransactionInfo.swift */; };
+		11AC7D222D004892001205F1 /* TransactionsInfoProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AC7D212D004892001205F1 /* TransactionsInfoProtocols.swift */; };
+		11AC7D282D0062A6001205F1 /* SharedDataManagerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AC7D272D0062A6001205F1 /* SharedDataManagerAssembly.swift */; };
 		11AE6BE12CD7B0B3003C8BD9 /* DataServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AE6BE02CD7B0B3003C8BD9 /* DataServiceError.swift */; };
 		11B916DF2CDE3E3000B9D456 /* ConversionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B916DE2CDE3E3000B9D456 /* ConversionRequest.swift */; };
 		11B916E22CDE617300B9D456 /* DataManagerWithRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B916E12CDE617300B9D456 /* DataManagerWithRate.swift */; };
@@ -96,6 +102,9 @@
 		1113BE162CD4DEC2009C928E /* TransactionsInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsInfoViewModel.swift; sourceTree = "<group>"; };
 		1113BE192CD51219009C928E /* ProductsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsBuilder.swift; sourceTree = "<group>"; };
 		1113BE1B2CD5126A009C928E /* TransactionInfoBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionInfoBuilder.swift; sourceTree = "<group>"; };
+		111B64B72CFF631D00EA6921 /* ProductsSceneProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsSceneProtocols.swift; sourceTree = "<group>"; };
+		111B64B92CFF642000EA6921 /* ProductsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsAssembly.swift; sourceTree = "<group>"; };
+		111B64BB2CFF64EE00EA6921 /* TransactionsInfoAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsInfoAssembly.swift; sourceTree = "<group>"; };
 		11270AE42CE6153000214594 /* AlertPresenterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresenterFactory.swift; sourceTree = "<group>"; };
 		11270AE62CE6241400214594 /* AlertDisplayManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDisplayManager.swift; sourceTree = "<group>"; };
 		11270AE82CE6246600214594 /* AlertQueueManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertQueueManager.swift; sourceTree = "<group>"; };
@@ -107,6 +116,8 @@
 		11A3B9072CCBCC030076C525 /* TradeTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TradeTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11A3B91D2CCBCC050076C525 /* TradeTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TradeTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		11A3B9272CCBCC050076C525 /* TradeTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TradeTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		11AC7D212D004892001205F1 /* TransactionsInfoProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsInfoProtocols.swift; sourceTree = "<group>"; };
+		11AC7D272D0062A6001205F1 /* SharedDataManagerAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedDataManagerAssembly.swift; sourceTree = "<group>"; };
 		11AE6BE02CD7B0B3003C8BD9 /* DataServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataServiceError.swift; sourceTree = "<group>"; };
 		11B916DE2CDE3E3000B9D456 /* ConversionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionRequest.swift; sourceTree = "<group>"; };
 		11B916E12CDE617300B9D456 /* DataManagerWithRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerWithRate.swift; sourceTree = "<group>"; };
@@ -131,6 +142,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				111B64B62CFF620E00EA6921 /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,6 +208,9 @@
 				1113BDDC2CD4B6D7009C928E /* View */,
 				1113BE192CD51219009C928E /* ProductsBuilder.swift */,
 				11894ED32CD6141F004E5110 /* RouterProducts.swift */,
+				111B64B72CFF631D00EA6921 /* ProductsSceneProtocols.swift */,
+				111B64B92CFF642000EA6921 /* ProductsAssembly.swift */,
+				11AC7D272D0062A6001205F1 /* SharedDataManagerAssembly.swift */,
 			);
 			path = ProductsScene;
 			sourceTree = "<group>";
@@ -256,6 +271,8 @@
 				1113BDED2CD4B6D7009C928E /* View */,
 				1113BE1B2CD5126A009C928E /* TransactionInfoBuilder.swift */,
 				11894ED52CD61443004E5110 /* RouterTransactionInfo.swift */,
+				111B64BB2CFF64EE00EA6921 /* TransactionsInfoAssembly.swift */,
+				11AC7D212D004892001205F1 /* TransactionsInfoProtocols.swift */,
 			);
 			path = TransactionsInfoScene;
 			sourceTree = "<group>";
@@ -372,6 +389,7 @@
 			);
 			name = TradeTracker;
 			packageProductDependencies = (
+				111B64B52CFF620E00EA6921 /* Swinject */,
 			);
 			productName = TradeTracker;
 			productReference = 11A3B9072CCBCC030076C525 /* TradeTracker.app */;
@@ -455,6 +473,9 @@
 			);
 			mainGroup = 11A3B8FE2CCBCC030076C525;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				111B64B42CFF620E00EA6921 /* XCRemoteSwiftPackageReference "Swinject" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 11A3B9082CCBCC030076C525 /* Products */;
 			projectDirPath = "";
@@ -500,6 +521,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				111B64B82CFF631D00EA6921 /* ProductsSceneProtocols.swift in Sources */,
 				1113BDF42CD4B6D7009C928E /* RateData.swift in Sources */,
 				11894ED42CD6141F004E5110 /* RouterProducts.swift in Sources */,
 				1113BDF52CD4B6D7009C928E /* TransactionData.swift in Sources */,
@@ -511,6 +533,7 @@
 				1113BE1C2CD5126A009C928E /* TransactionInfoBuilder.swift in Sources */,
 				1113BDF92CD4B6D7009C928E /* ProductsTableViewController.swift in Sources */,
 				1113BE122CD4CCBC009C928E /* TransactionsInfoModel.swift in Sources */,
+				11AC7D222D004892001205F1 /* TransactionsInfoProtocols.swift in Sources */,
 				11AE6BE12CD7B0B3003C8BD9 /* DataServiceError.swift in Sources */,
 				11270AE52CE6153000214594 /* AlertPresenterFactory.swift in Sources */,
 				1113BDFA2CD4B6D7009C928E /* ProductsView.swift in Sources */,
@@ -522,14 +545,17 @@
 				1113BDFE2CD4B6D7009C928E /* TransactionsInfoPresenter.swift in Sources */,
 				11894ED62CD61443004E5110 /* RouterTransactionInfo.swift in Sources */,
 				11B916E42CDE641400B9D456 /* Product.swift in Sources */,
+				111B64BA2CFF642000EA6921 /* ProductsAssembly.swift in Sources */,
 				1113BE172CD4DEC2009C928E /* TransactionsInfoViewModel.swift in Sources */,
 				1113BE142CD4D5A0009C928E /* Converter.swift in Sources */,
 				1113BE102CD4CC99009C928E /* ProductsModel.swift in Sources */,
 				1113BE0D2CD4B81A009C928E /* Transaction.swift in Sources */,
+				11AC7D282D0062A6001205F1 /* SharedDataManagerAssembly.swift in Sources */,
 				1113BDFF2CD4B6D7009C928E /* TransactionsInfoTableViewCell.swift in Sources */,
 				1113BE002CD4B6D7009C928E /* TransactionsInfoView.swift in Sources */,
 				1147BDAD2CE50C6900551C7B /* Queue.swift in Sources */,
 				1113BE012CD4B6D7009C928E /* TransactionsInfoViewController.swift in Sources */,
+				111B64BC2CFF64EE00EA6921 /* TransactionsInfoAssembly.swift in Sources */,
 				1113BE022CD4B6D7009C928E /* AppDelegate.swift in Sources */,
 				11B916E22CDE617300B9D456 /* DataManagerWithRate.swift in Sources */,
 				1147BDAB2CE50C4F00551C7B /* AlertWindow.swift in Sources */,
@@ -861,6 +887,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		111B64B42CFF620E00EA6921 /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.9.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		111B64B52CFF620E00EA6921 /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 111B64B42CFF620E00EA6921 /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 11A3B8FF2CCBCC030076C525 /* Project object */;
 }

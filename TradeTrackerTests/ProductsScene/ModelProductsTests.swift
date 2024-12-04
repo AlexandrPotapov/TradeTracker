@@ -31,7 +31,7 @@ final class ModelProductsTests: XCTestCase {
         mockDataManager.result = .success(getStubTransactions())
         
         // Act
-        let result = sut.getProductsInfo()
+        let result = sut.fetchProducts()
         
         // Assert
         switch result {
@@ -63,7 +63,7 @@ final class ModelProductsTests: XCTestCase {
         mockDataManager.result = .failure(.resourceNotFound(name: "transactions.plist"))
         
         // Act
-        let result = sut.getProductsInfo()
+        let result = sut.fetchProducts()
         
         // Assert
         switch result {
@@ -83,7 +83,7 @@ final class ModelProductsTests: XCTestCase {
         mockDataManager.result = .success([])
         
         // Act
-        let result = sut.getProductsInfo()
+        let result = sut.fetchProducts()
         
         // Assert
         switch result {
@@ -101,7 +101,7 @@ final class ModelProductsTests: XCTestCase {
         mockDataManager.result = .success([getStubTransactions().first!])
         
         // Act
-        let result = sut.getProductsInfo()
+        let result = sut.fetchProducts()
         
         // Assert
         switch result {

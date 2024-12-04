@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Swinject
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,16 +15,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        let productsScene = ProductsBuilder().buildProduct()
-        let navigationController = UINavigationController(rootViewController: productsScene)
+        let container = Container()
+        _ = Assembler([AlertAssembly(), SharedDataManagerAssembly(), ProductsAssembly(), TransactionsInfoAssembly()], container: container)
         
+        guard let productsScene = container.resolve(UIViewController.self, name: "productsScene") else {
+            fatalError("ProductsScene не зарегистрирован")
+        }
+        
+        let navigationController = UINavigationController(rootViewController: productsScene)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         return true
     }
 
 }
-

@@ -7,26 +7,19 @@
 
 import Foundation
 
-protocol ProductsViewProtocol: AnyObject {
-    func success(viewModels: [ProductViewModel])
-}
-
-protocol ProductsPresenterProtocol: AnyObject {
-    func viewDidLoad()
-    func tapOnTheProduct(with sku: String)
-
-}
-
 final class ProductsPresenter: ProductsPresenterProtocol {
     weak var view: ProductsViewProtocol?
     
     private let router: RouterProductsProtocol
     private var model: ProductsModelProtocol
     
-    init(view: ProductsViewProtocol, model: ProductsModelProtocol, router: RouterProductsProtocol) {
-        self.view = view
+    init(model: ProductsModelProtocol, router: RouterProductsProtocol) {
         self.model = model
         self.router = router
+    }
+    
+    func attachView(_ view: ProductsViewProtocol) {
+        self.view = view
     }
     
     func viewDidLoad() {

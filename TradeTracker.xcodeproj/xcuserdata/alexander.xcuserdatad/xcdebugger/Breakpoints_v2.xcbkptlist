@@ -7,48 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "5833AA49-8DF9-4E72-BFF6-D42DE74188D3"
+            uuid = "A93AD52F-B4E7-4662-964C-E9BEDA54DC81"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TradeTracker/Alert/AlertBuilder.swift"
+            filePath = "TradeTracker/ProductsScene/RouterProducts.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "11"
-            endingLineNumber = "11"
-            landmarkName = "AlertBuilderProtocol"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "DD2DD0AF-579C-4583-A5E4-43994FD4C4F2"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TradeTracker/Alert/Services/AlertDisplayManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "alertWindow(_:didDismissAlert:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "CB6D524D-D2A2-4167-994B-28AA4F6F32F1"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TradeTracker/Alert/Services/AlertDisplayManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "showNextAlertIfPresent()"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "showTransactionsInfo(with:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -10,7 +10,7 @@ import UIKit
 final class ProductsView: UIView {
     
     var presenter: ProductsPresenterProtocol?
-    var viewModels = [ProductViewModel]()
+    private var viewModels = [ProductViewModel]()
     
     private lazy var tableView: UITableView = {
         let view = UITableView()

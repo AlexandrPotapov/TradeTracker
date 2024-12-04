@@ -7,9 +7,6 @@
 
 import Foundation
 
-protocol TransactionsInfoModelProtocol {
-    func getTransactionsInfo(for sku: String) -> Result<(transactions: [TransactionInfo], totalInGBP: Double), DataServiceError>
-}
 
 struct TransactionsInfoModel: TransactionsInfoModelProtocol {
     private let converter: ConverterProtocol

@@ -7,10 +7,6 @@
 
 import Foundation
 
-protocol ProductsModelProtocol {
-    func getProductsInfo() -> Result<[Product], DataServiceError>
-}
-
 struct ProductsModel: ProductsModelProtocol {
     
     private let dataManager: TransactionDataManagerProtocol

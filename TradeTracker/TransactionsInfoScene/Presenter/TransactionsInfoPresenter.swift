@@ -7,16 +7,6 @@
 
 import Foundation
 
-protocol TransactionsInfoViewProtocol: AnyObject {
-    func success(viewModels: [TransactionsInfoViewModel])
-}
-
-protocol TransactionsInfoPresenterProtocol: AnyObject {
-    func viewDidLoad()
-    func getTransactionsTitle() -> String
-    func getHeader() -> String
-}
-
 final class TransactionsInfoPresenter: TransactionsInfoPresenterProtocol {
     
     weak var view: TransactionsInfoViewProtocol?
@@ -32,8 +22,7 @@ final class TransactionsInfoPresenter: TransactionsInfoPresenterProtocol {
     private let sku: String
     
     
-    init(view: TransactionsInfoViewProtocol, model: TransactionsInfoModelProtocol, router: RouterTransactionInfoProtocol, sku: String) {
-        self.view = view
+    init(model: TransactionsInfoModelProtocol, router: RouterTransactionInfoProtocol, sku: String) {
         self.model = model
         self.router = router
         self.sku = sku
