@@ -8,9 +8,9 @@
 import UIKit
 import Swinject
 
-protocol AlertBuilderProtocol {
-    func buildAlert(title: String, message: String) -> UIViewController
-}
+//protocol AlertBuilderProtocol {
+//    func buildAlert(title: String, message: String) -> UIViewController
+//}
 
 //final class AlertBuilder: AlertBuilderProtocol {
 //    func buildAlert(title: String, message: String) -> UIViewController {
