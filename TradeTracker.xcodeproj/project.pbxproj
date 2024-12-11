@@ -47,6 +47,7 @@
 		117D98E22D0349140053A5AA /* AlertAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117D98E12D0349140053A5AA /* AlertAssembly.swift */; };
 		117D98E42D0349490053A5AA /* AlertProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117D98E32D0349490053A5AA /* AlertProtocols.swift */; };
 		117D98E62D034FFA0053A5AA /* HoldingVCFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117D98E52D034FFA0053A5AA /* HoldingVCFactory.swift */; };
+		1187D4782D09D02900DEC562 /* TradeTrackerCore in Frameworks */ = {isa = PBXBuildFile; productRef = 1187D4772D09D02900DEC562 /* TradeTrackerCore */; };
 		11894ED42CD6141F004E5110 /* ProductsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11894ED32CD6141F004E5110 /* ProductsRouter.swift */; };
 		11894ED62CD61443004E5110 /* TransactionInfoRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11894ED52CD61443004E5110 /* TransactionInfoRouter.swift */; };
 		11AC7D222D004892001205F1 /* TransactionsInfoProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AC7D212D004892001205F1 /* TransactionsInfoProtocols.swift */; };
@@ -147,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				111B64B62CFF620E00EA6921 /* Swinject in Frameworks */,
+				1187D4782D09D02900DEC562 /* TradeTrackerCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,9 +360,17 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		1187D4752D09CC1300DEC562 /* Packeges */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Packeges;
+			sourceTree = "<group>";
+		};
 		11A3B8FE2CCBCC030076C525 = {
 			isa = PBXGroup;
 			children = (
+				1187D4752D09CC1300DEC562 /* Packeges */,
 				1113BDF32CD4B6D7009C928E /* TradeTracker */,
 				11A3B9202CCBCC050076C525 /* TradeTrackerTests */,
 				11A3B92A2CCBCC050076C525 /* TradeTrackerUITests */,
@@ -396,6 +406,7 @@
 			name = TradeTracker;
 			packageProductDependencies = (
 				111B64B52CFF620E00EA6921 /* Swinject */,
+				1187D4772D09D02900DEC562 /* TradeTrackerCore */,
 			);
 			productName = TradeTracker;
 			productReference = 11A3B9072CCBCC030076C525 /* TradeTracker.app */;
@@ -918,6 +929,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 111B64B42CFF620E00EA6921 /* XCRemoteSwiftPackageReference "Swinject" */;
 			productName = Swinject;
+		};
+		1187D4772D09D02900DEC562 /* TradeTrackerCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TradeTrackerCore;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Swinject
+//import Swinject
 
 //protocol RouterTransactionInfoProtocol{
 //    func showAlert(title: String, message: String)

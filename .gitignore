@@ -1,0 +1,41 @@
+# macOS системные файлы
+.DS_Store
+
+# Xcode пользовательские настройки
+xcuserdata/
+
+# Xcode Derived Data
+DerivedData/
+
+# Obj-C/Swift specific
+*.hmap
+
+# App packaging
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Swift Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+# Swift Package Manager
+.build/
+.swiftpm/ 
+
+# CocoaPods (опционально)
+# Pods/
+# Podfile.lock
+
+# Carthage
+Carthage/Build/
+
+# fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
+
+# Логи и временные файлы
+*.log
+*.tmp
