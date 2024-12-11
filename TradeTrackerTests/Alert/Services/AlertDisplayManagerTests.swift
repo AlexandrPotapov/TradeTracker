@@ -9,16 +9,16 @@ import XCTest
 @testable import TradeTracker
 
 final class AlertDisplayManagerTests: XCTestCase {
-    var mockAlertWindow: MockAlertWindow!
-    var mockAlertPresenterFactory: MockAlertPresenterFactory!
-    var mockAlertQueueManager: MockAlertQueueManager!
+    var mockAlertWindow: AlertWindowMock!
+    var mockAlertPresenterFactory: AlertPresenterFactoryMock!
+    var mockAlertQueueManager: AlertQueueManagerMock!
     var sut: AlertDisplayManager!
     
     override func setUpWithError() throws {
         try super.setUpWithError()
-        mockAlertWindow = MockAlertWindow()
-        mockAlertPresenterFactory = MockAlertPresenterFactory(mckAlertWindow: mockAlertWindow)
-        mockAlertQueueManager = MockAlertQueueManager()
+        mockAlertWindow = AlertWindowMock()
+        mockAlertPresenterFactory = AlertPresenterFactoryMock(mckAlertWindow: mockAlertWindow)
+        mockAlertQueueManager = AlertQueueManagerMock()
         
         sut = AlertDisplayManager(alertPresenterFactory: mockAlertPresenterFactory)
         sut.alertQueueManager = mockAlertQueueManager
@@ -120,9 +120,9 @@ final class AlertDisplayManagerTests: XCTestCase {
     }
 }
 
-// MARK: - Mock Objects
+// MARK: - AlertDisplayManagerTests
 
-final class MockAlertWindow: AlertWindowProtocol {
+final class AlertWindowMock: AlertWindowProtocol {
     var capturedAlert: UIViewController?
     
     func presentAlert(_ alert: UIViewController) {
@@ -130,10 +130,10 @@ final class MockAlertWindow: AlertWindowProtocol {
     }
 }
 
-final class MockAlertPresenterFactory: AlertPresenterFactoryProtocol {
-    var mckAlertWindow: MockAlertWindow
+final class AlertPresenterFactoryMock: AlertPresenterFactoryProtocol {
+    var mckAlertWindow: AlertWindowMock
     
-    init(mckAlertWindow: MockAlertWindow) {
+    init(mckAlertWindow: AlertWindowMock) {
         self.mckAlertWindow = mckAlertWindow
     }
     
@@ -142,7 +142,7 @@ final class MockAlertPresenterFactory: AlertPresenterFactoryProtocol {
     }
 }
 
-final class MockAlertQueueManager: AlertQueueManagerProtocol {
+final class AlertQueueManagerMock: AlertQueueManagerProtocol {
     var alertsQueue = Queue<UIViewController>()
     
     var alertQueueCount: Int {

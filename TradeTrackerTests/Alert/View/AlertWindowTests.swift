@@ -11,12 +11,12 @@ import XCTest
 class AlertWindowTests: XCTestCase {
 
     var sut: AlertWindow!
-    var mockDelegate: MockAlertWindowDelegate!
+    var mockDelegate: AlertWindowDelegateMock!
     var spyAlertController: UIViewController!
     
     override func setUpWithError() throws {
         try super.setUpWithError()
-        mockDelegate = MockAlertWindowDelegate()
+        mockDelegate = AlertWindowDelegateMock()
         spyAlertController = UIViewController()
         sut = AlertWindow(delegate: mockDelegate)
     }
@@ -99,14 +99,8 @@ class AlertWindowTests: XCTestCase {
     }
 }
 
-// MARK: - MockAlertWindowDelegate
-
-
-//Классификация: Mock Object (мок-объект)
-//Этот объект имитирует поведение делегата AlertWindowDelegate.
-//Вы используете замыкание didDismissAlertHandler для проверки вызова метода делегата alertWindow(_:didDismissAlert:) с правильными параметрами.
-//Пример использования: В тесте testDelegateCalled_WhenAlertDismissed, вы проверяете, что делегат вызывается корректно, используя это замыкание.
-class MockAlertWindowDelegate: AlertWindowDelegate {
+// MARK: - AlertWindowTests
+class AlertWindowDelegateMock: AlertWindowDelegate {
 
     var didDismissAlertHandler: ((AlertWindowProtocol, UIViewController) -> Void)?
     

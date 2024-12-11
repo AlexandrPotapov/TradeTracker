@@ -31,21 +31,19 @@ import Swinject
 //}
 //
 
-final class RouterTransactionInfo: RouterTransactionInfoProtocol {
+final class TransactionInfoRouter: TransactionInfoRouterProtocol {
     private let alertQueueManager: AlertQueueManagerProtocol
     private let alertDisplayManager: AlertDisplayManagerProtocol
-    private let container: Container
+    private let alertBuilder: AlertBuilderProtocol
     
-    init(alertQueueManager: AlertQueueManagerProtocol, alertDisplayManager: AlertDisplayManagerProtocol, container: Container) {
+    init(alertQueueManager: AlertQueueManagerProtocol, alertDisplayManager: AlertDisplayManagerProtocol, alertBuilder: AlertBuilderProtocol) {
         self.alertQueueManager = alertQueueManager
         self.alertDisplayManager = alertDisplayManager
-        self.container = container
+        self.alertBuilder = alertBuilder
     }
 
     func showAlert(title: String, message: String) {
-        guard let alertController = container.resolve(UIViewController.self, name: "alertVC", arguments: title, message) else {
-            fatalError("Failed to resolve UIViewController as alert")
-        }
+         let alertController = alertBuilder.buildAlert(title: title, message: message)
         
         alertQueueManager.enqueueAlert(alertController)
         alertDisplayManager.showNextAlertIfPresent()

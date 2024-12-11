@@ -10,14 +10,14 @@ import XCTest
 
 final class DataManagerWithRateTests: XCTestCase {
     
-    var mockRatesDataLoader: MockDataLoader<[RateData]>!
-    var mockTransactionDataManager: MockTransactionDataManager!
+    var mockRatesDataLoader: DataLoaderMock<[RateData]>!
+    var mockTransactionDataManager: TransactionDataManagerMock!
     var sut: DataManagerWithRate!
     
     override func setUpWithError() throws {
         try super.setUpWithError()
-        mockRatesDataLoader = MockDataLoader<[RateData]>()
-        mockTransactionDataManager = MockTransactionDataManager()
+        mockRatesDataLoader = DataLoaderMock<[RateData]>()
+        mockTransactionDataManager = TransactionDataManagerMock()
         sut = DataManagerWithRate(dataLoader: mockRatesDataLoader, transactionDataManager: mockTransactionDataManager)
     }
     

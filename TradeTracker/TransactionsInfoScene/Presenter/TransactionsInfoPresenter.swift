@@ -18,11 +18,11 @@ final class TransactionsInfoPresenter: TransactionsInfoPresenterProtocol {
 
     
     private let model: TransactionsInfoModelProtocol
-    private let router: RouterTransactionInfoProtocol
+    private let router: TransactionInfoRouterProtocol
     private let sku: String
     
     
-    init(model: TransactionsInfoModelProtocol, router: RouterTransactionInfoProtocol, sku: String) {
+    init(model: TransactionsInfoModelProtocol, router: TransactionInfoRouterProtocol, sku: String) {
         self.model = model
         self.router = router
         self.sku = sku

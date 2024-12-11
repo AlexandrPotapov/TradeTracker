@@ -11,14 +11,14 @@ import XCTest
 final class HoldingViewControllerTests: XCTestCase {
 
     var sut: HoldingViewController!
-    var mockDelegate: MockHoldingDelegate!
+    var mockDelegate: HoldingDelegateMock!
     var spyAlertController: UIViewController!
 
     override func setUpWithError() throws {
         try super.setUpWithError()
         
         spyAlertController = UIViewController()
-        mockDelegate = MockHoldingDelegate()
+        mockDelegate = HoldingDelegateMock()
         sut = HoldingViewController(withAlertController: spyAlertController)
         sut.delegate = mockDelegate
     }
@@ -106,9 +106,9 @@ final class HoldingViewControllerTests: XCTestCase {
     
 }
 
-// MARK: - Mock Delegate
+// MARK: - HoldingViewControllerTests
 
-final class MockHoldingDelegate: HoldingDelegate {
+final class HoldingDelegateMock: HoldingDelegate {
 
     var didDismissAlertHandler: ((AlertHoldingViewProtocol, UIViewController) -> Void)?
 

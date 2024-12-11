@@ -87,10 +87,3 @@ final class DataLoaderTests: XCTestCase {
         }
     }
 }
-
-// MARK: - Вспомогательные модели
-
-struct TestData: Decodable {
-    let name: String
-    let value: Int
-}

@@ -8,14 +8,14 @@
 import XCTest
 @testable import TradeTracker
 
-final class ModelProductsTests: XCTestCase {
+final class ProductsModelTests: XCTestCase {
     
-    var mockDataManager: MockTransactionDataManager!
+    var mockDataManager: TransactionDataManagerMock!
     var sut: ProductsModel!
     
     override func setUpWithError() throws {
         try super.setUpWithError()
-        mockDataManager = MockTransactionDataManager()
+        mockDataManager = TransactionDataManagerMock()
         sut = ProductsModel(dataManager: mockDataManager)
     }
     
@@ -123,20 +123,5 @@ final class ModelProductsTests: XCTestCase {
          TransactionData(sku: "SKU003", amount: "200.0", currency: "GBP"),
          TransactionData(sku: "SKU003", amount: "100.0", currency: "USD"),
          TransactionData(sku: "SKU003", amount: "200.0", currency: "GBP")]
-    }
-}
-
-// MARK: - MockTransactionDataManager
-
-final class MockTransactionDataManager: TransactionDataManagerProtocol {
-    
-    var result: Result<[TransactionData], DataServiceError>?
-        
-    func loadTransactions() -> Result<[TransactionData], DataServiceError> {
-        return result ?? .failure(.resourceNotFound(name: "Mock"))
-    }
-    
-    func clearCache() {
-        result = nil
     }
 }

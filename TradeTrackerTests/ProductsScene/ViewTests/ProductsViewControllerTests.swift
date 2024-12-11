@@ -10,12 +10,12 @@ import XCTest
 
 final class ProductsViewControllerTests: XCTestCase {
     
-    var mockPresenter: MockProductsPresenter!
+    var mockPresenter: ProductsPresenterMock!
     var sut: ProductsViewController!
     
     override func setUpWithError() throws {
         try super.setUpWithError()
-        mockPresenter = MockProductsPresenter()
+        mockPresenter = ProductsPresenterMock()
         sut = ProductsViewController()
         sut.presenter = mockPresenter
     }
@@ -32,21 +32,5 @@ final class ProductsViewControllerTests: XCTestCase {
         
         // Проверяем, что метод viewDidLoad в презентере был вызван
         XCTAssertTrue(mockPresenter.didCallViewDidLoad)
-    }
-}
-
-// MARK: - Mock Objects
-
-final class MockProductsPresenter: ProductsPresenterProtocol {
-    
-    var didCallViewDidLoad = false
-    var capturedProductSku: String?
-    
-    func viewDidLoad() {
-        didCallViewDidLoad = true
-    }
-    
-    func tapOnTheProduct(with sku: String) {
-        capturedProductSku = sku
     }
 }

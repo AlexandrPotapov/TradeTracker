@@ -5,7 +5,7 @@
 //  Created by Alexander on 03.12.2024.
 //
 
-import Foundation
+import UIKit
 
 protocol ProductsViewProtocol: AnyObject {
     var presenter: ProductsPresenterProtocol? { get set }
@@ -19,10 +19,11 @@ protocol ProductsPresenterProtocol: AnyObject {
 }
 
 protocol ProductsModelProtocol {
-    func getProductsInfo() -> Result<[Product], DataServiceError>
+    func fetchProducts() -> Result<[Product], DataServiceError>
 }
 
-protocol RouterProductsProtocol: AnyObject {
+protocol ProductsRouterProtocol: AnyObject {
     func showTransactionsInfo(with sku: String)
     func showAlert(title: String, message: String)
+    func setRootViewController(root: UIViewController)
 }

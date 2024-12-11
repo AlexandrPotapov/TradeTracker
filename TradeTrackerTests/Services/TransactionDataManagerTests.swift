@@ -10,12 +10,12 @@ import XCTest
 
 final class TransactionDataManagerTests: XCTestCase {
     
-    var mockDataLoader: MockDataLoader<[TransactionData]>!
+    var mockDataLoader: DataLoaderMock<[TransactionData]>!
     var sut: TransactionDataManager!
     
     override func setUpWithError() throws {
         try super.setUpWithError()
-        mockDataLoader = MockDataLoader<[TransactionData]>()
+        mockDataLoader = DataLoaderMock<[TransactionData]>()
         sut = TransactionDataManager(dataLoader: mockDataLoader)
     }
     
@@ -92,21 +92,5 @@ final class TransactionDataManagerTests: XCTestCase {
          TransactionData(sku: "SKU003", amount: "200.0", currency: "GBP"),
          TransactionData(sku: "SKU003", amount: "100.0", currency: "USD"),
          TransactionData(sku: "SKU003", amount: "200.0", currency: "GBP")]
-    }
-}
-
-// MARK: - MockDataLoader
-
-final class MockDataLoader<T: Decodable>: DataLoaderProtocol {
-    
-    var result: Result<T, DataServiceError>?
-    
-    func load<U: Decodable>(from fileURL: URL, as type: U.Type) -> Result<U, DataServiceError> {
-        // Преобразуем result в нужный тип
-        if let result = result as? Result<U, DataServiceError> {
-            return result
-        } else {
-            return .failure(.resourceNotFound(name: "Mock"))
-        }
     }
 }

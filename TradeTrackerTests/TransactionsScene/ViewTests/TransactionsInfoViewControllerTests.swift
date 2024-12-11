@@ -9,12 +9,12 @@ import XCTest
 @testable import TradeTracker
 
 final class TransactionsInfoViewControllerTests: XCTestCase {
-    var mockPresenter: MockTransactionsInfoPresenter!
+    var mockPresenter: TransactionsInfoPresenterMock!
     var sut: TransactionsInfoViewController!
     
     override func setUpWithError() throws {
         try super.setUpWithError()
-        mockPresenter = MockTransactionsInfoPresenter()
+        mockPresenter = TransactionsInfoPresenterMock()
         sut = TransactionsInfoViewController()
         
         mockPresenter.title = "Foo"

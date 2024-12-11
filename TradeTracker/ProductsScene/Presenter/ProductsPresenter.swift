@@ -10,10 +10,10 @@ import Foundation
 final class ProductsPresenter: ProductsPresenterProtocol {
     weak var view: ProductsViewProtocol?
     
-    private let router: RouterProductsProtocol
+    private let router: ProductsRouterProtocol
     private var model: ProductsModelProtocol
     
-    init(model: ProductsModelProtocol, router: RouterProductsProtocol) {
+    init(model: ProductsModelProtocol, router: ProductsRouterProtocol) {
         self.model = model
         self.router = router
     }
@@ -25,7 +25,7 @@ final class ProductsPresenter: ProductsPresenterProtocol {
     func viewDidLoad() {
         
         
-        let result = model.getProductsInfo()
+        let result = model.fetchProducts()
         
         switch result {
             case .success(let products):

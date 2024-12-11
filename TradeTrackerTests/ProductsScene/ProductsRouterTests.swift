@@ -8,21 +8,21 @@
 import XCTest
 @testable import TradeTracker
 
-final class RouterProductsTests: XCTestCase {
-    var mockTransactionInfoBuilder: MockTransactionInfoBuilder!
-    var mockAlertBuilder: MockAlertBuilder!
-    var mockRootViewController: MockViewController!
-    var mockNavigationController: MockNavigationController!
-    var router: RouterProducts!
+final class ProductsRouterTests: XCTestCase {
+    var mockTransactionInfoBuilder: TransactionInfoBuilderMock!
+    var mockAlertBuilder: AlertBuilderMock!
+    var mockRootViewController: ViewControllerMock!
+    var mockNavigationController: NavigationControllerMock!
+    var router: ProductsRouter!
     
     override func setUpWithError() throws {
         try super.setUpWithError()
-        mockTransactionInfoBuilder = MockTransactionInfoBuilder()
-        mockAlertBuilder = MockAlertBuilder()
-        mockRootViewController = MockViewController()
-        mockNavigationController = MockNavigationController(rootViewController: mockRootViewController)
+        mockTransactionInfoBuilder = TransactionInfoBuilderMock()
+        mockAlertBuilder = AlertBuilderMock()
+        mockRootViewController = ViewControllerMock()
+        mockNavigationController = NavigationControllerMock(rootViewController: mockRootViewController)
         
-        router = RouterProducts(
+        router = ProductsRouter(
             transactionsInfoBuilder: mockTransactionInfoBuilder,
             alertBuilder: mockAlertBuilder
         )
@@ -92,60 +92,5 @@ final class RouterProductsTests: XCTestCase {
         // Assert†
         XCTAssertNotNil(mockRootViewController.presentedVC,
                         "Should present a view controller")
-    }
-}
-
-// MARK: - Mock Objects
-
-final class MockTransactionInfoBuilder: TransactionInfoBuilderProtocol {
-    var capturedProductSku: String?
-
-    func buildTransactionsInfo(with sku: String) -> UIViewController {
-        capturedProductSku = sku
-        return UIViewController()
-    }
-}
-
-final class MockAlertBuilder: AlertBuilderProtocol {
-    var capturedTitle: String?
-    var capturedMessage: String?
-
-    func buildAlert(title: String, message: String) -> UIViewController {
-        capturedTitle = title
-        capturedMessage = message
-        return UIViewController()
-    }
-}
-
-final class MockNavigationController: UINavigationController {
-    
-    var presentedVC: UIViewController?
-    var rootViewController: UIViewController?
-    
-    override init(rootViewController: UIViewController) {
-         super.init(nibName: nil, bundle: nil)
-         self.viewControllers = [rootViewController]
-     }
-     
-     required init?(coder: NSCoder) {
-         fatalError("init(coder:) has not been implemented")
-     }
-    
-    override func pushViewController(_ viewController: UIViewController, animated: Bool) {
-        self.presentedVC = viewController
-        super.pushViewController(viewController, animated: animated)
-    }
-
-}
-
-final class MockViewController: UIViewController {
-    var presentedVC: UIViewController?
-
-    override func present(_ viewControllerToPresent: UIViewController,
-                          animated flag: Bool,
-                          completion: (() -> Void)? = nil) {
-        
-        presentedVC = viewControllerToPresent
-        super.present(viewControllerToPresent, animated: flag, completion: completion)
     }
 }

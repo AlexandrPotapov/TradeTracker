@@ -8,9 +8,9 @@
 import XCTest
 @testable import TradeTracker
 
-final class PresenterTransactionsTests: XCTestCase {
+final class TransactionsPresenterTests: XCTestCase {
     
-    var mockView: MockTransactionsInfoView!
+    var mockView: TransactionsInfoViewMock!
     var mockModel: MockTransactionsInfoModel!
     var mockRouter: MockRouterTransactionsInfo!
     var sut: TransactionsInfoPresenter!
@@ -23,7 +23,7 @@ final class PresenterTransactionsTests: XCTestCase {
     override func setUpWithError() throws {
         
         try super.setUpWithError()
-        mockView = MockTransactionsInfoView()
+        mockView = TransactionsInfoViewMock()
         mockModel = MockTransactionsInfoModel()
         mockRouter = MockRouterTransactionsInfo()
         
@@ -31,7 +31,8 @@ final class PresenterTransactionsTests: XCTestCase {
         stubTotalInGBP = 1000.0
         stubSKU = "Foo"
         
-        sut = TransactionsInfoPresenter(view: mockView, model: mockModel, router: mockRouter, sku: stubSKU)
+        sut = TransactionsInfoPresenter(model: mockModel, router: mockRouter, sku: stubSKU)
+        sut.view = mockView
     }
 
     override func tearDownWithError() throws {
@@ -115,38 +116,5 @@ final class PresenterTransactionsTests: XCTestCase {
             TransactionInfo(fromCurrency: "USD", fromAmount: 200.0, toCurrency: "GBP", toAmount: 200.0),
             TransactionInfo(fromCurrency: "USD", fromAmount: 300.0, toCurrency: "GBP", toAmount: 300.0)
         ]
-    }
-}
-
-// MARK: - Mocks Objects
-
-final class MockTransactionsInfoView: TransactionsInfoViewProtocol {
-    
-    var successCalled = false
-    var viewModels: [TransactionsInfoViewModel] = []
-    
-    func success(viewModels: [TransactionsInfoViewModel]) {
-        successCalled = true
-        self.viewModels = viewModels
-    }
-}
-
-final class MockTransactionsInfoModel: TransactionsInfoModelProtocol {
-    
-    var result: Result<(transactions: [TransactionInfo], totalInGBP: Double), DataServiceError>?
-
-    func getTransactionsInfo(for sku: String) -> Result<(transactions: [TransactionInfo], totalInGBP: Double), DataServiceError> {
-        return result ?? .failure(.resourceNotFound(name: "Mock"))
-    }
-}
-
-final class MockRouterTransactionsInfo: RouterTransactionInfoProtocol {
-    
-    var alertShown = false
-    var alertMessage: String?
-
-    func showAlert(title: String, message: String) {
-        alertShown = true
-        alertMessage = message
     }
 }

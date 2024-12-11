@@ -27,6 +27,6 @@ protocol TransactionInfoBuilderProtocol {
     func buildTransactionsInfo(with sku: String) -> UIViewController
 }
 
-protocol RouterTransactionInfoProtocol{
+protocol TransactionInfoRouterProtocol{
     func showAlert(title: String, message: String)
 }

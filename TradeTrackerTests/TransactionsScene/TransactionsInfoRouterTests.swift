@@ -9,20 +9,20 @@
 import XCTest
 @testable import TradeTracker
 
-final class RouterTransactionsInfoTests: XCTestCase {
-    var mockAlertBuilder: MockAlertBuilder!
-    var mockAlertDisplayManager: MockAlertDisplayManager!
-    var mockAlertQueueManager: MockAlertQueueManager!
+final class TransactionsInfoRouterTests: XCTestCase {
+    var mockAlertBuilder: AlertBuilderMock!
+    var mockAlertDisplayManager: AlertDisplayManagerMock!
+    var mockAlertQueueManager: AlertQueueManagerMock!
 
-    var sut: RouterTransactionInfo!
+    var sut: TransactionInfoRouter!
     
     override func setUpWithError() throws {
         try super.setUpWithError()
-        mockAlertBuilder = MockAlertBuilder()
-        mockAlertDisplayManager = MockAlertDisplayManager()
-        mockAlertQueueManager = MockAlertQueueManager()
+        mockAlertBuilder = AlertBuilderMock()
+        mockAlertDisplayManager = AlertDisplayManagerMock()
+        mockAlertQueueManager = AlertQueueManagerMock()
         
-        sut = RouterTransactionInfo(alertQueueManager: mockAlertQueueManager, alertDisplayManager: mockAlertDisplayManager, alertBuilder: mockAlertBuilder)
+        sut = TransactionInfoRouter(alertQueueManager: mockAlertQueueManager, alertDisplayManager: mockAlertDisplayManager, alertBuilder: mockAlertBuilder)
     }
 
     override func tearDownWithError() throws {
@@ -79,17 +79,5 @@ final class RouterTransactionsInfoTests: XCTestCase {
         // Assert
         XCTAssertEqual(mockAlertQueueManager.alertQueueCount, 2,
                       "Expected 2 alert in queue, but got \(mockAlertQueueManager.alertQueueCount)")
-    }
-}
-
-
-
-// MARK: - Mock Objects
-final class MockAlertDisplayManager: AlertDisplayManagerProtocol {
-    
-    var showNextAlertIsTrue = false
-    
-    func showNextAlertIfPresent() {
-        showNextAlertIsTrue = true
     }
 }

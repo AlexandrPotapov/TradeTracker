@@ -9,12 +9,12 @@ import XCTest
 @testable import TradeTracker
 
 final class TransactionsInfoViewTests: XCTestCase {
-    var mockPresenter: MockTransactionsInfoPresenter!
+    var mockPresenter: TransactionsInfoPresenterMock!
     var sut: TransactionsInfoView!
     
     override func setUpWithError() throws {
         try super.setUpWithError()
-        mockPresenter = MockTransactionsInfoPresenter()
+        mockPresenter = TransactionsInfoPresenterMock()
         sut = TransactionsInfoView()
         mockPresenter.view = sut
     }
@@ -118,31 +118,5 @@ final class TransactionsInfoViewTests: XCTestCase {
     
     private func getCell(for indexPath: IndexPath) -> UITableViewCell {
         return sut.tableView(sut.testableTableView, cellForRowAt: indexPath)
-    }
-}
-
-
-// MARK: - MockTransactionsInfoPresenter
-
-final class MockTransactionsInfoPresenter: TransactionsInfoPresenterProtocol {
-    
-    var didCallViewDidLoad = false
-    
-    var title: String?
-    var header: String?
-    
-
-    weak var view: TransactionsInfoViewProtocol?
-    
-    func viewDidLoad() {
-        didCallViewDidLoad = true
-    }
-    
-    func getTransactionsTitle() -> String {
-        return title!
-    }
-    
-    func getHeader() -> String {
-        return header!
     }
 }

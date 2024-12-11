@@ -17,15 +17,28 @@ final class ProductsAssembly: Assembly {
             return ProductsModel(dataManager: dataManager)
         }
         
+        // Регистрация билдера для сцены TransactionInfoScene
+        container.register(TransactionInfoBuilderProtocol.self) { resolver in
+            TransactionsInfoBuilder(resolver: resolver)
+        }
+        
+        //  Регистрация билдера для алерта
+        container.register(AlertBuilderProtocol.self) { resolver in
+            AlertBuilder(resolver: resolver)
+        }
+                
         // Регистрация роутера
-        container.register(RouterProductsProtocol.self) { resolver in
-            RouterProducts(container: container)
+        container.register(ProductsRouterProtocol.self) { resolver in
+            ProductsRouter(
+                transactionsInfoBuilder: resolver.resolve(TransactionInfoBuilderProtocol.self)!,
+                alertBuilder:  resolver.resolve(AlertBuilderProtocol.self)!
+            )
         }
         
         // Регистрация презентера
         container.register(ProductsPresenterProtocol.self) { resolver in
             let model = resolver.resolve(ProductsModelProtocol.self)!
-            let router = resolver.resolve(RouterProductsProtocol.self)!
+            let router = resolver.resolve(ProductsRouterProtocol.self)!
             return ProductsPresenter(model: model, router: router)
         }
         
@@ -38,16 +51,17 @@ final class ProductsAssembly: Assembly {
         }.initCompleted { resolver, view in
             // После создания view связываем его с presenter
             let presenter = resolver.resolve(ProductsPresenterProtocol.self)!
+            let router = resolver.resolve(ProductsRouterProtocol.self)!
+
             presenter.view = view
+            router.setRootViewController(root: view)
         }
         
         // Регистрация ViewController
         container.register(UIViewController.self, name: "productsScene") { resolver in
             resolver.resolve(ProductsViewController.self)!
         }
-//        
-//        container.register(ProductsViewProtocol.self) { resolver in
-//            resolver.resolve(ProductsViewController.self)!
-//        }
+
     }
 }
+

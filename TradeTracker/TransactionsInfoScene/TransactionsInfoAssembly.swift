@@ -26,18 +26,19 @@ final class TransactionsInfoAssembly: Assembly {
         }
         
         // Регистрация AlertBuilder
-//        container.register(AlertBuilderProtocol.self) { _ in AlertBuilder() }
+        container.register(AlertBuilderProtocol.self) { resolver in AlertBuilder(resolver: resolver) }
         
         // Регистрация RouterTransactionInfo
-        container.register(RouterTransactionInfoProtocol.self) { resolver in
+        container.register(TransactionInfoRouterProtocol.self) { resolver in
             guard let alertQueueManager = resolver.resolve(AlertQueueManagerProtocol.self),
-                  let alertDisplayManager = resolver.resolve(AlertDisplayManagerProtocol.self) else {
+                  let alertDisplayManager = resolver.resolve(AlertDisplayManagerProtocol.self),
+            let alertBuilder = resolver.resolve(AlertBuilderProtocol.self) else {
                 fatalError("Failed to resolve dependencies for RouterTransactionInfo")
             }
-            return RouterTransactionInfo(
+            return TransactionInfoRouter(
                 alertQueueManager: alertQueueManager,
                 alertDisplayManager: alertDisplayManager,
-                container: container
+                alertBuilder: alertBuilder
             )
         }
         
@@ -53,7 +54,7 @@ final class TransactionsInfoAssembly: Assembly {
         // Регистрация TransactionsInfoPresenter
         container.register(TransactionsInfoPresenterProtocol.self) { (resolver, sku: String) in
             guard let model = resolver.resolve(TransactionsInfoModelProtocol.self),
-                  let router = resolver.resolve(RouterTransactionInfoProtocol.self) else {
+                  let router = resolver.resolve(TransactionInfoRouterProtocol.self) else {
                 fatalError("Failed to resolve dependencies for TransactionsInfoPresenter")
             }
             return TransactionsInfoPresenter(model: model, router: router, sku: sku)

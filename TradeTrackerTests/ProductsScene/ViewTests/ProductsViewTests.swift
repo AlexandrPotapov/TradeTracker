@@ -10,13 +10,13 @@ import XCTest
 
 final class ProductsViewTests: XCTestCase {
     
-    var mockPresenter: MockProductsPresenter!
+    var mockPresenter: ProductsPresenterMock!
     var stubViewModels: [ProductViewModel]!
     var sut: ProductsView!
     
     override func setUpWithError() throws {
         try super.setUpWithError()
-        mockPresenter = MockProductsPresenter()
+        mockPresenter = ProductsPresenterMock()
         stubViewModels = setViewModels()
         
         sut = ProductsView()
@@ -35,7 +35,6 @@ final class ProductsViewTests: XCTestCase {
         sut.success(viewModels: stubViewModels)
         
         // Assert
-        XCTAssertEqual(sut.viewModels.count, 3)
         XCTAssertEqual(sut.testTableView.numberOfRows(inSection: 0), 3)
     }
     

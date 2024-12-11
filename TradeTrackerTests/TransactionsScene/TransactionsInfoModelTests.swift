@@ -8,16 +8,16 @@
 import XCTest
 @testable import TradeTracker
 
-final class ModelTransactionsInfoTests: XCTestCase {
+final class TransactionsInfoModelTests: XCTestCase {
     
-    var mockDataManager: MockDataManagerWithRates!
-    var mockConverter: MockConverter!
+    var mockDataManager: DataManagerWithRatesMock!
+    var mockConverter: ConverterMock!
     var sut: TransactionsInfoModel!
     
     override func setUpWithError() throws {
         try super.setUpWithError()
-        mockDataManager = MockDataManagerWithRates()
-        mockConverter = MockConverter()
+        mockDataManager = DataManagerWithRatesMock()
+        mockConverter = ConverterMock()
         
         sut = TransactionsInfoModel(converter: mockConverter, dataManager: mockDataManager)
     }
@@ -159,36 +159,6 @@ final class ModelTransactionsInfoTests: XCTestCase {
     private func getStubRates() -> [RateData] {
         [RateData(from: "Foo", to: "Bar", rate: "Baz"),
          RateData(from: "Foo1", to: "Bar1", rate: "Baz1")]
-    }
-}
-
-// MARK: - MockTransactionDataManager
-
-final class MockDataManagerWithRates: DataManagerWithRateProtocol {
-    
-    var transactionsResult: Result<[TransactionData], DataServiceError>?
-    var ratesResult: Result<[RateData], DataServiceError>?
-    
-    func loadRates() -> Result<[RateData], DataServiceError> {
-        ratesResult ?? .failure(.resourceNotFound(name: "Mock"))
-    }
-    
-    func loadTransactions() -> Result<[TransactionData], DataServiceError> {
-        transactionsResult ?? .failure(.resourceNotFound(name: "Mock"))
-    }
-    
-    func clearCache() {
-    }
-    
-    
-}
-
-final class MockConverter: ConverterProtocol {
-    
-    var converterResult: Result<Double, TradeTracker.DataServiceError>?
-
-    func convertToGBP(request: TradeTracker.ConversionRequest) -> Result<Double, TradeTracker.DataServiceError> {
-        converterResult ?? .failure(.resourceNotFound(name: "Mock"))
     }
 }
 

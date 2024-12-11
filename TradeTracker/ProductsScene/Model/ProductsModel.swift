@@ -15,7 +15,7 @@ struct ProductsModel: ProductsModelProtocol {
         self.dataManager = dataManager
     }
     
-    func getProductsInfo() -> Result<[Product], DataServiceError> {
+    func fetchProducts() -> Result<[Product], DataServiceError> {
         let result = dataManager.loadTransactions()
         
         switch result {
