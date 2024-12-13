@@ -113,6 +113,7 @@
 		1147BDAA2CE50C4F00551C7B /* AlertWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertWindow.swift; sourceTree = "<group>"; };
 		1147BDAC2CE50C6900551C7B /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		1147BDAE2CE51AEF00551C7B /* HoldingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoldingViewController.swift; sourceTree = "<group>"; };
+		11658A662D0C7E8E005C5617 /* TradeTrackerCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = TradeTrackerCore; sourceTree = "<group>"; };
 		117D98E12D0349140053A5AA /* AlertAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertAssembly.swift; sourceTree = "<group>"; };
 		117D98E32D0349490053A5AA /* AlertProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertProtocols.swift; sourceTree = "<group>"; };
 		117D98E52D034FFA0053A5AA /* HoldingVCFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoldingVCFactory.swift; sourceTree = "<group>"; };
@@ -363,6 +364,7 @@
 		1187D4752D09CC1300DEC562 /* Packeges */ = {
 			isa = PBXGroup;
 			children = (
+				11658A662D0C7E8E005C5617 /* TradeTrackerCore */,
 			);
 			path = Packeges;
 			sourceTree = "<group>";
