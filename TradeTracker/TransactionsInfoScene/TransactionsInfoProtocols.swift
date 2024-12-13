@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import TradeTrackerCore
+
 
 protocol TransactionsInfoModelProtocol {
     func getTransactionsInfo(for sku: String) -> Result<(transactions: [TransactionInfo], totalInGBP: Double), DataServiceError>

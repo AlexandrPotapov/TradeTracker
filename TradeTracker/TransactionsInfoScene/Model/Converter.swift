@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import TradeTrackerCore
+
 
 protocol ConverterProtocol {
     func convertToGBP(request: ConversionRequest) -> Result<Double, DataServiceError>

@@ -7,15 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1113BDF42CD4B6D7009C928E /* RateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1113BDD22CD4B6D7009C928E /* RateData.swift */; };
-		1113BDF52CD4B6D7009C928E /* TransactionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1113BDD32CD4B6D7009C928E /* TransactionData.swift */; };
 		1113BDF62CD4B6D7009C928E /* ProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1113BDD52CD4B6D7009C928E /* ProductViewModel.swift */; };
 		1113BDF72CD4B6D7009C928E /* ProductsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1113BDD72CD4B6D7009C928E /* ProductsPresenter.swift */; };
 		1113BDF82CD4B6D7009C928E /* ProductsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1113BDD92CD4B6D7009C928E /* ProductsTableViewCell.swift */; };
 		1113BDF92CD4B6D7009C928E /* ProductsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1113BDDA2CD4B6D7009C928E /* ProductsTableViewController.swift */; };
 		1113BDFA2CD4B6D7009C928E /* ProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1113BDDB2CD4B6D7009C928E /* ProductsView.swift */; };
-		1113BDFB2CD4B6D7009C928E /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1113BDDE2CD4B6D7009C928E /* DataLoader.swift */; };
-		1113BDFC2CD4B6D7009C928E /* TransactionDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1113BDDF2CD4B6D7009C928E /* TransactionDataManager.swift */; };
 		1113BDFD2CD4B6D7009C928E /* TransactionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1113BDE62CD4B6D7009C928E /* TransactionInfo.swift */; };
 		1113BDFE2CD4B6D7009C928E /* TransactionsInfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1113BDE82CD4B6D7009C928E /* TransactionsInfoPresenter.swift */; };
 		1113BDFF2CD4B6D7009C928E /* TransactionsInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1113BDEA2CD4B6D7009C928E /* TransactionsInfoTableViewCell.swift */; };
@@ -27,8 +23,6 @@
 		1113BE062CD4B6D7009C928E /* transactions.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1113BDD02CD4B6D7009C928E /* transactions.plist */; };
 		1113BE072CD4B6D7009C928E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1113BDE22CD4B6D7009C928E /* Assets.xcassets */; };
 		1113BE082CD4B6D7009C928E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1113BDE42CD4B6D7009C928E /* LaunchScreen.storyboard */; };
-		1113BE0B2CD4B800009C928E /* Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1113BE0A2CD4B800009C928E /* Rate.swift */; };
-		1113BE0D2CD4B81A009C928E /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1113BE0C2CD4B81A009C928E /* Transaction.swift */; };
 		1113BE102CD4CC99009C928E /* ProductsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1113BE0F2CD4CC99009C928E /* ProductsModel.swift */; };
 		1113BE122CD4CCBC009C928E /* TransactionsInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1113BE112CD4CCBC009C928E /* TransactionsInfoModel.swift */; };
 		1113BE142CD4D5A0009C928E /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1113BE132CD4D5A0009C928E /* Converter.swift */; };
@@ -45,16 +39,12 @@
 		1147BDAD2CE50C6900551C7B /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1147BDAC2CE50C6900551C7B /* Queue.swift */; };
 		1147BDAF2CE51AEF00551C7B /* HoldingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1147BDAE2CE51AEF00551C7B /* HoldingViewController.swift */; };
 		117D98E22D0349140053A5AA /* AlertAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117D98E12D0349140053A5AA /* AlertAssembly.swift */; };
-		117D98E42D0349490053A5AA /* AlertProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117D98E32D0349490053A5AA /* AlertProtocols.swift */; };
-		117D98E62D034FFA0053A5AA /* HoldingVCFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117D98E52D034FFA0053A5AA /* HoldingVCFactory.swift */; };
 		1187D4782D09D02900DEC562 /* TradeTrackerCore in Frameworks */ = {isa = PBXBuildFile; productRef = 1187D4772D09D02900DEC562 /* TradeTrackerCore */; };
 		11894ED42CD6141F004E5110 /* ProductsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11894ED32CD6141F004E5110 /* ProductsRouter.swift */; };
 		11894ED62CD61443004E5110 /* TransactionInfoRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11894ED52CD61443004E5110 /* TransactionInfoRouter.swift */; };
 		11AC7D222D004892001205F1 /* TransactionsInfoProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AC7D212D004892001205F1 /* TransactionsInfoProtocols.swift */; };
 		11AC7D282D0062A6001205F1 /* SharedDataManagerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AC7D272D0062A6001205F1 /* SharedDataManagerAssembly.swift */; };
-		11AE6BE12CD7B0B3003C8BD9 /* DataServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AE6BE02CD7B0B3003C8BD9 /* DataServiceError.swift */; };
 		11B916DF2CDE3E3000B9D456 /* ConversionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B916DE2CDE3E3000B9D456 /* ConversionRequest.swift */; };
-		11B916E22CDE617300B9D456 /* DataManagerWithRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B916E12CDE617300B9D456 /* DataManagerWithRate.swift */; };
 		11B916E42CDE641400B9D456 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B916E32CDE641400B9D456 /* Product.swift */; };
 /* End PBXBuildFile section */
 
@@ -78,15 +68,11 @@
 /* Begin PBXFileReference section */
 		1113BDCF2CD4B6D7009C928E /* rates.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = rates.plist; sourceTree = "<group>"; };
 		1113BDD02CD4B6D7009C928E /* transactions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = transactions.plist; sourceTree = "<group>"; };
-		1113BDD22CD4B6D7009C928E /* RateData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateData.swift; sourceTree = "<group>"; };
-		1113BDD32CD4B6D7009C928E /* TransactionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionData.swift; sourceTree = "<group>"; };
 		1113BDD52CD4B6D7009C928E /* ProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewModel.swift; sourceTree = "<group>"; };
 		1113BDD72CD4B6D7009C928E /* ProductsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsPresenter.swift; sourceTree = "<group>"; };
 		1113BDD92CD4B6D7009C928E /* ProductsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsTableViewCell.swift; sourceTree = "<group>"; };
 		1113BDDA2CD4B6D7009C928E /* ProductsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsTableViewController.swift; sourceTree = "<group>"; };
 		1113BDDB2CD4B6D7009C928E /* ProductsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsView.swift; sourceTree = "<group>"; };
-		1113BDDE2CD4B6D7009C928E /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
-		1113BDDF2CD4B6D7009C928E /* TransactionDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDataManager.swift; sourceTree = "<group>"; };
 		1113BDE22CD4B6D7009C928E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1113BDE32CD4B6D7009C928E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1113BDE62CD4B6D7009C928E /* TransactionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionInfo.swift; sourceTree = "<group>"; };
@@ -97,8 +83,6 @@
 		1113BDEF2CD4B6D7009C928E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1113BDF02CD4B6D7009C928E /* AlertBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBuilder.swift; sourceTree = "<group>"; };
 		1113BDF12CD4B6D7009C928E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1113BE0A2CD4B800009C928E /* Rate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rate.swift; sourceTree = "<group>"; };
-		1113BE0C2CD4B81A009C928E /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		1113BE0F2CD4CC99009C928E /* ProductsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsModel.swift; sourceTree = "<group>"; };
 		1113BE112CD4CCBC009C928E /* TransactionsInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsInfoModel.swift; sourceTree = "<group>"; };
 		1113BE132CD4D5A0009C928E /* Converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
@@ -115,8 +99,6 @@
 		1147BDAE2CE51AEF00551C7B /* HoldingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoldingViewController.swift; sourceTree = "<group>"; };
 		11658A662D0C7E8E005C5617 /* TradeTrackerCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = TradeTrackerCore; sourceTree = "<group>"; };
 		117D98E12D0349140053A5AA /* AlertAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertAssembly.swift; sourceTree = "<group>"; };
-		117D98E32D0349490053A5AA /* AlertProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertProtocols.swift; sourceTree = "<group>"; };
-		117D98E52D034FFA0053A5AA /* HoldingVCFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoldingVCFactory.swift; sourceTree = "<group>"; };
 		11894ED32CD6141F004E5110 /* ProductsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsRouter.swift; sourceTree = "<group>"; };
 		11894ED52CD61443004E5110 /* TransactionInfoRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionInfoRouter.swift; sourceTree = "<group>"; };
 		11A3B9072CCBCC030076C525 /* TradeTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TradeTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,9 +106,7 @@
 		11A3B9272CCBCC050076C525 /* TradeTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TradeTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		11AC7D212D004892001205F1 /* TransactionsInfoProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsInfoProtocols.swift; sourceTree = "<group>"; };
 		11AC7D272D0062A6001205F1 /* SharedDataManagerAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedDataManagerAssembly.swift; sourceTree = "<group>"; };
-		11AE6BE02CD7B0B3003C8BD9 /* DataServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataServiceError.swift; sourceTree = "<group>"; };
 		11B916DE2CDE3E3000B9D456 /* ConversionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionRequest.swift; sourceTree = "<group>"; };
-		11B916E12CDE617300B9D456 /* DataManagerWithRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerWithRate.swift; sourceTree = "<group>"; };
 		11B916E32CDE641400B9D456 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -179,15 +159,6 @@
 			path = DataPlistFiles;
 			sourceTree = "<group>";
 		};
-		1113BDD42CD4B6D7009C928E /* ResponseData */ = {
-			isa = PBXGroup;
-			children = (
-				1113BDD22CD4B6D7009C928E /* RateData.swift */,
-				1113BDD32CD4B6D7009C928E /* TransactionData.swift */,
-			);
-			path = ResponseData;
-			sourceTree = "<group>";
-		};
 		1113BDD82CD4B6D7009C928E /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,32 +186,8 @@
 				1113BDDC2CD4B6D7009C928E /* View */,
 				11894ED32CD6141F004E5110 /* ProductsRouter.swift */,
 				111B64B72CFF631D00EA6921 /* ProductsSceneProtocols.swift */,
-				111B64B92CFF642000EA6921 /* ProductsAssembly.swift */,
 			);
 			path = ProductsScene;
-			sourceTree = "<group>";
-		};
-		1113BDE02CD4B6D7009C928E /* DataService */ = {
-			isa = PBXGroup;
-			children = (
-				1113BDDE2CD4B6D7009C928E /* DataLoader.swift */,
-				1113BDDF2CD4B6D7009C928E /* TransactionDataManager.swift */,
-				11B916E12CDE617300B9D456 /* DataManagerWithRate.swift */,
-				11AC7D272D0062A6001205F1 /* SharedDataManagerAssembly.swift */,
-				11AE6BE02CD7B0B3003C8BD9 /* DataServiceError.swift */,
-			);
-			path = DataService;
-			sourceTree = "<group>";
-		};
-		1113BDE12CD4B6D7009C928E /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				1113BE0E2CD4B830009C928E /* Data */,
-				1113BDD42CD4B6D7009C928E /* ResponseData */,
-				1113BE132CD4D5A0009C928E /* Converter.swift */,
-				1113BDE02CD4B6D7009C928E /* DataService */,
-			);
-			path = Services;
 			sourceTree = "<group>";
 		};
 		1113BDE52CD4B6D7009C928E /* SupportingFiles */ = {
@@ -279,7 +226,6 @@
 				1113BDED2CD4B6D7009C928E /* View */,
 				1113BE1B2CD5126A009C928E /* TransactionsInfoBuilder.swift */,
 				11894ED52CD61443004E5110 /* TransactionInfoRouter.swift */,
-				111B64BB2CFF64EE00EA6921 /* TransactionsInfoAssembly.swift */,
 				11AC7D212D004892001205F1 /* TransactionsInfoProtocols.swift */,
 			);
 			path = TransactionsInfoScene;
@@ -292,21 +238,12 @@
 				1113BDDD2CD4B6D7009C928E /* ProductsScene */,
 				1113BDEE2CD4B6D7009C928E /* TransactionsInfoScene */,
 				1113BDD12CD4B6D7009C928E /* DataPlistFiles */,
-				1113BDE12CD4B6D7009C928E /* Services */,
+				1191DF672D0C80BC003AB0A6 /* Assembly */,
 				1113BDE52CD4B6D7009C928E /* SupportingFiles */,
 				1113BDEF2CD4B6D7009C928E /* AppDelegate.swift */,
 				1113BDF12CD4B6D7009C928E /* Info.plist */,
 			);
 			path = TradeTracker;
-			sourceTree = "<group>";
-		};
-		1113BE0E2CD4B830009C928E /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				1113BE0A2CD4B800009C928E /* Rate.swift */,
-				1113BE0C2CD4B81A009C928E /* Transaction.swift */,
-			);
-			path = Data;
 			sourceTree = "<group>";
 		};
 		1113BE152CD4DCCE009C928E /* Model */ = {
@@ -315,6 +252,7 @@
 				1113BE112CD4CCBC009C928E /* TransactionsInfoModel.swift */,
 				1113BDE62CD4B6D7009C928E /* TransactionInfo.swift */,
 				11B916DE2CDE3E3000B9D456 /* ConversionRequest.swift */,
+				1113BE132CD4D5A0009C928E /* Converter.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -332,13 +270,10 @@
 			isa = PBXGroup;
 			children = (
 				11270AE42CE6153000214594 /* AlertPresenterFactory.swift */,
-				117D98E52D034FFA0053A5AA /* HoldingVCFactory.swift */,
 				11270AE62CE6241400214594 /* AlertDisplayManager.swift */,
 				1113BDF02CD4B6D7009C928E /* AlertBuilder.swift */,
-				117D98E12D0349140053A5AA /* AlertAssembly.swift */,
 				1147BDB02CE5215300551C7B /* View */,
 				11270AEA2CE6259A00214594 /* Model */,
-				117D98E32D0349490053A5AA /* AlertProtocols.swift */,
 			);
 			path = Alert;
 			sourceTree = "<group>";
@@ -367,6 +302,17 @@
 				11658A662D0C7E8E005C5617 /* TradeTrackerCore */,
 			);
 			path = Packeges;
+			sourceTree = "<group>";
+		};
+		1191DF672D0C80BC003AB0A6 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				117D98E12D0349140053A5AA /* AlertAssembly.swift */,
+				111B64BB2CFF64EE00EA6921 /* TransactionsInfoAssembly.swift */,
+				111B64B92CFF642000EA6921 /* ProductsAssembly.swift */,
+				11AC7D272D0062A6001205F1 /* SharedDataManagerAssembly.swift */,
+			);
+			path = Assembly;
 			sourceTree = "<group>";
 		};
 		11A3B8FE2CCBCC030076C525 = {
@@ -541,9 +487,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				111B64B82CFF631D00EA6921 /* ProductsSceneProtocols.swift in Sources */,
-				1113BDF42CD4B6D7009C928E /* RateData.swift in Sources */,
 				11894ED42CD6141F004E5110 /* ProductsRouter.swift in Sources */,
-				1113BDF52CD4B6D7009C928E /* TransactionData.swift in Sources */,
 				1113BDF62CD4B6D7009C928E /* ProductViewModel.swift in Sources */,
 				1113BDF72CD4B6D7009C928E /* ProductsPresenter.swift in Sources */,
 				1113BDF82CD4B6D7009C928E /* ProductsTableViewCell.swift in Sources */,
@@ -553,12 +497,9 @@
 				1113BDF92CD4B6D7009C928E /* ProductsTableViewController.swift in Sources */,
 				1113BE122CD4CCBC009C928E /* TransactionsInfoModel.swift in Sources */,
 				11AC7D222D004892001205F1 /* TransactionsInfoProtocols.swift in Sources */,
-				11AE6BE12CD7B0B3003C8BD9 /* DataServiceError.swift in Sources */,
 				11270AE52CE6153000214594 /* AlertPresenterFactory.swift in Sources */,
 				1113BDFA2CD4B6D7009C928E /* ProductsView.swift in Sources */,
 				11270AE92CE6246600214594 /* AlertQueueManager.swift in Sources */,
-				1113BDFB2CD4B6D7009C928E /* DataLoader.swift in Sources */,
-				1113BDFC2CD4B6D7009C928E /* TransactionDataManager.swift in Sources */,
 				11B916DF2CDE3E3000B9D456 /* ConversionRequest.swift in Sources */,
 				1113BDFD2CD4B6D7009C928E /* TransactionInfo.swift in Sources */,
 				1113BDFE2CD4B6D7009C928E /* TransactionsInfoPresenter.swift in Sources */,
@@ -566,22 +507,17 @@
 				11B916E42CDE641400B9D456 /* Product.swift in Sources */,
 				111B64BA2CFF642000EA6921 /* ProductsAssembly.swift in Sources */,
 				1113BE172CD4DEC2009C928E /* TransactionsInfoViewModel.swift in Sources */,
-				117D98E42D0349490053A5AA /* AlertProtocols.swift in Sources */,
 				1113BE142CD4D5A0009C928E /* Converter.swift in Sources */,
 				1113BE102CD4CC99009C928E /* ProductsModel.swift in Sources */,
-				1113BE0D2CD4B81A009C928E /* Transaction.swift in Sources */,
 				11AC7D282D0062A6001205F1 /* SharedDataManagerAssembly.swift in Sources */,
 				1113BDFF2CD4B6D7009C928E /* TransactionsInfoTableViewCell.swift in Sources */,
 				1113BE002CD4B6D7009C928E /* TransactionsInfoView.swift in Sources */,
 				1147BDAD2CE50C6900551C7B /* Queue.swift in Sources */,
 				1113BE012CD4B6D7009C928E /* TransactionsInfoViewController.swift in Sources */,
-				117D98E62D034FFA0053A5AA /* HoldingVCFactory.swift in Sources */,
 				117D98E22D0349140053A5AA /* AlertAssembly.swift in Sources */,
 				111B64BC2CFF64EE00EA6921 /* TransactionsInfoAssembly.swift in Sources */,
 				1113BE022CD4B6D7009C928E /* AppDelegate.swift in Sources */,
-				11B916E22CDE617300B9D456 /* DataManagerWithRate.swift in Sources */,
 				1147BDAB2CE50C4F00551C7B /* AlertWindow.swift in Sources */,
-				1113BE0B2CD4B800009C928E /* Rate.swift in Sources */,
 				1113BE032CD4B6D7009C928E /* AlertBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

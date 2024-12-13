@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import TradeTrackerCore
+
 
 protocol ProductsViewProtocol: AnyObject {
     var presenter: ProductsPresenterProtocol? { get set }

@@ -7,6 +7,7 @@
 
 import Foundation
 import Swinject
+import TradeTrackerCore
 
 final class SharedDataManagerAssembly: Assembly {
     func assemble(container: Container) {

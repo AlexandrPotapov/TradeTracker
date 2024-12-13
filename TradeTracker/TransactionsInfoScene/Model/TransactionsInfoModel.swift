@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import TradeTrackerCore
 
 
 struct TransactionsInfoModel: TransactionsInfoModelProtocol {

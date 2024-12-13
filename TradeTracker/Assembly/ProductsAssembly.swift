@@ -8,6 +8,7 @@
 import Foundation
 import Swinject
 import UIKit
+import TradeTrackerCore
 
 final class ProductsAssembly: Assembly {
     func assemble(container: Container) {

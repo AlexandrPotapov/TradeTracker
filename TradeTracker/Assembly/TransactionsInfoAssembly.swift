@@ -8,6 +8,8 @@
 import Foundation
 import Swinject
 import UIKit
+import TradeTrackerCore
+
 
 final class TransactionsInfoAssembly: Assembly {
     func assemble(container: Container) {
