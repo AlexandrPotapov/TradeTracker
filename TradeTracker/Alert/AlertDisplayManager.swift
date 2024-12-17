@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import Features
 
-protocol AlertDisplayManagerProtocol {
-    func showNextAlertIfPresent()
-}
+
+//protocol AlertDisplayManagerProtocol {
+//    func showNextAlertIfPresent()
+//}
 
 final class AlertDisplayManager: AlertDisplayManagerProtocol, AlertWindowDelegate {
     

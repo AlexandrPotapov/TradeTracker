@@ -8,6 +8,7 @@
 import XCTest
 @testable import TradeTracker
 import TradeTrackerCore
+import Features
 
 
 // MARK: - ProductsRouterTests

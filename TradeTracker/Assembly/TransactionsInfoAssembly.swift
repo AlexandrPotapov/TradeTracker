@@ -9,6 +9,7 @@ import Foundation
 import Swinject
 import UIKit
 import TradeTrackerCore
+import Features
 
 
 final class TransactionsInfoAssembly: Assembly {

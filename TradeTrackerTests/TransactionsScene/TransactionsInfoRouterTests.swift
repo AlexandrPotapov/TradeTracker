@@ -8,6 +8,8 @@
 
 import XCTest
 @testable import TradeTracker
+import Features
+
 
 final class TransactionsInfoRouterTests: XCTestCase {
     var mockAlertBuilder: AlertBuilderMock!

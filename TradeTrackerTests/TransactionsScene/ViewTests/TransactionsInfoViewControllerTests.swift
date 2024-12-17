@@ -7,6 +7,8 @@
 
 import XCTest
 @testable import TradeTracker
+import Features
+
 
 final class TransactionsInfoViewControllerTests: XCTestCase {
     var mockPresenter: TransactionsInfoPresenterMock!

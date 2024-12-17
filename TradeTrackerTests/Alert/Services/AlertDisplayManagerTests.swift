@@ -7,6 +7,8 @@
 
 import XCTest
 @testable import TradeTracker
+import Features
+
 
 final class AlertDisplayManagerTests: XCTestCase {
     var mockAlertWindow: AlertWindowMock!

@@ -7,10 +7,12 @@
 
 import UIKit
 import Swinject
+import Features
 
-protocol AlertBuilderProtocol {
-    func buildAlert(title: String, message: String) -> UIViewController
-}
+
+//protocol AlertBuilderProtocol {
+//    func buildAlert(title: String, message: String) -> UIViewController
+//}
 
 
 final class AlertBuilder: AlertBuilderProtocol {

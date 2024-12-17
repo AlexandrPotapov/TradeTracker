@@ -7,6 +7,8 @@
 
 import UIKit
 import Swinject
+import TradeTrackerCore
+import Features
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let productsScene = container.resolve(UIViewController.self, name: "productsScene") else {
             fatalError("ProductsScene не зарегистрирован")
         }
-        
+  
         let navigationController = UINavigationController(rootViewController: productsScene)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()

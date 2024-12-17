@@ -7,6 +7,7 @@
 
 import UIKit
 import Swinject
+import Features
 
 final class TransactionsInfoBuilder: TransactionInfoBuilderProtocol {
     

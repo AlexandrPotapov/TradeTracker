@@ -22,7 +22,7 @@ public final class TransactionDataManager: TransactionDataManagerProtocol {
     }
     
     public func loadTransactions() -> Result<[TransactionData], DataServiceError> {
-        guard let transactionsURL = Bundle.main.url(forResource: "transactions", withExtension: "plist") else { return .failure(.resourceNotFound(name: "transactions.plist")) }
+        guard let transactionsURL = Bundle.module.url(forResource: "transactions", withExtension: "plist") else { return .failure(.resourceNotFound(name: "transactions.plist")) }
         
         let result = dataLoader.load(from: transactionsURL, as: [TransactionData].self)
         

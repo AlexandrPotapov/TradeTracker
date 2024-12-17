@@ -56,6 +56,7 @@ struct TransactionsInfoModel: TransactionsInfoModelProtocol {
                         
                         transactionInfoList.append(transactionInfo)
                     case .failure(let error):
+                        print("ошибка конвертации: \(error.localizedDescription)")
                         // Создаем модель TransactionInfo
                         let transactionInfo = TransactionInfo(
                             fromCurrency: fromCurrency,

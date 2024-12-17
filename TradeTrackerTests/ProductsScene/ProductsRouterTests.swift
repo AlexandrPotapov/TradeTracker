@@ -7,6 +7,8 @@
 
 import XCTest
 @testable import TradeTracker
+import Features
+
 
 final class ProductsRouterTests: XCTestCase {
     var mockTransactionInfoBuilder: TransactionInfoBuilderMock!
@@ -37,7 +39,7 @@ final class ProductsRouterTests: XCTestCase {
         try super.tearDownWithError()
     }
 
-    func testShowTransactionsInfo_SetsDesiredSKU() {
+    @MainActor func testShowTransactionsInfo_SetsDesiredSKU() {
         
         // Arrange
         let product = ProductViewModel(sku: "Foo", transactionCount: "Bar")
@@ -50,7 +52,7 @@ final class ProductsRouterTests: XCTestCase {
                        "The correct product SKU should be passed to buildTransactionsInfo")
     }
 
-    func testShowTransactionsInfo_PushesViewController() {
+    @MainActor func testShowTransactionsInfo_PushesViewController() {
         
         // Arrange
         let product = ProductViewModel(sku: "Foo", transactionCount: "Bar")
@@ -63,7 +65,7 @@ final class ProductsRouterTests: XCTestCase {
                         "Should present a view controller")
     }
 
-    func testShowAlert_SetsDesiredTitleAndMessage() {
+    @MainActor func testShowAlert_SetsDesiredTitleAndMessage() {
         
         // Arrange
         let title = "Foo"
@@ -80,7 +82,7 @@ final class ProductsRouterTests: XCTestCase {
                        "Should pass the correct message to buildAlert")
     }
 
-    func testShowAlert_PresentsAlertController() {
+    @MainActor func testShowAlert_PresentsAlertController() {
         
         // Arrange
         let title = "Foo"

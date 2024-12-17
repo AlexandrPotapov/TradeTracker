@@ -7,6 +7,8 @@
 
 import XCTest
 @testable import TradeTracker
+import TradeTrackerCore
+
 
 // MARK: - DataLoaderTests
 

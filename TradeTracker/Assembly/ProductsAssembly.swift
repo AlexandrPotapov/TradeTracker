@@ -8,6 +8,7 @@
 import Foundation
 import Swinject
 import UIKit
+import Features
 import TradeTrackerCore
 
 final class ProductsAssembly: Assembly {

@@ -7,6 +7,9 @@
 
 import XCTest
 @testable import TradeTracker
+import TradeTrackerCore
+import Features
+
 
 final class TransactionsPresenterTests: XCTestCase {
     

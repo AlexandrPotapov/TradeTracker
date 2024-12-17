@@ -7,6 +7,7 @@
 
 import XCTest
 @testable import TradeTracker
+import TradeTrackerCore
 
 final class TransactionDataManagerTests: XCTestCase {
     

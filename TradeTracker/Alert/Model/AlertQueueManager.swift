@@ -6,11 +6,12 @@
 //
 
 import UIKit
+import Features
 
-protocol AlertQueueManagerProtocol {
-    func enqueueAlert(_ : UIViewController)
-    func dequeueAlert() -> UIViewController?
-}
+//protocol AlertQueueManagerProtocol {
+//    func enqueueAlert(_ : UIViewController)
+//    func dequeueAlert() -> UIViewController?
+//}
 
 final class AlertQueueManager: AlertQueueManagerProtocol {
     

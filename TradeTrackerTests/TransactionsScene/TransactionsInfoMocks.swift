@@ -7,6 +7,10 @@
 
 import XCTest
 @testable import TradeTracker
+import TradeTrackerCore
+import Features
+
+
 
 // MARK: - TransactionsInfoViewTests, TransactionsInfoViewControllerTests
 
@@ -100,9 +104,9 @@ final class DataManagerWithRatesMock: DataManagerWithRateProtocol {
 
 final class ConverterMock: ConverterProtocol {
     
-    var converterResult: Result<Double, TradeTracker.DataServiceError>?
+    var converterResult: Result<Double, DataServiceError>?
 
-    func convertToGBP(request: TradeTracker.ConversionRequest) -> Result<Double, TradeTracker.DataServiceError> {
+    func convertToGBP(request: ConversionRequest) -> Result<Double, DataServiceError> {
         converterResult ?? .failure(.resourceNotFound(name: "Mock"))
     }
 }

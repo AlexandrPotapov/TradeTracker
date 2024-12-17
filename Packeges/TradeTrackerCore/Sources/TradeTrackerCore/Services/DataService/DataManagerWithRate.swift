@@ -21,7 +21,7 @@ public final class DataManagerWithRate: DataManagerWithRateProtocol {
     }
     
     public func loadRates() -> Result<[RateData], DataServiceError> {
-        guard let rateURL = Bundle.main.url(forResource: "rates", withExtension: "plist") else {
+        guard let rateURL = Bundle.module.url(forResource: "rates", withExtension: "plist") else {
             return .failure(.resourceNotFound(name: "rates.plist"))
         }
         
