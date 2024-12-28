@@ -127,10 +127,10 @@
 			isa = PBXGroup;
 			children = (
 				1113BE1D2CD512CA009C928E /* Alert */,
-				1191DF672D0C80BC003AB0A6 /* Assembly */,
-				1113BDE52CD4B6D7009C928E /* SupportingFiles */,
+				1191DF672D0C80BC003AB0A6 /* Assemblys */,
 				1113BDEF2CD4B6D7009C928E /* AppDelegate.swift */,
 				1113BDF12CD4B6D7009C928E /* Info.plist */,
+				1113BDE52CD4B6D7009C928E /* SupportingFiles */,
 			);
 			path = TradeTracker;
 			sourceTree = "<group>";
@@ -174,7 +174,7 @@
 			path = Packeges;
 			sourceTree = "<group>";
 		};
-		1191DF672D0C80BC003AB0A6 /* Assembly */ = {
+		1191DF672D0C80BC003AB0A6 /* Assemblys */ = {
 			isa = PBXGroup;
 			children = (
 				1113BE1B2CD5126A009C928E /* TransactionsInfoBuilder.swift */,
@@ -183,7 +183,7 @@
 				111B64B92CFF642000EA6921 /* ProductsAssembly.swift */,
 				11AC7D272D0062A6001205F1 /* SharedDataManagerAssembly.swift */,
 			);
-			path = Assembly;
+			path = Assemblys;
 			sourceTree = "<group>";
 		};
 		11A3B8FE2CCBCC030076C525 = {

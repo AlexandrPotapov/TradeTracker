@@ -7,8 +7,6 @@
 
 import UIKit
 import Swinject
-import TradeTrackerCore
-import Features
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
